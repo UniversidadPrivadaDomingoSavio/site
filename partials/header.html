@@ -1,0 +1,99 @@
+<!-- =========================================================
+     HEADER (TOPBAR + NAVBAR)
+========================================================= -->
+<header>
+    <!-- =========================
+         TOP BAR (opcional)
+    ========================== -->
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <a class="topbar__cta" href="inscripcion.html#novedades">Recibir novedades</a>
+      </div>
+    </div>
+  
+    <!-- =========================
+         NAVBAR (menú principal)
+    ========================== -->
+    <div class="navwrap">
+      <div class="container nav">
+        <!-- =========================
+             BRAND / LOGO TEXTO
+        ========================== -->
+        <a class="brand" href="index.html" aria-label="Inicio - IV Congreso 2026 Santa Cruz">
+          <span class="brand__mark">IV Congreso</span>
+          <span class="brand__meta">
+            <span class="brand__year">2026</span>
+            <span class="brand__place">Santa Cruz</span>
+          </span>
+        </a>
+  
+        <!-- =========================
+             BOTÓN HAMBURGUESA (móvil)
+        ========================== -->
+        <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+          <span></span><span></span><span></span>
+        </button>
+  
+        <!-- =========================
+             MENÚ (desktop + móvil)
+        ========================== -->
+        <nav class="menu" id="menu" aria-label="Menú principal">
+          <!-- =========================
+               CONGRESO (dropdown)
+          ========================== -->
+          <div class="menu__item dropdown">
+            <button class="dropdown__btn" type="button" aria-expanded="false">
+              Congreso <span class="chev">▾</span>
+            </button>
+            <div class="dropdown__panel" role="menu" aria-label="Opciones de Congreso">
+              <a class="navlink" href="acerca-del-congreso.html" role="menuitem">Acerca del congreso</a>
+            </div>
+          </div>
+  
+          <!-- =========================
+               PROGRAMA (dropdown)
+          ========================== -->
+          <div class="menu__item dropdown">
+            <button class="dropdown__btn" type="button" aria-expanded="false">
+              Programa <span class="chev">▾</span>
+            </button>
+            <div class="dropdown__panel" role="menu" aria-label="Opciones de Programa">
+              <a class="navlink" href="tematicas.html" role="menuitem">Temáticas</a>
+              <a class="navlink" href="cronograma.html" role="menuitem">Cronograma</a>
+            </div>
+          </div>
+  
+          <!-- =========================
+               SEDE (dropdown)
+          ========================== -->
+          <div class="menu__item dropdown">
+            <button class="dropdown__btn" type="button" aria-expanded="false">
+              Sede <span class="chev">▾</span>
+            </button>
+            <div class="dropdown__panel" role="menu" aria-label="Opciones de Sede">
+              <a class="navlink" href="sede-upds-scz.html" role="menuitem">
+                Universidad Privada Domingo Savio - Sede Santa Cruz
+              </a>
+            </div>
+          </div>
+  
+          <!-- =========================
+               SANTA CRUZ (dropdown)
+          ========================== -->
+          <div class="menu__item dropdown">
+            <button class="dropdown__btn" type="button" aria-expanded="false">
+              Santa Cruz <span class="chev">▾</span>
+            </button>
+            <div class="dropdown__panel" role="menu" aria-label="Opciones de Santa Cruz">
+              <a class="navlink" href="bienvenido-santa-cruz.html" role="menuitem">Bienvenido a Santa Cruz</a>
+            </div>
+          </div>
+  
+          <!-- =========================
+               ACCIÓN PRINCIPAL
+          ========================== -->
+          <a class="menu__item link link--primary navlink" href="inscripcion.html">Inscripción</a>
+        </nav>
+      </div>
+    </div>
+  </header>
