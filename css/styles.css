@@ -1,0 +1,207 @@
+/* =========================================================
+   BASE: altura completa para footer anclado
+========================================================= */
+html, body {
+    height: 100%;
+    background-color: #f8f9fa; /* Color de fondo general */
+  }
+  
+  /* =========================================================
+     ESPACIADO: evita que el header fijo tape el contenido
+  ========================================================= */
+  .content-padding {
+    padding-top: 130px; 
+  }
+  
+  /* =========================================================
+     HEADER: barra superior fija
+  ========================================================= */
+  .top-bar {
+    background-color: #006080; /* Azul oscuro */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 35px;
+    z-index: 1040;
+  }
+  
+  /* =========================================================
+     NAVBAR PRINCIPAL: flotante debajo de la top-bar
+  ========================================================= */
+  .custom-navbar {
+    background-color: #0f141a; /* Fondo casi negro */
+    top: 35px; /* Debajo de la top-bar */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  }
+  
+  /* Separación entre items del nav */
+  .navbar-nav {
+    gap: 1.5rem;
+  }
+  
+  /* Logo en header */
+  .header-logo {
+    height: 60px;
+    width: 230px;
+    display: block;
+  }
+  
+  /* Botón de inscripción */
+  .btn-inscripcion {
+    background: linear-gradient(90deg, #00b4d8, #0077b6);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 0 12px rgba(0, 180, 216, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-inscripcion:hover {
+    background: linear-gradient(90deg, #0096c7, #023e8a);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(0, 180, 216, 0.6);
+  }
+  
+  /* Dropdown arrow */
+  .navbar-nav .dropdown-toggle::after {
+    vertical-align: middle;
+    margin-left: 0.4em;
+    font-size: 0.85em;
+  }
+  
+  /* =========================================================
+     FOOTER
+  ========================================================= */
+  .custom-footer {
+    background-color: #0f141a;
+    border-top: 1px solid #1f2937;
+    z-index: 10; /* Superponer al fondo decorativo */
+    position: relative; /* Asegurar que el z-index se aplique */
+  }
+  
+  /* =========================================================
+     ✅ FONDO DECORATIVO A LA DERECHA (LA TÉCNICA QUE QUIERES)
+     - page-wrap: contenedor relativo del "fondo"
+     - bg-right : capa de imagen a la derecha
+     - page-content: contenido por encima
+  ========================================================= */
+  
+  /* 1) Wrapper general para posicionar el fondo */
+  /* Wrapper general: ahora es flex column y ocupa mínimo toda la pantalla */
+    .page-wrap{
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    
+        overflow-x: hidden;  /* ✅ evita scroll lateral */
+        overflow-y: visible; /* ✅ permite scroll vertical */
+    }
+    
+    /* El main crece para empujar el footer */
+    main.page-content{
+        flex: 1 0 auto;
+    }
+    
+  /* 2) Capa de fondo derecho */
+  /* 👉 AQUÍ ES DONDE REFERENCIAS LA IMAGEN */
+  .bg-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+  
+    height: 100%;
+    width: min(42vw, 560px); /* ancho del "fondo" solo a la derecha */
+  
+    /* ✅ REFERENCIA A TU IMAGEN (está en /img) */
+    background-image: url("../img/fondo-congreso.png");
+  
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: cover; /* usa 'contain' si NO quieres recorte */
+  
+    opacity: 0.40;      /* transparencia tipo marca de agua */
+    z-index: 0;         /* detrás del contenido */
+    pointer-events: none;
+  }
+  
+  /* 3) Todo el contenido debe estar por encima del fondo */
+  .page-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* =========================================================
+     Banner tipo "Workshops"
+  ========================================================= */
+.hero-strip{
+  display: flex;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+  overflow: hidden;
+  min-height: 190px;
+  height: 300px;  /*Cambiar ancho*/
+  background: #006080;       /* tu color base */
+  position: relative;
+  z-index: 2;                /* por si tu bg-right está detrás */
+}
+
+/* Izquierda (GIF) */
+.hero-strip__media{
+  flex: 0 0 58%;
+  min-height: 190px;
+}
+
+.hero-strip__media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Derecha (panel degradado) */
+.hero-strip__panel{
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 2.2rem 2.4rem;
+
+  /* degradado tipo tarjeta */
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,0.90) 0%,
+    rgba(0,96,128,0.92) 55%,
+    rgba(0,96,128,0.92) 100%
+  );
+}
+
+.hero-strip__title{
+  margin: 0;
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  font-size: clamp(1.8rem, 3.2vw, 3.2rem);
+}
+
+/* Responsive: en móvil se apila */
+@media (max-width: 991.98px){
+  .hero-strip{
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .hero-strip__media{
+    flex-basis: auto;
+    height: 210px;
+  }
+
+  .hero-strip__panel{
+    align-items: center;
+    padding: 1.4rem 1.4rem;
+  }
+}
