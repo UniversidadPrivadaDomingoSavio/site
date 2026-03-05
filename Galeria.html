@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IV Congreso 2026</title>
+
+  <!-- Bootstrap 5 (LOCAL, desde tu carpeta vendor) -->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+
+  <!-- Tus estilos personalizados -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="d-flex flex-column h-100">
+
+  <!-- =========================================================
+       WRAPPER GENERAL DE PÁGINA
+       - Aquí metemos la capa del fondo derecho y el contenido.
+       - El wrapper se hace "relative" en CSS para que el fondo
+         absoluto se posicione dentro de toda la página.
+  ========================================================== -->
+  <div class="page-wrap d-flex flex-column min-vh-100">
+
+    <!-- =========================================================
+         FONDO DERECHO (DECORATIVO)
+         - Es una capa detrás del contenido (z-index bajo).
+         - Solo se muestra desde pantallas grandes (d-lg-block),
+           para que en móviles no estorbe (d-none).
+    ========================================================== -->
+    <div class="bg-right d-none d-lg-block"></div>
+
+    <!-- Header cargado por JS -->
+    <div id="header-placeholder"></div>
+
+    <!-- =========================================================
+         CONTENIDO PRINCIPAL
+         - page-content sube el contenido por encima del fondo
+           usando z-index en CSS.
+         - content-padding evita que el header fijo tape el inicio.
+    ========================================================== -->
+    <main class="flex-shrink-0 content-padding page-content">
+      <div class="container">
+        <h1 class="mt-5">Bienvenido al IV Congreso 2026</h1>
+        <p class="lead">
+          Este es el área de contenido principal. El menú se mantiene arriba al hacer scroll y el pie de página se queda abajo si no hay suficiente contenido.
+        </p>
+        <p class="mt-5">Contenido adicional para probar el desplazamiento en móviles...</p>
+      </div>
+    </main>
+
+    <!-- Footer cargado por JS -->
+    <div id="footer-placeholder" class="mt-auto"></div>
+
+  </div>
+
+  <!-- =========================================================
+       SCRIPTS
+       - Usa el Bootstrap local para mantener todo consistente.
+       - layout.js es tu script para insertar header/footer.
+  ========================================================== -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/layout.js"></script>
+</body>
+</html>

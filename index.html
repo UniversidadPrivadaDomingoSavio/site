@@ -40,21 +40,27 @@
          - content-padding evita que el header fijo tape el inicio.
     ========================================================== -->
     <main class="flex-shrink-0 content-padding page-content">
-      <div class="container">
 
           <!-- BANNER TIPO "WORKSHOPS" -->
-      <section class="hero-strip my-4">
-        <!-- Lado izquierdo: GIF -->
-        <div class="hero-strip__media">
-          <img src="img/ciudad.gif" alt="Vista panorámica de la ciudad" loading="lazy">
-        </div>
+          <section class="hero-strip my-4">
+            <!-- Lado izquierdo: GIF -->
+            <div class="hero-strip__media">
+              <video autoplay muted loop playsinline>
+                <source src="img/ciudad.mp4" type="video/mp4">
+              </video>
+              <!-- Si quieres usar un GIF en lugar de video, 
+               
+              <img src="img/ciudad.gif" alt="Vista panorámica de la ciudad" loading="lazy">
+              descomenta esta línea y comenta el bloque de video -->
+            </div>
+    
+            <!-- Lado derecho: degradado + título -->
+            <div class="hero-strip__panel">
+              <h2 class="hero-strip__title">Ponencias</h2>
+            </div>
+          </section>
 
-        <!-- Lado derecho: degradado + título -->
-        <div class="hero-strip__panel">
-          <h2 class="hero-strip__title">Ponencias</h2>
-        </div>
-      </section>
-
+      <div class="container">
         <h1 class="mt-5">Bienvenido al IV Congreso 2026</h1>
         <p class="lead">
           Este es el área de contenido principal. El menú se mantiene arriba al hacer scroll y el pie de página se queda abajo si no hay suficiente contenido.
