@@ -31,8 +31,8 @@ html, body {
   .custom-navbar {
     background-color: black; /* Fondo casi negro */
     top: 35px; /* Debajo de la top-bar */
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
   }
   
@@ -85,7 +85,7 @@ html, body {
     /* Estilos para los logos del footer */
   .footer-logo-img {
       height: auto;
-      max-height: 85px; /* Aumentado un poco para que se note el detalle */
+      max-height: 150px; /* Aumentado un poco para que se note el detalle */
       width: auto;
       display: block;
       transition: transform 0.3s ease;
@@ -158,6 +158,8 @@ html, body {
      Banner tipo "Workshops"
   ========================================================= */
 .hero-strip{
+  left: 25px;
+  right: 25px;
   display: flex;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
