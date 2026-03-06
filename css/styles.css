@@ -235,11 +235,15 @@ html, body {
     background-color: #ffffff;
     cursor: pointer;
 }
+.row.g-4 {
+  row-gap: 2.5rem !important;
+}
 
 .workshop-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
-    background-color: #f0f7f9; /* Cambio sutil a un azul muy claro */
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15),
+              0 0 0 1px rgba(0, 96, 128, 0.12) !important;
+  background-color: #f0f7f9;
 }
 
 /* Imagen principal */
