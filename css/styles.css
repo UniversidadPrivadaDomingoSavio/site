@@ -81,6 +81,26 @@ html, body {
     z-index: 10; /* Superponer al fondo decorativo */
     position: relative; /* Asegurar que el z-index se aplique */
   }
+
+    /* Estilos para los logos del footer */
+  .footer-logo-img {
+      height: auto;
+      max-height: 85px; /* Aumentado un poco para que se note el detalle */
+      width: auto;
+      display: block;
+      transition: transform 0.3s ease;
+  }
+
+  .footer-logo-img:hover {
+      transform: scale(1.03);
+  }
+
+  /* Ajuste opcional para móviles */
+  @media (max-width: 576px) {
+      .footer-logo-img {
+          max-height: 60px;
+      }
+  }
   
   /* =========================================================
      ✅ FONDO DECORATIVO A LA DERECHA (LA TÉCNICA QUE QUIERES)
