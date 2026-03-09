@@ -75,7 +75,7 @@
     /* Layout interno: sidebar izquierdo + mapa */
     .mapa-inner {
       display: flex;
-      height: 520px; /* Ajusta la altura aquí si quieres más o menos mapa */
+      height: 520px; /* Cambia este valor para ajustar la altura del mapa */
     }
 
     /* Sidebar de lugares */
@@ -144,7 +144,9 @@
     /* El div del mapa ocupa el espacio restante */
     #mapa { flex: 1; }
 
-    /* Popup de Leaflet */
+    /* -------------------------------------------------------
+       Popup de Leaflet
+    ------------------------------------------------------- */
     .leaflet-popup-content-wrapper {
       background: #0f141a !important;
       border: 2px solid #006080 !important;
@@ -191,7 +193,7 @@
       margin-bottom: 0.8rem;
     }
 
-    /* Botón igual que btn-inscripcion del sitio */
+    /* Botón del popup – igual que btn-inscripcion */
     .popup-gmaps {
       display: inline-flex;
       align-items: center;
@@ -226,57 +228,167 @@
 
     .pin .pin-emoji { transform: rotate(45deg); font-size: 0.95rem; }
 
-    /* =====================================================
-   RESPONSIVE MÓVIL
-   Reorganiza el mapa para pantallas pequeñas
-   sin tocar nada del header/footer del sitio
-    ===================================================== */
+    /* =======================================================
+       TARJETAS DE DESTINOS – layout horizontal tipo lista
+    ======================================================= */
+    .destinos-lista {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Tarjeta individual */
+    .destino-card {
+      display: flex;
+      align-items: stretch;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e9ecef;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .destino-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,96,128,0.13);
+    }
+
+    /* Imagen real de la tarjeta */
+    .destino-card__img {
+      width: 140px;
+      flex-shrink: 0;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Placeholder con emoji cuando no hay foto */
+    .destino-card__placeholder {
+      width: 140px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+    }
+
+    /* Cuerpo de texto */
+    .destino-card__body {
+      padding: 0.85rem 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+    }
+
+    /* Etiqueta de categoría */
+    .destino-card__cat {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #006080;
+      margin-bottom: 0.2rem;
+    }
+
+    /* Nombre del destino */
+    .destino-card__nombre {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #1f2937;
+      margin-bottom: 0.3rem;
+      line-height: 1.3;
+    }
+
+    /* Descripción */
+    .destino-card__desc {
+      font-size: 0.75rem;
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Botón "Ver en el mapa" – igual que btn-inscripcion */
+    .destino-card__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: linear-gradient(90deg, #00b4d8, #0077b6);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.32rem 0.85rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      align-self: flex-start;
+      box-shadow: 0 0 8px rgba(0,180,216,0.2);
+    }
+
+    .destino-card__btn:hover {
+      background: linear-gradient(90deg, #0096c7, #023e8a);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 0 14px rgba(0,180,216,0.45);
+    }
+
+    /* =======================================================
+       RESPONSIVE MÓVIL
+       Solo afecta pantallas menores a 640px
+    ======================================================= */
     @media (max-width: 640px) {
-    /* Empuja el contenido hacia abajo solo en móvil */
-    main.content-padding {
+
+      /* Ajusta el padding del header en móvil */
+      main.content-padding {
         padding-top: 180px;
+      }
+
+      /* El sidebar lateral desaparece en móvil */
+      .mapa-sidebar { display: none; }
+
+      /* El mapa reduce su altura */
+      .mapa-inner { height: 320px; }
+
+      /* Los filtros se convierten en scroll horizontal */
+      .filtros {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 2px;
+        gap: 0.3rem;
+        scrollbar-width: none;
+      }
+
+      .filtros::-webkit-scrollbar { display: none; }
+
+      .filtro-btn {
+        flex-shrink: 0;
+        font-size: 0.6rem;
+        padding: 0.22rem 0.6rem;
+      }
+
+      /* Lista de destinos debajo del mapa (reemplaza el sidebar) */
+      .lista-mobile {
+        display: block !important;
+        background: #0f141a;
+        border-top: 2px solid #006080;
+        max-height: 220px;
+        overflow-y: auto;
+      }
+
+      .lista-mobile::-webkit-scrollbar { width: 4px; }
+      .lista-mobile::-webkit-scrollbar-track { background: #0f141a; }
+      .lista-mobile::-webkit-scrollbar-thumb { background: #006080; border-radius: 4px; }
+
+      /* Tarjetas de destinos en móvil */
+      .destino-card__img,
+      .destino-card__placeholder { width: 100px; font-size: 2rem; }
+      .destino-card__nombre      { font-size: 0.82rem; }
+      .destino-card__desc        { font-size: 0.68rem; }
     }
-    /* 1. El sidebar lateral desaparece en móvil */
-    .mapa-sidebar { display: none; }
-
-    /* 2. El mapa ocupa toda la altura disponible */
-    .mapa-inner { height: 320px; }
-
-    /* 3. Los filtros se vuelven scroll horizontal
-        en vez de desaparecer */
-    .filtros {
-    display: flex;
-    flex-wrap: nowrap;        /* una sola fila */
-    overflow-x: auto;         /* scroll horizontal */
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 2px;
-    gap: 0.3rem;
-    scrollbar-width: none;    /* oculta scrollbar en Firefox */
-    }
-
-    .filtros::-webkit-scrollbar { display: none; } /* oculta en Chrome/Safari */
-
-    .filtro-btn {
-    flex-shrink: 0;           /* no se comprimen */
-    font-size: 0.6rem;
-    padding: 0.22rem 0.6rem;
-    }
-
-    /* 4. Lista de destinos debajo del mapa en móvil
-        (reemplaza el sidebar lateral) */
-    .lista-mobile {
-    display: block !important;
-    background: #0f141a;
-    border-top: 2px solid #006080;
-    max-height: 220px;
-    overflow-y: auto;
-    }
-
-    .lista-mobile::-webkit-scrollbar { width: 4px; }
-    .lista-mobile::-webkit-scrollbar-track { background: #0f141a; }
-    .lista-mobile::-webkit-scrollbar-thumb { background: #006080; border-radius: 4px; }
-    }
-    
   </style>
 </head>
 
@@ -292,7 +404,9 @@
     <main class="flex-shrink-0 content-padding page-content">
       <div class="container my-4">
 
-        <!-- Título de sección con la clase del sitio -->
+        <!-- ================================================
+             TÍTULO DE SECCIÓN
+        ================================================ -->
         <div class="section-info__block mb-4">
           <h2 class="section-info__heading">Guía Turística</h2>
           <div class="section-info__divider"></div>
@@ -302,12 +416,14 @@
           </p>
         </div>
 
-        <!-- Bloque del mapa (todo contenido aquí dentro) -->
+        <!-- ================================================
+             BLOQUE DEL MAPA
+        ================================================ -->
         <div class="mapa-bloque">
 
-          <!-- Sub-header: etiqueta + filtros -->
+          <!-- Sub-header: filtros de categoría -->
           <div class="mapa-controls">
-            <div class="mapa-controls-titulo"></div> <!-- Aqui puede estar el titulo -->
+            <div class="mapa-controls-titulo">📍 Destinos turísticos</div>
             <div class="filtros" id="filtros">
               <button class="filtro-btn active" data-cat="all">Todos</button>
               <button class="filtro-btn" data-cat="naturaleza">🌿 Naturaleza</button>
@@ -327,11 +443,136 @@
           </div>
 
           <!-- Lista de destinos para móvil (oculta en desktop) -->
-        <div class="lista-mobile" id="listaMobile" style="display:none;">
+          <div class="lista-mobile" id="listaMobile" style="display:none;">
             <div class="sidebar-titulo">📍 Destinos</div>
-        </div>
+          </div>
 
         </div><!-- /mapa-bloque -->
+
+        <!-- ================================================
+             TARJETAS DE DESTINOS
+             Layout horizontal: imagen/emoji + texto + botón.
+             Para usar foto real reemplaza el div.destino-card__placeholder
+             por: <img class="destino-card__img" src="img/turismo/nombre.jpg" alt="...">
+        ================================================ -->
+        <div class="section-info__block mt-5 mb-3">
+          <h2 class="section-info__heading">Conocé cada destino</h2>
+          <div class="section-info__divider"></div>
+        </div>
+
+        <div class="destinos-lista">
+
+          <!-- UPDS -->
+          <div class="destino-card">
+            <img class="destino-card__img" src="img/Turismo/turismo_Upds.png" alt="Nombre del lugar">
+            <div class="destino-card__body">
+              <div class="destino-card__cat">Universidad</div>
+              <div class="destino-card__nombre">Universidad Privada Domingo Savio (UPDS)</div>
+              <div class="destino-card__desc">Sede Santa Cruz de la UPDS. Centro académico con carreras de Derecho, Medicina, Ingeniería y más.</div>
+              <button class="destino-card__btn" onclick="irAlMapa(1, -17.757616, -63.174926)">📍 Ver en el mapa</button>
+            </div>
+          </div>
+
+          <!-- Río Piraí -->
+          <div class="destino-card">
+            <img class="destino-card__img" src="img/Turismo/turismo-Rio-pirai.png" alt="Nombre del lugar">
+            <div class="destino-card__body">
+              <div class="destino-card__cat">Naturaleza</div>
+              <div class="destino-card__nombre">Río Piraí</div>
+              <div class="destino-card__desc">El río emblemático de Santa Cruz. Sus playas de arena blanca son el destino favorito de los cruceños los fines de semana.</div>
+              <button class="destino-card__btn" onclick="irAlMapa(2, -17.7950, -63.2480)">📍 Ver en el mapa</button>
+            </div>
+          </div>
+
+          <!-- Parque Nacional Amboró -->
+          <div class="destino-card">
+            <img class="destino-card__img" src="img/Turismo/Turismo-Parque-Amboro.png" alt="Nombre del lugar">
+            <div class="destino-card__body">
+              <div class="destino-card__cat">Naturaleza</div>
+              <div class="destino-card__nombre">Parque Nacional Amboró</div>
+              <div class="destino-card__desc">Uno de los parques más biodiversos del mundo, con más de 800 especies de aves, jaguares y flora exuberante.</div>
+              <button class="destino-card__btn" onclick="irAlMapa(3, -17.815941, -63.632263)">📍 Ver en el mapa</button>
+            </div>
+          </div>
+
+          <!-- Biocentro Güembé -->
+          <div class="destino-card">
+            <img class="destino-card__img" src="img/Turismo/Turismo-Biocentro-guembe.png" alt="Nombre del lugar">
+            <div class="destino-card__body">
+              <div class="destino-card__cat">Naturaleza</div>
+              <div class="destino-card__nombre">Biocentro Güembé</div>
+              <div class="destino-card__desc">El jardín de mariposas más grande de Bolivia, con piscinas naturales y selva tropical en las afueras de la ciudad.</div>
+              <button class="destino-card__btn" onclick="irAlMapa(4, -17.6967, -63.2283)">📍 Ver en el mapa</button>
+            </div>
+          </div>
+
+          <!-- Plaza 24 de Septiembre -->
+          <div class="destino-card">
+            <img class="destino-card__img" src="img/Turismo/Turismo-Plaza-24-septiembre.png" alt="Nombre del lugar">
+            <div class="destino-card__body">
+              <div class="destino-card__cat">Cultura</div>
+              <div class="destino-card__nombre">Plaza 24 de Septiembre</div>
+              <div class="destino-card__desc">El corazón histórico de la ciudad, rodeada de la Catedral Metropolitana, la Casa de Gobierno y palmeras reales.</div>
+              <button class="destino-card__btn" onclick="irAlMapa(5, -17.7833, -63.1816)">📍 Ver en el mapa</button>
+            </div>
+          </div>
+
+          <!-- Samaipata -->
+          <div class="destino-card">
+            <img class="destino-card__img" src="img/Turismo/Turismo-Samaipata.png" alt="Nombre del lugar">
+            <div class="destino-card__body">
+              <div class="destino-card__cat">Cultura</div>
+              <div class="destino-card__nombre">Samaipata – Plaza Principal</div>
+              <div class="destino-card__desc">Corazón del pintoresco pueblo de Samaipata, a 120 km de Santa Cruz. Puerta de entrada a El Fuerte, Patrimonio de la UNESCO.</div>
+              <button class="destino-card__btn" onclick="irAlMapa(6, -18.179430, -63.875885)">📍 Ver en el mapa</button>
+            </div>
+          </div>
+
+          <!-- Santuario de Cotoca -->
+          <div class="destino-card">
+            <img class="destino-card__img" src="img/Turismo/Turismo-Santuario-Cotoca.png" alt="Nombre del lugar">
+            <div class="destino-card__body">
+              <div class="destino-card__cat">Cultura</div>
+              <div class="destino-card__nombre">Santuario de Cotoca</div>
+              <div class="destino-card__desc">El lugar de peregrinación más importante de Bolivia. Cada año miles de fieles caminan desde Santa Cruz hasta este templo.</div>
+              <button class="destino-card__btn" onclick="irAlMapa(7, -17.754441, -62.996513)">📍 Ver en el mapa</button>
+            </div>
+          </div>
+
+          <!-- Lomas de Arena -->
+          <div class="destino-card">
+            <img class="destino-card__img" src="img/Turismo/Turismo-Lomas-de-arena.png" alt="Nombre del lugar">
+            <div class="destino-card__body">
+              <div class="destino-card__cat">Aventura</div>
+              <div class="destino-card__nombre">Lomas de Arena</div>
+              <div class="destino-card__desc">Dunas de arena en plena llanura cruceña. Ideal para sandboard, caminatas al atardecer y observación de aves.</div>
+              <button class="destino-card__btn" onclick="irAlMapa(8, -17.939825, -63.160142)">📍 Ver en el mapa</button>
+            </div>
+          </div>
+
+          <!-- Noel Kempff -->
+          <div class="destino-card">
+            <img class="destino-card__img" src="img/Turismo/Turismo-Noel-kepm-mercado.png" alt="Nombre del lugar">
+            <div class="destino-card__body">
+              <div class="destino-card__cat">Aventura</div>
+              <div class="destino-card__nombre">Parque Nacional Noel Kempff Mercado</div>
+              <div class="destino-card__desc">Patrimonio Natural de la UNESCO. Cascadas imponentes, mesetas prehistóricas y selva amazónica completamente virgen.</div>
+              <button class="destino-card__btn" onclick="irAlMapa(9, -14.6667, -60.8333)">📍 Ver en el mapa</button>
+            </div>
+          </div>
+
+          <!-- Cristo Redentor -->
+          <div class="destino-card">
+            <img class="destino-card__img" src="img/Turismo/Turismo-Cristo-redentor.png" alt="Nombre del lugar">
+            <div class="destino-card__body">
+              <div class="destino-card__cat">Urbano</div>
+              <div class="destino-card__nombre">Cristo Redentor de Santa Cruz</div>
+              <div class="destino-card__desc">Monumento icónico visible desde gran parte de la ciudad. Referencia espiritual y punto de encuentro de los cruceños.</div>
+              <button class="destino-card__btn" onclick="irAlMapa(10, -17.770274, -63.182587)">📍 Ver en el mapa</button>
+            </div>
+          </div>
+
+        </div><!-- /destinos-lista -->
 
       </div><!-- /container -->
     </main>
@@ -347,8 +588,8 @@
   <script>
     // =====================================================
     // DATOS DE DESTINOS
-    // Para agregar un lugar: copia un objeto {}, edita sus
-    // campos y agrégalo al array.
+    // Para agregar un lugar nuevo: copia un objeto {},
+    // edita sus campos y agrégalo al array.
     // lat/lng: Google Maps → clic derecho → copiar coords
     // =====================================================
     const destinos = [
@@ -434,16 +675,20 @@
       }
     ];
 
-    // Inicializar mapa centrado en Santa Cruz, zoom 11
+    // =====================================================
+    // INICIALIZAR MAPA – centrado en Santa Cruz, zoom 11
+    // =====================================================
     const mapa = L.map('mapa', { center: [-17.78, -63.18], zoom: 11 });
 
-    // Tiles gratuitos CartoDB Voyager (sin API key)
+    // Tiles CartoDB Voyager – gratuitos, sin API key
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; OpenStreetMap &copy; CARTO',
       subdomains: 'abcd', maxZoom: 19
     }).addTo(mapa);
 
-    // Crear pin personalizado
+    // =====================================================
+    // FUNCIÓN: crea el pin personalizado de cada destino
+    // =====================================================
     function crearPin(d) {
       return L.divIcon({
         className: '',
@@ -453,7 +698,9 @@
       });
     }
 
-    // HTML del popup
+    // =====================================================
+    // FUNCIÓN: genera el HTML del popup al hacer clic en un pin
+    // =====================================================
     function popupHTML(d) {
       return `<div class="popup-franja" style="background:linear-gradient(90deg,${d.color},#00b4d8)"></div>
               <div class="popup-cuerpo">
@@ -464,7 +711,9 @@
               </div>`;
     }
 
-    // Generar marcadores y tarjetas del sidebar
+    // =====================================================
+    // GENERAR MARCADORES EN EL MAPA Y TARJETAS DEL SIDEBAR
+    // =====================================================
     const marcadores = {};
     const sidebar = document.getElementById('sidebar');
 
@@ -474,12 +723,14 @@
 
       marcadores[d.id] = marker;
 
+      // Resaltar tarjeta del sidebar cuando se abre el popup
       marker.on('popupopen', () => {
         document.querySelectorAll('.lugar-card').forEach(c => c.classList.remove('activa'));
         const card = document.querySelector(`.lugar-card[data-id="${d.id}"]`);
         if (card) { card.classList.add('activa'); card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
       });
 
+      // Tarjeta del sidebar de escritorio
       const card = document.createElement('div');
       card.className = 'lugar-card';
       card.dataset.id = d.id; card.dataset.cat = d.categoria;
@@ -489,7 +740,9 @@
       sidebar.appendChild(card);
     });
 
-    // Filtros de categoría
+    // =====================================================
+    // FILTROS DE CATEGORÍA
+    // =====================================================
     document.getElementById('filtros').addEventListener('click', e => {
       const btn = e.target.closest('.filtro-btn');
       if (!btn) return;
@@ -502,31 +755,45 @@
         if (visible) { if (!mapa.hasLayer(marcadores[d.id])) marcadores[d.id].addTo(mapa); if (card) card.style.display = ''; }
         else { if (mapa.hasLayer(marcadores[d.id])) mapa.removeLayer(marcadores[d.id]); if (card) card.style.display = 'none'; }
       });
+
+      // Sincronizar también la lista móvil
+      const catActiva = btn.dataset.cat;
+      document.querySelectorAll('#listaMobile .lugar-card').forEach(card => {
+        card.style.display = (catActiva === 'all' || card.dataset.cat === catActiva) ? '' : 'none';
+      });
     });
 
-    // Generar también las tarjetas en la lista móvil
+    // =====================================================
+    // LISTA MÓVIL – tarjetas debajo del mapa en móvil
+    // =====================================================
     const listaMobile = document.getElementById('listaMobile');
 
     destinos.forEach(d => {
-    const cardM = document.createElement('div');
-    cardM.className = 'lugar-card';
-    cardM.dataset.id = d.id; cardM.dataset.cat = d.categoria;
-    cardM.innerHTML = `<div class="lugar-icono" style="background:${d.color}22;color:${d.color}">${d.emoji}</div>
-                        <div><h5>${d.nombre}</h5><span>${d.categoria}</span></div>`;
-    cardM.addEventListener('click', () => {
+      const cardM = document.createElement('div');
+      cardM.className = 'lugar-card';
+      cardM.dataset.id = d.id; cardM.dataset.cat = d.categoria;
+      cardM.innerHTML = `<div class="lugar-icono" style="background:${d.color}22;color:${d.color}">${d.emoji}</div>
+                         <div><h5>${d.nombre}</h5><span>${d.categoria}</span></div>`;
+      cardM.addEventListener('click', () => {
         mapa.setView([d.lat, d.lng], 14, { animate: true });
         marcadores[d.id].openPopup();
-    });
-    listaMobile.appendChild(cardM);
+      });
+      listaMobile.appendChild(cardM);
     });
 
-    // Sincronizar filtros con la lista móvil
-    document.getElementById('filtros').addEventListener('click', () => {
-    const cat = document.querySelector('.filtro-btn.active')?.dataset.cat || 'all';
-    document.querySelectorAll('#listaMobile .lugar-card').forEach(card => {
-        card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
-    });
-    });
+    // =====================================================
+    // FUNCIÓN GLOBAL: usada por los onclick de las tarjetas
+    // de destinos. Sube al mapa, vuela a la ubicación
+    // y abre el popup del pin correspondiente.
+    // =====================================================
+    function irAlMapa(id, lat, lng) {
+      document.getElementById('mapa').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => {
+        mapa.setView([lat, lng], 14, { animate: true });
+        if (marcadores[id]) marcadores[id].openPopup();
+      }, 500);
+    }
+
     // Recalcular tamaño del mapa tras inyectar el header dinámico
     window.addEventListener('load', () => mapa.invalidateSize());
   </script>
