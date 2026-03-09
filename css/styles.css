@@ -278,3 +278,79 @@ html, body {
 .workshop-card:hover .card-title {
     color: #006080; /* Tu azul corporativo */
 }
+
+
+
+
+/* =============================================================
+   SECCIÓN INFORMATIVA: "¿Qué es el Congreso?"
+   Bloque de texto con títulos decorados y línea separadora.
+   Adaptado a la paleta de colores del sitio (#006080 / #00b4d8).
+   Agregar al final de styles.css (o en su propia sección).
+============================================================= */
+
+/* -------------------------------------------------------------
+   CONTENEDOR PRINCIPAL DEL BLOQUE INFORMATIVO
+   - Separa visualmente cada bloque (título + divider + texto).
+------------------------------------------------------------- */
+.section-info__block {
+  /* Máximo ancho del texto para una lectura cómoda */
+  max-width: 780px;
+}
+
+/* -------------------------------------------------------------
+   TÍTULO DEL BLOQUE
+   - Color principal del sitio (#006080) con peso fuerte.
+   - font-size fluido: se adapta entre móvil y escritorio.
+------------------------------------------------------------- */
+.section-info__heading {
+  color: #006080;                          /* Azul corporativo del sitio */
+  font-weight: 800;
+  font-size: clamp(1.3rem, 2.4vw, 1.9rem); /* Fluido: ~21px → ~30px */
+  line-height: 1.25;
+  margin-bottom: 0.6rem;
+}
+
+/* -------------------------------------------------------------
+   LÍNEA DECORATIVA (DIVIDER)
+   - Barra corta debajo del título, igual que en la referencia.
+   - Usa el color secundario (#00b4d8) para que contraste con #006080.
+------------------------------------------------------------- */
+.section-info__divider {
+  width: 300px;          /* Longitud de la línea */
+  height: 3px;          /* Grosor de la línea */
+  background-color: #00b4d8;  /* Azul claro del gradiente del botón */
+  border-radius: 2px;
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+}
+
+/* -------------------------------------------------------------
+   PÁRRAFO DE CUERPO
+   - Color neutro oscuro, interlineado holgado para facilitar
+     la lectura de textos jurídicos o descriptivos largos.
+------------------------------------------------------------- */
+.section-info__body {
+  color: #1f2937;        /* Gris oscuro: legible sobre fondo #f8f9fa */
+  font-size: 1rem;
+  line-height: 1.8;      /* Interlineado amplio para textos densos */
+  max-width: 720px;
+}
+
+/* -------------------------------------------------------------
+   RESPONSIVE: ajuste en pantallas pequeñas
+   - El título reduce un poco más su tamaño mínimo.
+   - La línea decorativa se acorta levemente.
+------------------------------------------------------------- */
+@media (max-width: 576px) {
+  .section-info__heading {
+    font-size: 1.2rem;
+  }
+
+  .section-info__divider {
+    width: 55px;
+  }
+}
+/* =============================================================
+   FIN SECCIÓN INFORMATIVA
+============================================================= */

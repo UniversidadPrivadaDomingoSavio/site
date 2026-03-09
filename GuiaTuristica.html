@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guía Turística – Santa Cruz</title>
+
+  <!-- Bootstrap 5 local -->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+
+  <!-- Estilos globales del sitio -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="img/logo_32x32.png">
+
+  <!-- Leaflet – sin API key -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+
+  <style>
+    /* =======================================================
+       ESTILOS DEL MAPA
+       Solo afectan a las clases propias del mapa.
+       No tocan header, footer ni ningún otro componente.
+    ======================================================= */
+
+    /* Bloque contenedor del mapa completo */
+    .mapa-bloque {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1.5px solid #dee2e6;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+    }
+
+    /* Sub-header con filtros */
+    .mapa-controls {
+      background: #0f141a;
+      padding: 0.7rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      border-bottom: 2px solid #006080;
+    }
+
+    .mapa-controls-titulo {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #00b4d8;
+      white-space: nowrap;
+    }
+
+    /* Filtros – mismo estilo que btn-inscripcion del sitio */
+    .filtros { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+
+    .filtro-btn {
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.25rem 0.7rem;
+      border-radius: 8px;
+      border: 1.5px solid rgba(0,180,216,0.3);
+      background: rgba(0,96,128,0.15);
+      color: rgba(255,255,255,0.75);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filtro-btn:hover, .filtro-btn.active {
+      background: linear-gradient(90deg, #00b4d8, #0077b6);
+      border-color: #00b4d8;
+      color: #fff;
+      box-shadow: 0 0 10px rgba(0,180,216,0.3);
+    }
+
+    /* Layout interno: sidebar izquierdo + mapa */
+    .mapa-inner {
+      display: flex;
+      height: 520px; /* Ajusta la altura aquí si quieres más o menos mapa */
+    }
+
+    /* Sidebar de lugares */
+    .mapa-sidebar {
+      width: 235px;
+      flex-shrink: 0;
+      background: #0f141a;
+      border-right: 2px solid #006080;
+      overflow-y: auto;
+    }
+
+    .mapa-sidebar::-webkit-scrollbar { width: 4px; }
+    .mapa-sidebar::-webkit-scrollbar-track { background: #0f141a; }
+    .mapa-sidebar::-webkit-scrollbar-thumb { background: #006080; border-radius: 4px; }
+
+    .sidebar-titulo {
+      padding: 0.7rem 0.9rem 0.5rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: #00b4d8;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(0,96,128,0.3);
+    }
+
+    /* Tarjeta de lugar en el sidebar */
+    .lugar-card {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem 0.9rem;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      border-left: 3px solid transparent;
+      transition: background 0.2s;
+    }
+
+    .lugar-card:hover { background: rgba(0,96,128,0.2); }
+
+    .lugar-card.activa {
+      background: rgba(0,180,216,0.1);
+      border-left-color: #00b4d8;
+    }
+
+    .lugar-icono {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .lugar-card h5 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    .lugar-card span {
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* El div del mapa ocupa el espacio restante */
+    #mapa { flex: 1; }
+
+    /* Popup de Leaflet */
+    .leaflet-popup-content-wrapper {
+      background: #0f141a !important;
+      border: 2px solid #006080 !important;
+      border-radius: 12px !important;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6) !important;
+      padding: 0 !important;
+      overflow: hidden;
+    }
+
+    .leaflet-popup-tip { background: #006080 !important; }
+
+    .leaflet-popup-close-button {
+      color: #00b4d8 !important;
+      top: 8px !important; right: 10px !important;
+    }
+
+    .leaflet-popup-content { margin: 0 !important; width: 240px !important; }
+
+    .popup-franja { height: 4px; }
+
+    .popup-cuerpo { padding: 0.9rem 1rem 1rem; }
+
+    .popup-cat {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #00b4d8;
+      margin-bottom: 0.25rem;
+    }
+
+    .popup-titulo {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 0.45rem;
+    }
+
+    .popup-desc {
+      font-size: 0.73rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Botón igual que btn-inscripcion del sitio */
+    .popup-gmaps {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: linear-gradient(90deg, #00b4d8, #0077b6);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.38rem 0.9rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0,180,216,0.2);
+    }
+
+    .popup-gmaps:hover {
+      background: linear-gradient(90deg, #0096c7, #023e8a);
+      color: #fff;
+      text-decoration: none;
+      transform: translateY(-2px);
+      box-shadow: 0 0 14px rgba(0,180,216,0.5);
+    }
+
+    /* Pin del marcador */
+    .pin {
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      border: 2px solid rgba(255,255,255,0.5);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    }
+
+    .pin .pin-emoji { transform: rotate(45deg); font-size: 0.95rem; }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .mapa-sidebar { display: none; }
+      .mapa-inner   { height: 380px; }
+      .filtros      { display: none; }
+    }
+  </style>
+</head>
+
+<body class="d-flex flex-column h-100">
+
+  <div class="page-wrap d-flex flex-column min-vh-100">
+
+    <div class="bg-right d-none d-lg-block"></div>
+
+    <!-- Header del sitio inyectado por layout.js -->
+    <div id="header-placeholder"></div>
+
+    <main class="flex-shrink-0 content-padding page-content">
+      <div class="container my-4">
+
+        <!-- Título de sección con la clase del sitio -->
+        <div class="section-info__block mb-4">
+          <h2 class="section-info__heading">Guía Turística – Santa Cruz de la Sierra</h2>
+          <div class="section-info__divider"></div>
+          <p class="section-info__body mt-3">
+            Explorá los destinos más emblemáticos de Santa Cruz y el departamento.
+            Hacé clic en cualquier pin o en la lista lateral para ver más información y abrir Google Maps.
+          </p>
+        </div>
+
+        <!-- Bloque del mapa (todo contenido aquí dentro) -->
+        <div class="mapa-bloque">
+
+          <!-- Sub-header: etiqueta + filtros -->
+          <div class="mapa-controls">
+            <div class="mapa-controls-titulo"></div> <!-- Aqui puede estar el titulo -->
+            <div class="filtros" id="filtros">
+              <button class="filtro-btn active" data-cat="all">Todos</button>
+              <button class="filtro-btn" data-cat="naturaleza">🌿 Naturaleza</button>
+              <button class="filtro-btn" data-cat="cultura">🏛 Cultura</button>
+              <button class="filtro-btn" data-cat="aventura">⛰ Aventura</button>
+              <button class="filtro-btn" data-cat="urbano">🏙 Urbano</button>
+              <button class="filtro-btn" data-cat="universidad">🎓 UPDS</button>
+            </div>
+          </div>
+
+          <!-- Sidebar + mapa -->
+          <div class="mapa-inner">
+            <aside class="mapa-sidebar" id="sidebar">
+              <div class="sidebar-titulo">📍 Destinos</div>
+            </aside>
+            <div id="mapa"></div>
+          </div>
+
+        </div><!-- /mapa-bloque -->
+
+      </div><!-- /container -->
+    </main>
+
+    <!-- Footer del sitio inyectado por layout.js -->
+    <div id="footer-placeholder" class="mt-auto"></div>
+
+  </div>
+
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/layout.js"></script>
+
+  <script>
+    // =====================================================
+    // DATOS DE DESTINOS
+    // Para agregar un lugar: copia un objeto {}, edita sus
+    // campos y agrégalo al array.
+    // lat/lng: Google Maps → clic derecho → copiar coords
+    // =====================================================
+    const destinos = [
+
+      // ── UNIVERSIDAD ───────────────────────────────
+      {
+        id: 1, nombre: "Universidad Privada Domingo Savio (UPDS)",
+        categoria: "universidad", emoji: "🎓", color: "#006080",
+        lat: -17.757616200625908, lng: -63.17492649958793,
+        descripcion: "Sede Santa Cruz de la UPDS. Centro académico con carreras de Derecho, Medicina, Ingeniería y más.",
+        gmaps: "https://maps.google.com/?q=-17.757616200625908,-63.17492649958793"
+      },
+
+      // ── NATURALEZA ────────────────────────────────
+      {
+        id: 2, nombre: "Río Piraí",
+        categoria: "naturaleza", emoji: "🏞", color: "#2d9d6e",
+        lat: -17.7950, lng: -63.2480,
+        descripcion: "El río emblemático de Santa Cruz. Sus playas de arena blanca son el destino favorito de los cruceños.",
+        gmaps: "https://www.google.com/maps/search/R%C3%ADo+Pirai+Santa+Cruz+Bolivia"
+      },
+      {
+        id: 3, nombre: "Parque Nacional Amboró",
+        categoria: "naturaleza", emoji: "🌿", color: "#2d9d6e",
+        lat: -17.815941445647915, lng: -63.63226390483397,
+        descripcion: "Uno de los parques más biodiversos del mundo, con más de 800 especies de aves y flora exuberante.",
+        gmaps: "https://maps.google.com/?q=-17.815941445647915,-63.63226390483397"
+      },
+      {
+        id: 4, nombre: "Biocentro Güembé",
+        categoria: "naturaleza", emoji: "🦋", color: "#2d9d6e",
+        lat: -17.6967, lng: -63.2283,
+        descripcion: "El jardín de mariposas más grande de Bolivia, con piscinas naturales y selva tropical.",
+        gmaps: "https://maps.google.com/?q=-17.6967,-63.2283"
+      },
+
+      // ── CULTURA ───────────────────────────────────
+      {
+        id: 5, nombre: "Plaza 24 de Septiembre",
+        categoria: "cultura", emoji: "⛪", color: "#c9a84c",
+        lat: -17.7833, lng: -63.1816,
+        descripcion: "El corazón histórico de la ciudad. Rodeada de la Catedral Metropolitana y palmeras reales.",
+        gmaps: "https://maps.google.com/?q=-17.7833,-63.1816"
+      },
+      {
+        id: 6, nombre: "Samaipata – Plaza Principal",
+        categoria: "cultura", emoji: "🏛", color: "#c9a84c",
+        lat: -18.179430482702504, lng: -63.87588500376619,
+        descripcion: "Corazón del pintoresco pueblo de Samaipata. Puerta de entrada a El Fuerte, Patrimonio de la UNESCO.",
+        gmaps: "https://maps.google.com/?q=-18.179430482702504,-63.87588500376619"
+      },
+      {
+        id: 7, nombre: "Santuario de Cotoca",
+        categoria: "cultura", emoji: "🕍", color: "#c9a84c",
+        lat: -17.75444122723612, lng: -62.99651316916469,
+        descripcion: "El lugar de peregrinación más importante de Bolivia. Cada año miles de fieles caminan desde Santa Cruz.",
+        gmaps: "https://maps.google.com/?q=-17.75444122723612,-62.99651316916469"
+      },
+
+      // ── AVENTURA ──────────────────────────────────
+      {
+        id: 8, nombre: "Lomas de Arena",
+        categoria: "aventura", emoji: "🏜", color: "#e05c3a",
+        lat: -17.939825376208894, lng: -63.16014216997741,
+        descripcion: "Dunas de arena en plena llanura cruceña. Ideal para sandboard y caminatas al atardecer.",
+        gmaps: "https://maps.google.com/?q=-17.939825376208894,-63.16014216997741"
+      },
+      {
+        id: 9, nombre: "Parque Nacional Noel Kempff Mercado",
+        categoria: "aventura", emoji: "⛰", color: "#e05c3a",
+        lat: -14.6667, lng: -60.8333,
+        descripcion: "Patrimonio Natural de la UNESCO. Cascadas imponentes y selva amazónica virgen.",
+        gmaps: "https://maps.google.com/?q=-14.6667,-60.8333"
+      },
+
+      // ── URBANO ────────────────────────────────────
+      {
+        id: 10, nombre: "Cristo Redentor de Santa Cruz",
+        categoria: "urbano", emoji: "✝️", color: "#0077b6",
+        lat: -17.770274144496863, lng: -63.18258700521679,
+        descripcion: "Monumento icónico visible desde gran parte de la ciudad, referencia espiritual de los cruceños.",
+        gmaps: "https://maps.google.com/?q=-17.770274144496863,-63.18258700521679"
+      }
+    ];
+
+    // Inicializar mapa centrado en Santa Cruz, zoom 11
+    const mapa = L.map('mapa', { center: [-17.78, -63.18], zoom: 11 });
+
+    // Tiles gratuitos CartoDB Voyager (sin API key)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap &copy; CARTO',
+      subdomains: 'abcd', maxZoom: 19
+    }).addTo(mapa);
+
+    // Crear pin personalizado
+    function crearPin(d) {
+      return L.divIcon({
+        className: '',
+        html: `<div class="pin" style="width:36px;height:36px;background:${d.color}">
+                 <span class="pin-emoji">${d.emoji}</span></div>`,
+        iconSize: [36, 36], iconAnchor: [18, 36], popupAnchor: [0, -38]
+      });
+    }
+
+    // HTML del popup
+    function popupHTML(d) {
+      return `<div class="popup-franja" style="background:linear-gradient(90deg,${d.color},#00b4d8)"></div>
+              <div class="popup-cuerpo">
+                <div class="popup-cat">${d.categoria.toUpperCase()}</div>
+                <div class="popup-titulo">${d.emoji} ${d.nombre}</div>
+                <div class="popup-desc">${d.descripcion}</div>
+                <a class="popup-gmaps" href="${d.gmaps}" target="_blank" rel="noopener">📍 Ver en Google Maps</a>
+              </div>`;
+    }
+
+    // Generar marcadores y tarjetas del sidebar
+    const marcadores = {};
+    const sidebar = document.getElementById('sidebar');
+
+    destinos.forEach(d => {
+      const marker = L.marker([d.lat, d.lng], { icon: crearPin(d) })
+        .addTo(mapa).bindPopup(popupHTML(d), { maxWidth: 260 });
+
+      marcadores[d.id] = marker;
+
+      marker.on('popupopen', () => {
+        document.querySelectorAll('.lugar-card').forEach(c => c.classList.remove('activa'));
+        const card = document.querySelector(`.lugar-card[data-id="${d.id}"]`);
+        if (card) { card.classList.add('activa'); card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+      });
+
+      const card = document.createElement('div');
+      card.className = 'lugar-card';
+      card.dataset.id = d.id; card.dataset.cat = d.categoria;
+      card.innerHTML = `<div class="lugar-icono" style="background:${d.color}22;color:${d.color}">${d.emoji}</div>
+                        <div><h5>${d.nombre}</h5><span>${d.categoria}</span></div>`;
+      card.addEventListener('click', () => { mapa.setView([d.lat, d.lng], 14, { animate: true }); marker.openPopup(); });
+      sidebar.appendChild(card);
+    });
+
+    // Filtros de categoría
+    document.getElementById('filtros').addEventListener('click', e => {
+      const btn = e.target.closest('.filtro-btn');
+      if (!btn) return;
+      document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      destinos.forEach(d => {
+        const visible = cat === 'all' || d.categoria === cat;
+        const card = document.querySelector(`.lugar-card[data-id="${d.id}"]`);
+        if (visible) { if (!mapa.hasLayer(marcadores[d.id])) marcadores[d.id].addTo(mapa); if (card) card.style.display = ''; }
+        else { if (mapa.hasLayer(marcadores[d.id])) mapa.removeLayer(marcadores[d.id]); if (card) card.style.display = 'none'; }
+      });
+    });
+
+    // Recalcular tamaño del mapa tras inyectar el header dinámico
+    window.addEventListener('load', () => mapa.invalidateSize());
+  </script>
+
+</body>
+</html>
