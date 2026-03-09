@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bienvenida a Santa Cruz</title>
+
+  <!-- Bootstrap 5 (LOCAL, desde tu carpeta vendor) -->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+
+  <!-- Tus estilos personalizados -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="img/logo_32x32.png">
+</head>
+
+<body class="d-flex flex-column h-100">
+
+  <!-- =========================================================
+       WRAPPER GENERAL DE PÁGINA
+       - Aquí metemos la capa del fondo derecho y el contenido.
+       - El wrapper se hace "relative" en CSS para que el fondo
+         absoluto se posicione dentro de toda la página.
+  ========================================================== -->
+  <div class="page-wrap d-flex flex-column min-vh-100">
+
+    <!-- =========================================================
+         FONDO DERECHO (DECORATIVO)
+         - Es una capa detrás del contenido (z-index bajo).
+         - Solo se muestra desde pantallas grandes (d-lg-block),
+           para que en móviles no estorbe (d-none).
+    ========================================================== -->
+    <div class="bg-right d-none d-lg-block"></div>
+
+    <!-- Header cargado por JS -->
+    <div id="header-placeholder"></div>
+
+    <!-- =========================================================
+         CONTENIDO PRINCIPAL
+         - page-content sube el contenido por encima del fondo
+           usando z-index en CSS.
+         - content-padding evita que el header fijo tape el inicio.
+    ========================================================== -->
+    <main class="flex-shrink-0 content-padding page-content">
+
+        <!-- BANNER TIPO "WORKSHOPS" -->
+        <section class="hero-strip my-4">
+            <!-- Lado izquierdo: GIF -->
+            <div class="hero-strip__media">
+              <video autoplay muted loop playsinline>
+                <source src="img/ciudad.mp4" type="video/mp4">
+              </video>
+              <!-- Si quieres usar un GIF en lugar de video, 
+               
+              <img src="img/ciudad.gif" alt="Vista panorámica de la ciudad" loading="lazy">
+              descomenta esta línea y comenta el bloque de video -->
+            </div>
+    
+            <!-- Lado derecho: degradado + título -->
+            <div class="hero-strip__panel">
+              <h2 class="hero-strip__title">Bienvenido a Santa Cruz </h2>
+            </div>
+          </section>
+
+                <!-- ==========================================================
+                SECCIÓN: Bienvenida a Santa Cruz
+            ========================================================== -->
+            <section class="section-info container my-5">
+
+                <!-- -------------------------------------------------------
+                    BLOQUE 1
+                ------------------------------------------------------- -->
+                <div class="section-info__block mb-5">
+            
+                <!-- Título principal del bloque -->
+                <h2 class="section-info__heading">
+                    La ciudad donde la tradición, la naturaleza y la hospitalidad se encuentran.
+                </h2>
+            
+                <!-- Línea decorativa debajo del título -->
+                <div class="section-info__divider"></div>
+            
+                <!-- Texto descriptivo -->
+                <p class="section-info__body mt-4">
+                    Bienvenidos a Santa Cruz de la Sierra, el motor económico y corazón vibrante de Bolivia. 
+                    Ubicada en las tierras bajas, nuestra ciudad se caracteriza por su hospitalidad inigualable y un clima tropical
+                    que acompaña el espíritu pujante de su gente. Santa Cruz no solo es el epicentro del desarrollo 
+                    y la educación legal del país, sino también un crisol donde las tradiciones y las costumbres 
+                    cruceñas se entrelazan con la 
+                    modernidad de una metrópoli cosmopolita.
+                </p>
+
+                <p class="section-info__body" style="text-align: justify;">
+                    Nuestra ciudad ofrece el escenario perfecto para este congreso, brindando una plataforma de vanguardia 
+                    en un ambiente que fomenta el intercambio de conocimientos y los negocios. 
+                    Invitamos a todos los participantes a descubrir sus tesoros culturales, deleitarse con nuestra gastronomía y disfrutar de la calidez que 
+                    define nuestro hermoso departamento.
+                </p>
+
+                <!-- VIDEO: ancho forzado al 100% del container -->
+                <div style="width:95%; aspect-ratio: 16/9; border-radius: 10px; overflow:hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+                    <iframe 
+                        style="width:100%; height:100%; border:0; display:block;"
+                        src="https://www.youtube.com/embed/V871IYGsa-s" 
+                        title="Bienvenida a Santa Cruz" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="text-end mt-2">
+                    <small class="text-muted fw-bold">Video por: Gabriel Por El Mundo</small>
+                </div>
+            
+                </div><!-- /BLOQUE 1 -->
+            </section>
+            <!-- /FIN SECCIÓN-->
+    </main>
+
+    <!-- Footer cargado por JS -->
+    <div id="footer-placeholder" class="mt-auto"></div>
+
+  </div>
+
+  <!-- =========================================================
+       SCRIPTS
+       - Usa el Bootstrap local para mantener todo consistente.
+       - layout.js es tu script para insertar header/footer.
+  ========================================================== -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/layout.js"></script>
+</body>
+</html>

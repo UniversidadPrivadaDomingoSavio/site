@@ -208,7 +208,7 @@ html, body {
   color: #fff;
   font-weight: 800;
   letter-spacing: 0.2px;
-  font-size: clamp(1.8rem, 3.2vw, 3.2rem);
+  font-size: clamp(1.4rem, 2.8vw, 2.8rem);
 }
 
 /* Responsive: en móvil se apila */

@@ -226,12 +226,57 @@
 
     .pin .pin-emoji { transform: rotate(45deg); font-size: 0.95rem; }
 
-    /* Responsive */
+    /* =====================================================
+   RESPONSIVE MÓVIL
+   Reorganiza el mapa para pantallas pequeñas
+   sin tocar nada del header/footer del sitio
+    ===================================================== */
     @media (max-width: 640px) {
-      .mapa-sidebar { display: none; }
-      .mapa-inner   { height: 380px; }
-      .filtros      { display: none; }
+    /* Empuja el contenido hacia abajo solo en móvil */
+    main.content-padding {
+        padding-top: 180px;
     }
+    /* 1. El sidebar lateral desaparece en móvil */
+    .mapa-sidebar { display: none; }
+
+    /* 2. El mapa ocupa toda la altura disponible */
+    .mapa-inner { height: 320px; }
+
+    /* 3. Los filtros se vuelven scroll horizontal
+        en vez de desaparecer */
+    .filtros {
+    display: flex;
+    flex-wrap: nowrap;        /* una sola fila */
+    overflow-x: auto;         /* scroll horizontal */
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+    gap: 0.3rem;
+    scrollbar-width: none;    /* oculta scrollbar en Firefox */
+    }
+
+    .filtros::-webkit-scrollbar { display: none; } /* oculta en Chrome/Safari */
+
+    .filtro-btn {
+    flex-shrink: 0;           /* no se comprimen */
+    font-size: 0.6rem;
+    padding: 0.22rem 0.6rem;
+    }
+
+    /* 4. Lista de destinos debajo del mapa en móvil
+        (reemplaza el sidebar lateral) */
+    .lista-mobile {
+    display: block !important;
+    background: #0f141a;
+    border-top: 2px solid #006080;
+    max-height: 220px;
+    overflow-y: auto;
+    }
+
+    .lista-mobile::-webkit-scrollbar { width: 4px; }
+    .lista-mobile::-webkit-scrollbar-track { background: #0f141a; }
+    .lista-mobile::-webkit-scrollbar-thumb { background: #006080; border-radius: 4px; }
+    }
+    
   </style>
 </head>
 
@@ -249,7 +294,7 @@
 
         <!-- Título de sección con la clase del sitio -->
         <div class="section-info__block mb-4">
-          <h2 class="section-info__heading">Guía Turística – Santa Cruz de la Sierra</h2>
+          <h2 class="section-info__heading">Guía Turística</h2>
           <div class="section-info__divider"></div>
           <p class="section-info__body mt-3">
             Explorá los destinos más emblemáticos de Santa Cruz y el departamento.
@@ -280,6 +325,11 @@
             </aside>
             <div id="mapa"></div>
           </div>
+
+          <!-- Lista de destinos para móvil (oculta en desktop) -->
+        <div class="lista-mobile" id="listaMobile" style="display:none;">
+            <div class="sidebar-titulo">📍 Destinos</div>
+        </div>
 
         </div><!-- /mapa-bloque -->
 
@@ -454,6 +504,29 @@
       });
     });
 
+    // Generar también las tarjetas en la lista móvil
+    const listaMobile = document.getElementById('listaMobile');
+
+    destinos.forEach(d => {
+    const cardM = document.createElement('div');
+    cardM.className = 'lugar-card';
+    cardM.dataset.id = d.id; cardM.dataset.cat = d.categoria;
+    cardM.innerHTML = `<div class="lugar-icono" style="background:${d.color}22;color:${d.color}">${d.emoji}</div>
+                        <div><h5>${d.nombre}</h5><span>${d.categoria}</span></div>`;
+    cardM.addEventListener('click', () => {
+        mapa.setView([d.lat, d.lng], 14, { animate: true });
+        marcadores[d.id].openPopup();
+    });
+    listaMobile.appendChild(cardM);
+    });
+
+    // Sincronizar filtros con la lista móvil
+    document.getElementById('filtros').addEventListener('click', () => {
+    const cat = document.querySelector('.filtro-btn.active')?.dataset.cat || 'all';
+    document.querySelectorAll('#listaMobile .lugar-card').forEach(card => {
+        card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+    });
+    });
     // Recalcular tamaño del mapa tras inyectar el header dinámico
     window.addEventListener('load', () => mapa.invalidateSize());
   </script>
