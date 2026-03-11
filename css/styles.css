@@ -502,6 +502,7 @@ html, body {
   .quick-access {
     flex-direction: column;
     margin: 0 25px;
+    margin-bottom: 1.5rem; /* ← esto */
   }
   .quick-card {
     border-right: none;
