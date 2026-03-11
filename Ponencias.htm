@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V Congreso de derecho departamental 2026</title>
+
+  <!-- Bootstrap 5 (LOCAL, desde tu carpeta vendor) -->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+
+  <!-- Tus estilos personalizados -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="img/logo_32x32.png">
+</head>
+
+<body class="d-flex flex-column h-100">
+
+  <!-- =========================================================
+       WRAPPER GENERAL DE PÁGINA
+       - Aquí metemos la capa del fondo derecho y el contenido.
+       - El wrapper se hace "relative" en CSS para que el fondo
+         absoluto se posicione dentro de toda la página.
+  ========================================================== -->
+  <div class="page-wrap d-flex flex-column min-vh-100">
+
+    <!-- =========================================================
+         FONDO DERECHO (DECORATIVO)
+         - Es una capa detrás del contenido (z-index bajo).
+         - Solo se muestra desde pantallas grandes (d-lg-block),
+           para que en móviles no estorbe (d-none).
+    ========================================================== -->
+    <div class="bg-right d-none d-lg-block"></div>
+
+    <!-- Header cargado por JS -->
+    <div id="header-placeholder"></div>
+
+    <!-- =========================================================
+         CONTENIDO PRINCIPAL
+         - page-content sube el contenido por encima del fondo
+           usando z-index en CSS.
+         - content-padding evita que el header fijo tape el inicio.
+    ========================================================== -->
+    <main class="flex-shrink-0 content-padding page-content">
+
+          <!-- BANNER TIPO "WORKSHOPS" -->
+          <section class="hero-strip my-4">
+            <!-- Lado izquierdo: GIF -->
+            <div class="hero-strip__media">
+              <video autoplay muted loop playsinline>
+                <source src="img/ciudad.mp4" type="video/mp4">
+              </video>
+              <!-- Si quieres usar un GIF en lugar de video, 
+               
+              <img src="img/ciudad.gif" alt="Vista panorámica de la ciudad" loading="lazy">
+              descomenta esta línea y comenta el bloque de video -->
+            </div>
+    
+            <!-- Lado derecho: degradado + título -->
+            <div class="hero-strip__panel">
+              <h2 class="hero-strip__title">Ponencias</h2>
+            </div>
+          </section>
+
+          <div class="container my-5">
+            <!-- <h2 class="text-center mb-5 fw-bold" style="color: #006080;">Talleres y Expositores</h2>   -->
+            <!-- ====================================CAJA DE CARTAS========================= -->
+            <div class="row g-4">
+                
+              <!-- ====================================CARTA01========================= -->
+              <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card workshop-card h-100 border-0 shadow-sm">
+                        <div class="position-relative">
+                            <img src="img/exposicion-predeterminada.webp" class="card-img-top workshop-img" alt="Exposición">
+                            
+                            <div class="speaker-badge">
+                                <img src="img/user.jpg" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
+                            </div>
+                        </div>
+        
+                        <div class="card-body p-4">
+                            <p class="text-uppercase small fw-bold text-muted mb-2">Taller 1</p>
+                            <h5 class="card-title fw-bold">¿Puede el derecho constitucional ayudar a preservar la democracia?</h5>
+                            <p class="card-text small mb-4">Nombre <br> Apellido</p>
+                            <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
+                        </div>
+                    </div>
+              </div>
+              <!-- ====================================CARTA02========================= -->
+              <div class="col-12 col-md-6 col-lg-3">
+                <div class="card workshop-card h-100 border-0 shadow-sm">
+                    <div class="position-relative">
+                        <img src="img/exposicion-predeterminada.webp" class="card-img-top workshop-img" alt="Exposición">
+                        
+                        <div class="speaker-badge">
+                            <img src="img/user.jpg" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
+                        </div>
+                    </div>
+    
+                    <div class="card-body p-4">
+                        <p class="text-uppercase small fw-bold text-muted mb-2">Taller 1</p>
+                        <h5 class="card-title fw-bold">¿Puede el derecho constitucional ayudar a preservar la democracia?</h5>
+                        <p class="card-text small mb-4">Nombre <br> Apellido</p>
+                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
+                    </div>
+                </div>
+              </div>
+              <!-- ====================================CARTA02========================= -->
+              <div class="col-12 col-md-6 col-lg-3">
+                <div class="card workshop-card h-100 border-0 shadow-sm">
+                    <div class="position-relative">
+                        <img src="img/exposicion-predeterminada.webp" class="card-img-top workshop-img" alt="Exposición">
+                        
+                        <div class="speaker-badge">
+                            <img src="img/user.jpg" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
+                        </div>
+                    </div>
+    
+                    <div class="card-body p-4">
+                        <p class="text-uppercase small fw-bold text-muted mb-2">Taller 1</p>
+                        <h5 class="card-title fw-bold">¿Puede el derecho constitucional ayudar a preservar la democracia?</h5>
+                        <p class="card-text small mb-4">Nombre <br> Apellido</p>
+                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
+                    </div>
+                </div>
+              </div>
+              <!-- ====================================CARTA02========================= -->
+              <div class="col-12 col-md-6 col-lg-3">
+                <div class="card workshop-card h-100 border-0 shadow-sm">
+                    <div class="position-relative">
+                        <img src="img/exposicion-predeterminada.webp" class="card-img-top workshop-img" alt="Exposición">
+                        
+                        <div class="speaker-badge">
+                            <img src="img/user.jpg" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
+                        </div>
+                    </div>
+    
+                    <div class="card-body p-4">
+                        <p class="text-uppercase small fw-bold text-muted mb-2">Taller 1</p>
+                        <h5 class="card-title fw-bold">¿Puede el derecho constitucional ayudar a preservar la democracia?</h5>
+                        <p class="card-text small mb-4">Nombre <br> Apellido</p>
+                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
+                    </div>
+                </div>
+              </div>
+              <!-- ====================================CARTA02========================= -->
+              <div class="col-12 col-md-6 col-lg-3">
+                <div class="card workshop-card h-100 border-0 shadow-sm">
+                    <div class="position-relative">
+                        <img src="img/exposicion-predeterminada.webp" class="card-img-top workshop-img" alt="Exposición">
+                        
+                        <div class="speaker-badge">
+                            <img src="img/user.jpg" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
+                        </div>
+                    </div>
+    
+                    <div class="card-body p-4">
+                        <p class="text-uppercase small fw-bold text-muted mb-2">Taller 1</p>
+                        <h5 class="card-title fw-bold">¿Puede el derecho constitucional ayudar a preservar la democracia?</h5>
+                        <p class="card-text small mb-4">Nombre <br> Apellido</p>
+                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
+                    </div>
+                </div>
+              </div>
+              <!-- ====================================CARTA02========================= -->
+              <div class="col-12 col-md-6 col-lg-3">
+                <div class="card workshop-card h-100 border-0 shadow-sm">
+                    <div class="position-relative">
+                        <img src="img/exposicion-predeterminada.webp" class="card-img-top workshop-img" alt="Exposición">
+                        
+                        <div class="speaker-badge">
+                            <img src="img/user.jpg" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
+                        </div>
+                    </div>
+    
+                    <div class="card-body p-4">
+                        <p class="text-uppercase small fw-bold text-muted mb-2">Taller 1</p>
+                        <h5 class="card-title fw-bold">¿Puede el derecho constitucional ayudar a preservar la democracia?</h5>
+                        <p class="card-text small mb-4">Nombre <br> Apellido</p>
+                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
+                    </div>
+                </div>
+              </div>
+              <!-- ====================================CARTA02========================= -->
+              <div class="col-12 col-md-6 col-lg-3">
+                <div class="card workshop-card h-100 border-0 shadow-sm">
+                    <div class="position-relative">
+                        <img src="img/exposicion-predeterminada.webp" class="card-img-top workshop-img" alt="Exposición">
+                        
+                        <div class="speaker-badge">
+                            <img src="img/user.jpg" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
+                        </div>
+                    </div>
+    
+                    <div class="card-body p-4">
+                        <p class="text-uppercase small fw-bold text-muted mb-2">Taller 1</p>
+                        <h5 class="card-title fw-bold">¿Puede el derecho constitucional ayudar a preservar la democracia?</h5>
+                        <p class="card-text small mb-4">Nombre <br> Apellido</p>
+                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
+                    </div>
+                </div>
+              </div>
+
+
+            </div>
+            <!-- ======================================================================================= -->
+
+
+        </div>
+    </main>
+
+    <!-- Footer cargado por JS -->
+    <div id="footer-placeholder" class="mt-auto"></div>
+
+  </div>
+
+  <!-- =========================================================
+       SCRIPTS
+       - Usa el Bootstrap local para mantener todo consistente.
+       - layout.js es tu script para insertar header/footer.
+  ========================================================== -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/layout.js"></script>
+</body>
+</html>

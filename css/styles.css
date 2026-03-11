@@ -354,3 +354,160 @@ html, body {
 /* =============================================================
    FIN SECCIÓN INFORMATIVA
 ============================================================= */
+
+
+/* =========================================================
+   HERO PRINCIPAL (index)
+========================================================= */
+.hero-main {
+  left: 25px;
+  right: 25px;
+  display: flex;
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+  overflow: hidden;
+  height: 420px;
+  background: #000;
+  position: relative;
+  z-index: 2;
+  margin-right: 40px; /* Para evitar que el fondo derecho tape el contenido */
+}
+
+/* Izquierda: video/imagen */
+.hero-main__media {
+  flex: 0 0 55%;
+  position: relative;
+}
+
+.hero-main__media video,
+.hero-main__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.85;
+}
+
+/* Derecha: branding */
+.hero-main__brand {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(
+    135deg,
+    #000000 0%,
+    #003d52 50%,
+    #006080 100%
+  );
+}
+
+.hero-main__logo {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+}
+
+.hero-main__divider {
+  width: 60px;
+  height: 3px;
+  background: #00b4d8;
+  border-radius: 2px;
+  margin: 1.2rem auto 1rem;
+}
+
+.hero-main__subtitle {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* =========================================================
+   CARDS ACCESO RÁPIDO
+========================================================= */
+.quick-access {
+  display: flex;
+  margin: 0 25px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #006080;
+  margin-bottom: 25px;
+}
+
+.quick-card {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.4rem;
+  text-decoration: none;
+  color: #fff;
+  border-right: 1px solid rgba(255,255,255,0.12);
+  transition: background 0.3s ease;
+}
+
+.quick-card:last-child {
+  border-right: none;
+}
+
+.quick-card:hover {
+  background: rgba(0,180,216,0.25);
+  color: #fff;
+}
+
+.quick-card__img {
+  flex: 0 0 200px;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.quick-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.quick-card__title {
+  font-weight: 1000;
+  font-size: 1.5rem;
+  margin: 0 0 0.15rem;
+}
+
+.quick-card__sub {
+  font-size: 1rem;
+  opacity: 0.75;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+  .hero-main {
+    flex-direction: column;
+    height: auto;
+  }
+  .hero-main__media {
+    flex-basis: auto;
+    height: 240px;
+  }
+  .hero-main__brand {
+    padding: 2rem 1.5rem;
+  }
+  .quick-access {
+    flex-direction: column;
+    margin: 0 25px;
+  }
+  .quick-card {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .quick-card:last-child {
+    border-bottom: none;
+  }
+}
