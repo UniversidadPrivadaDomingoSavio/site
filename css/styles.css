@@ -510,4 +510,18 @@ html, body {
   .quick-card:last-child {
     border-bottom: none;
   }
+
+  /* ← AGREGADO: reduce imagen en móvil para que no tape el texto */
+  .quick-card__img {
+    flex: 0 0 120px;  /* ← era 200px */
+    height: 80px;     /* ← era 100px */
+  }
+
+  .quick-card__title {
+    font-size: 1.1rem; /* ← era 1.5rem, evita que se corte */
+  }
+
+  .quick-card__sub {
+    font-size: 0.85rem;
+  }
 }
