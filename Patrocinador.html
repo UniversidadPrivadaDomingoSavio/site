@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Patrocinador · V Congreso Departamental 2026</title>
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="img/logo_32x32.png">
+  <style>
+
+    /* =========================================================
+       BANNER PATROCINADOR
+    ========================================================= */
+    .sponsor-hero {
+      background: linear-gradient(135deg, #000 0%, #003d52 55%, #006080 100%);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sponsor-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        45deg, transparent, transparent 60px,
+        rgba(0,180,216,0.03) 60px, rgba(0,180,216,0.03) 120px
+      );
+    }
+
+    .sponsor-hero__tag {
+      display: inline-block;
+      border: 1px solid rgba(0,180,216,0.4);
+      background: rgba(0,180,216,0.1);
+      color: #00b4d8;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 0.35rem 1.1rem;
+      border-radius: 100px;
+      margin-bottom: 1.2rem;
+    }
+
+    .sponsor-hero__title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+
+    .sponsor-hero__title span { color: #00b4d8; }
+
+    .sponsor-hero__sub {
+      color: rgba(255,255,255,0.65);
+      font-size: 1rem;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       TARJETA HOTEL
+    ========================================================= */
+    .hotel-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,96,128,0.1);
+      transition: box-shadow 0.3s;
+    }
+    .hotel-card:hover {
+      box-shadow: 0 16px 60px rgba(0,0,0,0.15);
+    }
+
+    .hotel-card__img {
+      width: 100%;
+      height: 280px;
+      background: linear-gradient(135deg, #003d52, #006080);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hotel-card__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hotel-card__img-placeholder {
+      text-align: center;
+      z-index: 1;
+    }
+    .hotel-card__img-placeholder span {
+      font-size: 3.5rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .hotel-card__img-placeholder p {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .hotel-card__header {
+      padding: 1.8rem 2rem 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .hotel-card__name {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #0f141a;
+      margin-bottom: 0.3rem;
+    }
+
+    .hotel-card__location {
+      color: #6c757d;
+      font-size: 0.88rem;
+    }
+
+    .sponsor-badge {
+      background: linear-gradient(90deg, #006080, #00b4d8);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .hotel-divider {
+      height: 3px;
+      background: linear-gradient(90deg, #006080, #00b4d8, transparent);
+      margin: 1.5rem 2rem 0;
+      border-radius: 2px;
+    }
+
+    .hotel-card__body {
+      padding: 1.5rem 2rem 2rem;
+    }
+
+    .hotel-card__desc {
+      color: #374151;
+      font-size: 0.97rem;
+      line-height: 1.8;
+      margin-bottom: 1.8rem;
+    }
+
+    .amenities-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #006080;
+      margin-bottom: 1rem;
+    }
+
+    .amenities-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .amenity-chip {
+      background: #f0f7f9;
+      border: 1px solid rgba(0,96,128,0.15);
+      color: #006080;
+      font-size: 0.82rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* =========================================================
+       AGRADECIMIENTO
+    ========================================================= */
+    .thanks-box {
+      background: linear-gradient(135deg, #f0f7f9, #e8f4f8);
+      border: 1px solid rgba(0,96,128,0.15);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .thanks-box__icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .thanks-box__title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #006080;
+      margin-bottom: 0.8rem;
+    }
+    .thanks-box__text {
+      color: #374151;
+      font-size: 0.97rem;
+      line-height: 1.8;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+  </style>
+</head>
+
+<body class="d-flex flex-column h-100">
+  <div class="page-wrap d-flex flex-column min-vh-100">
+
+    <div class="bg-right d-none d-lg-block"></div>
+    <div id="header-placeholder"></div>
+
+    <main class="flex-shrink-0 content-padding page-content">
+
+      <!-- BANNER -->
+      <section class="sponsor-hero my-4" style="border-radius: 0 0 28px 28px;">
+        <div style="position:relative; z-index:1;">
+          <div class="sponsor-hero__tag">✦ Patrocinador oficial 2026</div>
+          <h1 class="sponsor-hero__title">Nuestro <span>Patrocinador</span></h1>
+          <p class="sponsor-hero__sub">
+            En nombre de los organizadores del V Congreso Departamental de Ciencias Penales, agradecemos el apoyo brindado que hace posible este evento.
+          </p>
+        </div>
+      </section>
+
+      <!-- CONTENIDO -->
+      <div class="container my-5">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-9">
+
+            <!-- TARJETA HOTEL -->
+            <div class="hotel-card mb-5">
+
+              <div class="hotel-card__img">
+                <div class="hotel-card__img-placeholder">
+                  <span>🏨</span>
+                </div>
+              </div>
+
+              <div class="hotel-card__header">
+                <div>
+                  <h2 class="hotel-card__name">Hotel Gran Santa Cruz</h2>
+                  <p class="hotel-card__location">Santa Cruz de la Sierra, Bolivia</p>
+                </div>
+                <div class="sponsor-badge">★ Patrocinador oficial</div>
+              </div>
+
+              <div class="hotel-divider"></div>
+
+              <div class="hotel-card__body">
+                <p class="hotel-card__desc">
+                  El Hotel Gran Santa Cruz es el patrocinador oficial del 
+                  V Congreso Departamental de Derecho 2026. Su generoso apoyo 
+                  contribuye al desarrollo de este importante evento académico 
+                  para la comunidad jurídica de Santa Cruz de la Sierra.
+                </p>
+
+                <p class="amenities-title">Servicios destacados</p>
+                <div class="amenities-grid">
+                  <div class="amenity-chip">🍽️ Restaurante</div>
+                  <div class="amenity-chip">🌐 WiFi</div>
+                  <div class="amenity-chip">🏊 Piscina</div>
+                  <div class="amenity-chip">🅿️ Estacionamiento</div>
+                  <div class="amenity-chip">🏋️ Gimnasio</div>
+                  <div class="amenity-chip">🎤 Salones de eventos</div>
+                </div>
+
+                <div class="d-flex gap-3 flex-wrap">
+                  <a href="#" class="btn btn-inscripcion fw-bold px-4 py-2">Ver sitio web</a>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- AGRADECIMIENTO -->
+            <div class="thanks-box mb-5">
+              <span class="thanks-box__icon">🤝</span>
+              <h3 class="thanks-box__title">Gracias por su apoyo</h3>
+              <p class="thanks-box__text">
+                El Comité Organizador agradece profundamente la contribución 
+                de nuestro patrocinador, cuyo compromiso con el desarrollo 
+                jurídico hace posible este congreso.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <div id="footer-placeholder" class="mt-auto"></div>
+  </div>
+
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/layout.js"></script>
+</body>
+</html>
