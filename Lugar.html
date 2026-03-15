@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sede · V Congreso Departamental 2026</title>
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="img/logo_32x32.png">
+  <style>
+
+    /* =========================================================
+       BANNER — hero-strip igual al resto del sitio
+    ========================================================= */
+    .sede-hero {
+      left: 25px;
+      right: 25px;
+      display: flex;
+      border-bottom-left-radius: 28px;
+      border-bottom-right-radius: 28px;
+      overflow: hidden;
+      height: 400px;
+      background: #006080;
+      position: relative;
+      z-index: 2;
+    }
+    .sede-hero__media {
+    background-image: url('img/upds-exterior.png');
+    background-size: contain;      /* imagen completa sin recorte */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #003d52;     /* rellena los espacios vacíos */
+    }
+    .sede-hero__media img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .sede-hero__media-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #003d52, #005570);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 0.5rem;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+    }
+    .sede-hero__media-placeholder span { font-size: 3rem; }
+
+    .sede-hero__panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2.2rem 2.4rem;
+      background: linear-gradient(
+        90deg,
+        rgba(0,0,0,0.90) 0%,
+        rgba(0,96,128,0.92) 55%,
+        rgba(0,96,128,0.92) 100%
+      );
+    }
+    .sede-hero__tag {
+      display: inline-block;
+      border: 1px solid rgba(0,180,216,0.4);
+      background: rgba(0,180,216,0.1);
+      color: #00b4d8;
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 3px; text-transform: uppercase;
+      padding: 0.3rem 0.9rem; border-radius: 100px;
+      margin-bottom: 0.8rem; width: fit-content;
+    }
+    .sede-hero__title {
+      font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+      font-weight: 800; color: #fff;
+      margin-bottom: 0.3rem; line-height: 1.1;
+    }
+    .sede-hero__title span { color: #00b4d8; }
+    .sede-hero__sub {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.5rem; margin: 0;
+    }
+
+    @media (max-width: 991.98px) {
+      .sede-hero { flex-direction: column; height: auto; }
+      .sede-hero__media { flex-basis: auto; height: 210px; }
+      .sede-hero__panel { padding: 1.4rem; }
+    }
+
+    /* =========================================================
+       CHIPS DE INFO RÁPIDA — fila horizontal
+    ========================================================= */
+    .info-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+    .info-chip {
+      background: #fff;
+      border: 1px solid rgba(0,96,128,0.12);
+      border-radius: 14px;
+      padding: 1.1rem 1.2rem;
+      display: flex; align-items: center; gap: 0.9rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .info-chip:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,96,128,0.1);
+    }
+    .info-chip__icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: linear-gradient(135deg, #006080, #00b4d8);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .info-chip__label {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: #006080; margin-bottom: 0.1rem;
+    }
+    .info-chip__value {
+      font-size: 0.85rem; font-weight: 600;
+      color: #0f141a; margin: 0; line-height: 1.3;
+    }
+
+    /* =========================================================
+       BLOQUE CECYD — layout horizontal imagen + info
+    ========================================================= */
+    .cecyd-block {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(0,96,128,0.12);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+      display: flex;
+      min-height: 280px;
+    }
+
+    .cecyd-block__img {
+      flex: 0 0 42%;
+      background: linear-gradient(135deg, #003d52, #006080);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .cecyd-block__img img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .cecyd-block__img-placeholder {
+      text-align: center; color: rgba(255,255,255,0.35);
+      font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+    }
+    .cecyd-block__img-placeholder span { font-size: 3rem; display: block; margin-bottom: 0.5rem; }
+
+    .cecyd-block__info {
+      flex: 1;
+      padding: 2rem 2.2rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+
+    .cecyd-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #006080, #00b4d8);
+      color: #fff;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 0.3rem 0.9rem; border-radius: 100px;
+      margin-bottom: 1rem; width: fit-content;
+    }
+
+    .cecyd-block__name {
+      font-size: 1.5rem; font-weight: 800;
+      color: #0f141a; margin-bottom: 0.25rem;
+    }
+    .cecyd-block__univ {
+      color: #006080; font-size: 0.85rem;
+      font-weight: 500; margin-bottom: 1rem;
+    }
+    .cecyd-block__desc {
+      color: #374151; font-size: 0.9rem;
+      line-height: 1.7; margin-bottom: 1.2rem;
+    }
+
+    .cecyd-features {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .cecyd-feature {
+      background: #f0f7f9;
+      border: 1px solid rgba(0,96,128,0.15);
+      color: #006080; font-size: 0.78rem;
+      padding: 0.3rem 0.8rem; border-radius: 100px;
+    }
+
+    @media (max-width: 767px) {
+      .cecyd-block { flex-direction: column; }
+      .cecyd-block__img { flex-basis: auto; height: 180px; }
+    }
+
+    /* =========================================================
+       MAPA
+    ========================================================= */
+    .map-wrap {
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,96,128,0.12);
+      height: 360px; position: relative;
+    }
+    .map-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+    .map-wrap__placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #e8f4f8, #f0f7f9);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0.6rem;
+      color: #006080;
+    }
+    .map-wrap__placeholder span { font-size: 3rem; }
+    .map-wrap__placeholder p { font-size: 0.88rem; font-weight: 600; margin: 0; }
+    .map-wrap__placeholder small { font-size: 0.75rem; opacity: 0.5; }
+
+    .map-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: #0f141a; color: #fff;
+      border-radius: 8px; padding: 0.7rem 1.6rem;
+      text-decoration: none; font-weight: 700; font-size: 0.88rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .map-btn:hover { background: #1f2937; color: #fff; transform: translateY(-2px); }
+
+    /* section titles */
+    .section-eyebrow {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: #006080; margin-bottom: 0.4rem;
+    }
+    .section-heading {
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 800; color: #0f141a; margin-bottom: 0;
+    }
+    .section-line {
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, #006080, #00b4d8);
+      border-radius: 2px; margin-top: 0.7rem; margin-bottom: 2rem;
+    }
+
+  </style>
+</head>
+
+<body class="d-flex flex-column h-100">
+  <div class="page-wrap d-flex flex-column min-vh-100">
+
+    <div class="bg-right d-none d-lg-block"></div>
+    <div id="header-placeholder"></div>
+
+    <main class="flex-shrink-0 content-padding page-content">
+
+      <!-- BANNER: imagen UPDS izquierda + texto derecha -->
+        <section class="sede-hero my-4">
+            <div class="sede-hero__media">
+                <img src="img/upds-exterior.png" alt="UPDS">
+            </div>
+            <div class="sede-hero__panel">
+                <h1 class="sede-hero__title">Lugar del <span>Congreso</span></h1>
+                <p class="sede-hero__sub">Universidad Privada Domingo Savio · Santa Cruz</p>
+            </div>
+        </section>
+
+      <div class="container my-5">
+
+        <!-- DATOS RÁPIDOS -->
+        <div class="info-row mb-5">
+          <div class="info-chip">
+            <div class="info-chip__icon">🏛️</div>
+            <div>
+              <p class="info-chip__label">Universidad</p>
+              <p class="info-chip__value">Universidad Privada Domingo Savio</p>
+            </div>
+          </div>
+          <div class="info-chip">
+            <div class="info-chip__icon">🎓</div>
+            <div>
+              <p class="info-chip__label">Recinto</p>
+              <p class="info-chip__value">CECYD</p>
+            </div>
+          </div>
+          <div class="info-chip">
+            <div class="info-chip__icon">📍</div>
+            <div>
+              <p class="info-chip__label">Ciudad</p>
+              <p class="info-chip__value">Santa Cruz de la Sierra, Bolivia</p>
+            </div>
+          </div>
+          <div class="info-chip">
+            <div class="info-chip__icon">📅</div>
+            <div>
+              <p class="info-chip__label">Fecha</p>
+              <p class="info-chip__value">2026 · 23-24-25 de abril</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CECYD -->
+        <div class="mb-5">
+          <p class="section-eyebrow">Recinto</p>
+          <h2 class="section-heading">CECYD</h2>
+          <div class="section-line"></div>
+
+          <div class="cecyd-block">
+            <div class="cecyd-block__img">
+              <!-- Reemplazar con foto del CECYD: -->
+              <img src="img/CECYD.jpg" alt="CECYD">
+            </div>
+            <div class="cecyd-block__info">
+              <h3 class="cecyd-block__name">Centro CECYD</h3>
+              <p class="cecyd-block__univ">Universidad Privada Domingo Savio</p>
+              <p class="cecyd-block__desc">
+                Es el Centro Cultural y Deportivo de la 
+                Universidad Privada Domingo Savio (UPDS), ubicado en Santa Cruz de la Sierra, 
+                Bolivia, en la avenida Beni, tercer anillo externo.  
+                Fue inaugurado el 17 de septiembre de 2017 y 
+                ha servido como sede para múltiples eventos académicos, culturales y sociales.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MAPA -->
+        <div class="mb-5">
+          <p class="section-eyebrow">Cómo llegar</p>
+          <h2 class="section-heading">Ubicación</h2>
+          <div class="section-line"></div>
+
+          <div class="map-wrap mb-3">
+            <!-- Reemplazar con iframe de Google Maps:
+            <iframe src="https://www.google.com/maps/embed?pb=..." allowfullscreen loading="lazy"></iframe>
+            -->
+            <div class="map-wrap__placeholder">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2098.572192478204!2d-63.17530746190698!3d-17.75823135218939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93f1e7c3e8d539cb%3A0x1ce9b8db4a387ab4!2sUniversidad%20Privada%20Domingo%20Savio%20Santa%20Cruz!5e0!3m2!1ses-419!2sbo!4v1773600694462!5m2!1ses-419!2sbo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+
+          <a href="https://maps.app.goo.gl/R8pcSSzVEF2eEQt48" target="_blank" class="map-btn">
+            Abrir en Google Maps
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+    <div id="footer-placeholder" class="mt-auto"></div>
+  </div>
+
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/layout.js"></script>
+</body>
+</html>

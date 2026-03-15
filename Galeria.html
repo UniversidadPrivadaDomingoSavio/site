@@ -1,66 +1,366 @@
 <!DOCTYPE html>
 <html lang="es" class="h-100">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IV Congreso 2026</title>
-
-  <!-- Bootstrap 5 (LOCAL, desde tu carpeta vendor) -->
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galería · V Congreso Departamental 2026</title>
   <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-
-  <!-- Tus estilos personalizados -->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/png" href="img/logo_32x32.png">
+  <style>
+
+    /* =========================================================
+       BANNER
+    ========================================================= */
+    .galeria-hero {
+      left: 25px;
+      right: 25px;
+      display: flex;
+      border-bottom-left-radius: 28px;
+      border-bottom-right-radius: 28px;
+      overflow: hidden;
+      min-height: 190px;
+      height: 300px;
+      background: #006080;
+      position: relative;
+      z-index: 2;
+    }
+    .galeria-hero__media { flex: 0 0 58%; min-height: 190px; }
+    .galeria-hero__media img,
+    .galeria-hero__media video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .galeria-hero__panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2.2rem 2.4rem;
+      background: linear-gradient(
+        90deg,
+        rgba(0,0,0,0.90) 0%,
+        rgba(0,96,128,0.92) 55%,
+        rgba(0,96,128,0.92) 100%
+      );
+    }
+    .galeria-hero__title {
+      margin: 0;
+      color: #fff;
+      font-weight: 800;
+      font-size: clamp(1.4rem, 2.8vw, 2.8rem);
+    }
+    .galeria-hero__sub {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.85rem;
+      margin: 0.3rem 0 0;
+    }
+
+    @media (max-width: 991.98px) {
+      .galeria-hero { flex-direction: column; min-height: 0; }
+      .galeria-hero__media { flex-basis: auto; height: 210px; }
+      .galeria-hero__panel { padding: 1.4rem; }
+    }
+
+    /* =========================================================
+       TABS DE FECHAS
+    ========================================================= */
+    .date-tabs {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .date-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.9rem 2rem;
+      border-radius: 14px;
+      border: 2px solid rgba(0,96,128,0.2);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      color: #374151;
+      min-width: 130px;
+    }
+    .date-tab:hover {
+      border-color: #006080;
+      color: #006080;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,96,128,0.12);
+    }
+    .date-tab.active {
+      background: linear-gradient(135deg, #006080, #00b4d8);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 6px 24px rgba(0,96,128,0.3);
+      transform: translateY(-3px);
+    }
+    .date-tab__day {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .date-tab__month {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-top: 0.2rem;
+    }
+
+    /* =========================================================
+       GRID DE FOTOS
+    ========================================================= */
+    .gallery-day {
+      display: none;
+    }
+    .gallery-day.active {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: #e8f4f8;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+    .gallery-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .gallery-item__overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,96,128,0);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.3s;
+    }
+    .gallery-item:hover .gallery-item__overlay {
+      background: rgba(0,96,128,0.25);
+    }
+    .gallery-item__overlay span {
+      color: #fff;
+      font-size: 2rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gallery-item:hover .gallery-item__overlay span {
+      opacity: 1;
+    }
+
+    /* Placeholder vacío */
+    .gallery-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 2rem;
+      color: #006080;
+      opacity: 0.5;
+    }
+    .gallery-empty span { font-size: 3rem; display: block; margin-bottom: 0.8rem; }
+    .gallery-empty p { font-size: 0.9rem; font-weight: 600; margin: 0; }
+
+    /* =========================================================
+       LIGHTBOX simple
+    ========================================================= */
+    .lightbox {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 0 60px rgba(0,0,0,0.5);
+    }
+    .lightbox__close {
+      position: absolute;
+      top: 1.2rem; right: 1.5rem;
+      color: #fff; font-size: 2rem;
+      cursor: pointer; line-height: 1;
+      opacity: 0.75; transition: opacity 0.2s;
+    }
+    .lightbox__close:hover { opacity: 1; }
+
+  </style>
 </head>
 
 <body class="d-flex flex-column h-100">
-
-  <!-- =========================================================
-       WRAPPER GENERAL DE PÁGINA
-       - Aquí metemos la capa del fondo derecho y el contenido.
-       - El wrapper se hace "relative" en CSS para que el fondo
-         absoluto se posicione dentro de toda la página.
-  ========================================================== -->
   <div class="page-wrap d-flex flex-column min-vh-100">
 
-    <!-- =========================================================
-         FONDO DERECHO (DECORATIVO)
-         - Es una capa detrás del contenido (z-index bajo).
-         - Solo se muestra desde pantallas grandes (d-lg-block),
-           para que en móviles no estorbe (d-none).
-    ========================================================== -->
     <div class="bg-right d-none d-lg-block"></div>
-
-    <!-- Header cargado por JS -->
     <div id="header-placeholder"></div>
 
-    <!-- =========================================================
-         CONTENIDO PRINCIPAL
-         - page-content sube el contenido por encima del fondo
-           usando z-index en CSS.
-         - content-padding evita que el header fijo tape el inicio.
-    ========================================================== -->
     <main class="flex-shrink-0 content-padding page-content">
-      <div class="container">
-        <h1 class="mt-5">Bienvenido al IV Congreso 2026</h1>
-        <p class="lead">
-          Este es el área de contenido principal. El menú se mantiene arriba al hacer scroll y el pie de página se queda abajo si no hay suficiente contenido.
-        </p>
-        <p class="mt-5">Contenido adicional para probar el desplazamiento en móviles...</p>
+
+      <!-- BANNER -->
+      <section class="galeria-hero my-4">
+        <div class="galeria-hero__media">
+          <video autoplay muted loop playsinline>
+            <source src="img/ciudad.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="galeria-hero__panel">
+          <h2 class="galeria-hero__title">Galería</h2>
+        </div>
+      </section>
+
+      <div class="container my-5">
+
+        <!-- TABS -->
+        <div class="date-tabs">
+          <button class="date-tab active" onclick="switchDay('dia1', this)">
+            <span class="date-tab__day">23</span>
+            <span class="date-tab__month">Abril 2026</span>
+          </button>
+          <button class="date-tab" onclick="switchDay('dia2', this)">
+            <span class="date-tab__day">24</span>
+            <span class="date-tab__month">Abril 2026</span>
+          </button>
+          <button class="date-tab" onclick="switchDay('dia3', this)">
+            <span class="date-tab__day">25</span>
+            <span class="date-tab__month">Abril 2026</span>
+          </button>
+        </div>
+
+        <!-- ================================================
+             DÍA 1 — 23 de Abril
+             Para agregar fotos: copiar el bloque .gallery-item
+             y cambiar el src de la imagen
+        ================================================= -->
+        <div class="gallery-day active" id="dia1">
+
+          <!-- FOTO: <div class="gallery-item"><img src="img/galeria/dia1/foto1.jpg" alt=""><div class="gallery-item__overlay"><span>🔍</span></div></div> -->
+
+          <div class="gallery-empty">
+            <span>📷</span>
+            <p>Las fotos del 23 de abril se cargarán próximamente</p>
+          </div>
+        </div>
+
+        <!-- ================================================
+             DÍA 2 — 24 de Abril
+        ================================================= -->
+        <div class="gallery-day" id="dia2">
+
+          <!-- FOTO: <div class="gallery-item"><img src="img/galeria/dia2/foto1.jpg" alt=""><div class="gallery-item__overlay"><span>🔍</span></div></div> -->
+
+          <div class="gallery-empty">
+            <span>📷</span>
+            <p>Las fotos del 24 de abril se cargarán próximamente</p>
+          </div>
+        </div>
+
+        <!-- ================================================
+             DÍA 3 — 25 de Abril
+        ================================================= -->
+        <div class="gallery-day" id="dia3">
+
+          <!-- FOTO: <div class="gallery-item"><img src="img/galeria/dia3/foto1.jpg" alt=""><div class="gallery-item__overlay"><span>🔍</span></div></div> -->
+
+          <div class="gallery-item">
+            <img src="img/galeria/25/CECYD.jpg" alt="">
+            <div class="gallery-item__overlay"><span>🔍</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="img/galeria/25/CECYD.jpg" alt="">
+            <div class="gallery-item__overlay"><span>🔍</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="img/galeria/25/CECYD.jpg" alt="">
+            <div class="gallery-item__overlay"><span>🔍</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="img/galeria/25/CECYD.jpg" alt="">
+            <div class="gallery-item__overlay"><span>🔍</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="img/galeria/25/CECYD.jpg" alt="">
+            <div class="gallery-item__overlay"><span>🔍</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="img/galeria/25/CECYD.jpg" alt="">
+            <div class="gallery-item__overlay"><span>🔍</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="img/galeria/25/CECYD.jpg" alt="">
+            <div class="gallery-item__overlay"><span>🔍</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="img/galeria/25/CECYD.jpg" alt="">
+            <div class="gallery-item__overlay"><span>🔍</span></div>
+          </div>
+
+
+        </div>
+
       </div>
     </main>
 
-    <!-- Footer cargado por JS -->
     <div id="footer-placeholder" class="mt-auto"></div>
-
   </div>
 
-  <!-- =========================================================
-       SCRIPTS
-       - Usa el Bootstrap local para mantener todo consistente.
-       - layout.js es tu script para insertar header/footer.
-  ========================================================== -->
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox__close">✕</span>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/layout.js"></script>
+  <script>
+    // Cambia el día activo
+    function switchDay(dayId, btn) {
+      document.querySelectorAll('.gallery-day').forEach(d => d.classList.remove('active'));
+      document.querySelectorAll('.date-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById(dayId).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // Lightbox
+    document.addEventListener('click', function(e) {
+      const item = e.target.closest('.gallery-item');
+      if (item) {
+        const img = item.querySelector('img');
+        if (img) {
+          document.getElementById('lightbox-img').src = img.src;
+          document.getElementById('lightbox').classList.add('open');
+        }
+      }
+    });
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
 </body>
 </html>

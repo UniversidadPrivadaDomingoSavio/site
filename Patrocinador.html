@@ -3,15 +3,12 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Patrocinador · V Congreso Departamental 2026</title>
+  <title>Patrocinador</title>
   <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/png" href="img/logo_32x32.png">
   <style>
 
-    /* =========================================================
-       BANNER PATROCINADOR
-    ========================================================= */
     .sponsor-hero {
       background: linear-gradient(135deg, #000 0%, #003d52 55%, #006080 100%);
       padding: 4rem 2rem 3rem;
@@ -60,9 +57,6 @@
       line-height: 1.7;
     }
 
-    /* =========================================================
-       TARJETA HOTEL
-    ========================================================= */
     .hotel-card {
       background: #fff;
       border-radius: 20px;
@@ -98,13 +92,6 @@
     .hotel-card__img-placeholder span {
       font-size: 3.5rem;
       display: block;
-      margin-bottom: 0.5rem;
-    }
-    .hotel-card__img-placeholder p {
-      color: rgba(255,255,255,0.4);
-      font-size: 0.72rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
     }
 
     .hotel-card__header {
@@ -159,37 +146,22 @@
       margin-bottom: 1.8rem;
     }
 
-    .amenities-title {
-      font-size: 0.7rem;
+    /* Botón negro */
+    .btn-dark-custom {
+      background: #0f141a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
       font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #006080;
-      margin-bottom: 1rem;
+      padding: 0.6rem 2rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-dark-custom:hover {
+      background: #1f2937;
+      color: #fff;
+      transform: translateY(-2px);
     }
 
-    .amenities-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 2rem;
-    }
-
-    .amenity-chip {
-      background: #f0f7f9;
-      border: 1px solid rgba(0,96,128,0.15);
-      color: #006080;
-      font-size: 0.82rem;
-      padding: 0.4rem 0.9rem;
-      border-radius: 100px;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    /* =========================================================
-       AGRADECIMIENTO
-    ========================================================= */
     .thanks-box {
       background: linear-gradient(135deg, #f0f7f9, #e8f4f8);
       border: 1px solid rgba(0,96,128,0.15);
@@ -227,23 +199,21 @@
 
     <main class="flex-shrink-0 content-padding page-content">
 
-      <!-- BANNER -->
       <section class="sponsor-hero my-4" style="border-radius: 0 0 28px 28px;">
         <div style="position:relative; z-index:1;">
           <div class="sponsor-hero__tag">✦ Patrocinador oficial 2026</div>
           <h1 class="sponsor-hero__title">Nuestro <span>Patrocinador</span></h1>
           <p class="sponsor-hero__sub">
-            En nombre de los organizadores del V Congreso Departamental de Ciencias Penales, agradecemos el apoyo brindado que hace posible este evento.
+            En nombre de los organizadores del V Congreso Departamental de Ciencias Penales, 
+            agradecemos el apoyo brindado que hace posible este evento.
           </p>
         </div>
       </section>
 
-      <!-- CONTENIDO -->
       <div class="container my-5">
         <div class="row justify-content-center">
           <div class="col-12 col-lg-9">
 
-            <!-- TARJETA HOTEL -->
             <div class="hotel-card mb-5">
 
               <div class="hotel-card__img">
@@ -270,24 +240,11 @@
                   para la comunidad jurídica de Santa Cruz de la Sierra.
                 </p>
 
-                <p class="amenities-title">Servicios destacados</p>
-                <div class="amenities-grid">
-                  <div class="amenity-chip">🍽️ Restaurante</div>
-                  <div class="amenity-chip">🌐 WiFi</div>
-                  <div class="amenity-chip">🏊 Piscina</div>
-                  <div class="amenity-chip">🅿️ Estacionamiento</div>
-                  <div class="amenity-chip">🏋️ Gimnasio</div>
-                  <div class="amenity-chip">🎤 Salones de eventos</div>
-                </div>
-
-                <div class="d-flex gap-3 flex-wrap">
-                  <a href="#" class="btn btn-inscripcion fw-bold px-4 py-2">Ver sitio web</a>
-                </div>
+                <a href="#" class="btn btn-dark-custom">Ver sitio web</a>
               </div>
 
             </div>
 
-            <!-- AGRADECIMIENTO -->
             <div class="thanks-box mb-5">
               <span class="thanks-box__icon">🤝</span>
               <h3 class="thanks-box__title">Gracias por su apoyo</h3>
