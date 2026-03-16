@@ -129,24 +129,24 @@ html, body {
   /* 2) Capa de fondo derecho */
   /* 👉 AQUÍ ES DONDE REFERENCIAS LA IMAGEN */
   /* 2) Capa de fondo derecho */
-.bg-right {
-  position: fixed;        /* ← CAMBIO: fixed en vez de absolute */
-  top: 0;
-  right: 0;
-  bottom: 0;              /* ← AÑADIR: se ancla al piso */
+    .bg-right {
+      position: fixed;        /* ← CAMBIO: fixed en vez de absolute */
+      top: 0;
+      right: 0;
+      bottom: 0;              /* ← AÑADIR: se ancla al piso */
 
-  height: 100vh;          /* ← CAMBIO: 100vh en vez de 100% */
-  width: min(42vw, 560px);
+      height: 100vh;          /* ← CAMBIO: 100vh en vez de 100% */
+      width: min(42vw, 560px);
 
-  background-image: url("../img/fondo-congreso.png");
-  background-repeat: no-repeat;
-  background-position: right top;
-  background-size: cover;
+      background-image: url("../img/fondo-congreso.png");
+      background-repeat: no-repeat;
+      background-position: right top;
+      background-size: cover;
 
-  opacity: 0.40;
-  z-index: 0;
-  pointer-events: none;
-}
+      opacity: 0.40;
+      z-index: 0;
+      pointer-events: none;
+    }
   
   /* 3) Todo el contenido debe estar por encima del fondo */
   .page-content {

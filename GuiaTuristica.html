@@ -314,7 +314,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.3rem;
-      background: linear-gradient(90deg, #00b4d8, #0077b6);
+      background: #0f141a;
       color: #fff;
       font-size: 0.68rem;
       font-weight: 700;
@@ -324,14 +324,14 @@
       cursor: pointer;
       transition: all 0.3s ease;
       align-self: flex-start;
-      box-shadow: 0 0 8px rgba(0,180,216,0.2);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
     .destino-card__btn:hover {
-      background: linear-gradient(90deg, #0096c7, #023e8a);
+      background: #1f2937;
       color: #fff;
       transform: translateY(-2px);
-      box-shadow: 0 0 14px rgba(0,180,216,0.45);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
     /* =======================================================
@@ -402,6 +402,25 @@
     <div id="header-placeholder"></div>
 
     <main class="flex-shrink-0 content-padding page-content">
+
+      <section class="hero-strip my-4">
+            <!-- Lado izquierdo: GIF -->
+            <div class="hero-strip__media">
+              <video autoplay muted loop playsinline>
+                <source src="img/ciudad.mp4" type="video/mp4">
+              </video>
+              <!-- Si quieres usar un GIF en lugar de video, 
+               
+              <img src="img/ciudad.gif" alt="Vista panorámica de la ciudad" loading="lazy">
+              descomenta esta línea y comenta el bloque de video -->
+            </div>
+    
+            <!-- Lado derecho: degradado + título -->
+            <div class="hero-strip__panel">
+              <h2 class="hero-strip__title">Turismo </h2>
+            </div>
+          </section>
+
       <div class="container my-4">
 
         <!-- ================================================
@@ -423,7 +442,7 @@
 
           <!-- Sub-header: filtros de categoría -->
           <div class="mapa-controls">
-            <div class="mapa-controls-titulo">📍 Destinos turísticos</div>
+            <div class="mapa-controls-titulo"></div>
             <div class="filtros" id="filtros">
               <button class="filtro-btn active" data-cat="all">Todos</button>
               <button class="filtro-btn" data-cat="naturaleza">🌿 Naturaleza</button>
@@ -437,7 +456,7 @@
           <!-- Sidebar + mapa -->
           <div class="mapa-inner">
             <aside class="mapa-sidebar" id="sidebar">
-              <div class="sidebar-titulo">📍 Destinos</div>
+              <div class="sidebar-titulo">Destinos</div>
             </aside>
             <div id="mapa"></div>
           </div>
@@ -469,7 +488,7 @@
               <div class="destino-card__cat">Universidad</div>
               <div class="destino-card__nombre">Universidad Privada Domingo Savio (UPDS)</div>
               <div class="destino-card__desc">Sede Santa Cruz de la UPDS. Centro académico con carreras de Derecho, Medicina, Ingeniería y más.</div>
-              <button class="destino-card__btn" onclick="irAlMapa(1, -17.757616, -63.174926)">📍 Ver en el mapa</button>
+              <button class="destino-card__btn" onclick="irAlMapa(1, -17.757616, -63.174926)">Ver en el mapa</button>
             </div>
           </div>
 
@@ -480,7 +499,7 @@
               <div class="destino-card__cat">Naturaleza</div>
               <div class="destino-card__nombre">Río Piraí</div>
               <div class="destino-card__desc">El río emblemático de Santa Cruz. Sus playas de arena blanca son el destino favorito de los cruceños los fines de semana.</div>
-              <button class="destino-card__btn" onclick="irAlMapa(2, -17.7950, -63.2480)">📍 Ver en el mapa</button>
+              <button class="destino-card__btn" onclick="irAlMapa(2, -17.7950, -63.2480)">Ver en el mapa</button>
             </div>
           </div>
 
@@ -491,7 +510,7 @@
               <div class="destino-card__cat">Naturaleza</div>
               <div class="destino-card__nombre">Parque Nacional Amboró</div>
               <div class="destino-card__desc">Uno de los parques más biodiversos del mundo, con más de 800 especies de aves, jaguares y flora exuberante.</div>
-              <button class="destino-card__btn" onclick="irAlMapa(3, -17.815941, -63.632263)">📍 Ver en el mapa</button>
+              <button class="destino-card__btn" onclick="irAlMapa(3, -17.815941, -63.632263)">Ver en el mapa</button>
             </div>
           </div>
 
@@ -502,7 +521,7 @@
               <div class="destino-card__cat">Naturaleza</div>
               <div class="destino-card__nombre">Biocentro Güembé</div>
               <div class="destino-card__desc">El jardín de mariposas más grande de Bolivia, con piscinas naturales y selva tropical en las afueras de la ciudad.</div>
-              <button class="destino-card__btn" onclick="irAlMapa(4, -17.6967, -63.2283)">📍 Ver en el mapa</button>
+              <button class="destino-card__btn" onclick="irAlMapa(4, -17.6967, -63.2283)">Ver en el mapa</button>
             </div>
           </div>
 
@@ -513,7 +532,7 @@
               <div class="destino-card__cat">Cultura</div>
               <div class="destino-card__nombre">Plaza 24 de Septiembre</div>
               <div class="destino-card__desc">El corazón histórico de la ciudad, rodeada de la Catedral Metropolitana, la Casa de Gobierno y palmeras reales.</div>
-              <button class="destino-card__btn" onclick="irAlMapa(5, -17.7833, -63.1816)">📍 Ver en el mapa</button>
+              <button class="destino-card__btn" onclick="irAlMapa(5, -17.7833, -63.1816)">Ver en el mapa</button>
             </div>
           </div>
 
@@ -524,7 +543,7 @@
               <div class="destino-card__cat">Cultura</div>
               <div class="destino-card__nombre">Samaipata – Plaza Principal</div>
               <div class="destino-card__desc">Corazón del pintoresco pueblo de Samaipata, a 120 km de Santa Cruz. Puerta de entrada a El Fuerte, Patrimonio de la UNESCO.</div>
-              <button class="destino-card__btn" onclick="irAlMapa(6, -18.179430, -63.875885)">📍 Ver en el mapa</button>
+              <button class="destino-card__btn" onclick="irAlMapa(6, -18.179430, -63.875885)">Ver en el mapa</button>
             </div>
           </div>
 
@@ -535,7 +554,7 @@
               <div class="destino-card__cat">Cultura</div>
               <div class="destino-card__nombre">Santuario de Cotoca</div>
               <div class="destino-card__desc">El lugar de peregrinación más importante de Bolivia. Cada año miles de fieles caminan desde Santa Cruz hasta este templo.</div>
-              <button class="destino-card__btn" onclick="irAlMapa(7, -17.754441, -62.996513)">📍 Ver en el mapa</button>
+              <button class="destino-card__btn" onclick="irAlMapa(7, -17.754441, -62.996513)">Ver en el mapa</button>
             </div>
           </div>
 
@@ -546,7 +565,7 @@
               <div class="destino-card__cat">Aventura</div>
               <div class="destino-card__nombre">Lomas de Arena</div>
               <div class="destino-card__desc">Dunas de arena en plena llanura cruceña. Ideal para sandboard, caminatas al atardecer y observación de aves.</div>
-              <button class="destino-card__btn" onclick="irAlMapa(8, -17.939825, -63.160142)">📍 Ver en el mapa</button>
+              <button class="destino-card__btn" onclick="irAlMapa(8, -17.939825, -63.160142)">Ver en el mapa</button>
             </div>
           </div>
 
@@ -557,7 +576,7 @@
               <div class="destino-card__cat">Aventura</div>
               <div class="destino-card__nombre">Parque Nacional Noel Kempff Mercado</div>
               <div class="destino-card__desc">Patrimonio Natural de la UNESCO. Cascadas imponentes, mesetas prehistóricas y selva amazónica completamente virgen.</div>
-              <button class="destino-card__btn" onclick="irAlMapa(9, -14.6667, -60.8333)">📍 Ver en el mapa</button>
+              <button class="destino-card__btn" onclick="irAlMapa(9, -14.6667, -60.8333)">Ver en el mapa</button>
             </div>
           </div>
 
@@ -568,7 +587,7 @@
               <div class="destino-card__cat">Urbano</div>
               <div class="destino-card__nombre">Cristo Redentor de Santa Cruz</div>
               <div class="destino-card__desc">Monumento icónico visible desde gran parte de la ciudad. Referencia espiritual y punto de encuentro de los cruceños.</div>
-              <button class="destino-card__btn" onclick="irAlMapa(10, -17.770274, -63.182587)">📍 Ver en el mapa</button>
+              <button class="destino-card__btn" onclick="irAlMapa(10, -17.770274, -63.182587)">Ver en el mapa</button>
             </div>
           </div>
 

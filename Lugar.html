@@ -10,119 +10,76 @@
   <style>
 
     /* =========================================================
-       BANNER — hero-strip igual al resto del sitio
+       BLOQUE UPDS — fondo oscuro para diferenciarse del CECYD
     ========================================================= */
-    .sede-hero {
-      left: 25px;
-      right: 25px;
-      display: flex;
-      border-bottom-left-radius: 28px;
-      border-bottom-right-radius: 28px;
+    .upds-block {
+      border-radius: 20px;
       overflow: hidden;
-      height: 400px;
-      background: #006080;
+      display: flex;
+      min-height: 280px;
+      background: linear-gradient(135deg, #0a1a22, #003d52);
+      border: 1px solid rgba(0,180,216,0.15);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    }
+
+    .upds-block__img {
+      flex: 0 0 42%;
       position: relative;
-      z-index: 2;
+      overflow: hidden;
+      background: #003d52;
     }
-    .sede-hero__media {
-    background-image: url('img/upds-exterior.png');
-    background-size: contain;      /* imagen completa sin recorte */
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: #003d52;     /* rellena los espacios vacíos */
-    }
-    .sede-hero__media img {
+    .upds-block__img img {
       width: 100%; height: 100%; object-fit: cover; display: block;
+      opacity: 0.85;
     }
-    .sede-hero__media-placeholder {
+    .upds-block__img-placeholder {
       width: 100%; height: 100%;
-      background: linear-gradient(135deg, #003d52, #005570);
       display: flex; align-items: center; justify-content: center;
       flex-direction: column; gap: 0.5rem;
       color: rgba(255,255,255,0.3);
       font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
     }
-    .sede-hero__media-placeholder span { font-size: 3rem; }
+    .upds-block__img-placeholder span { font-size: 3rem; }
 
-    .sede-hero__panel {
+    .upds-block__info {
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 2.2rem 2.4rem;
-      background: linear-gradient(
-        90deg,
-        rgba(0,0,0,0.90) 0%,
-        rgba(0,96,128,0.92) 55%,
-        rgba(0,96,128,0.92) 100%
-      );
+      padding: 2rem 2.2rem;
+      display: flex; flex-direction: column; justify-content: center;
     }
-    .sede-hero__tag {
+
+    .upds-badge {
       display: inline-block;
       border: 1px solid rgba(0,180,216,0.4);
       background: rgba(0,180,216,0.1);
       color: #00b4d8;
-      font-size: 0.65rem; font-weight: 600;
-      letter-spacing: 3px; text-transform: uppercase;
-      padding: 0.3rem 0.9rem; border-radius: 100px;
-      margin-bottom: 0.8rem; width: fit-content;
-    }
-    .sede-hero__title {
-      font-size: clamp(1.8rem, 3.5vw, 3.2rem);
-      font-weight: 800; color: #fff;
-      margin-bottom: 0.3rem; line-height: 1.1;
-    }
-    .sede-hero__title span { color: #00b4d8; }
-    .sede-hero__sub {
-      color: rgba(255,255,255,0.65);
-      font-size: 1.5rem; margin: 0;
-    }
-
-    @media (max-width: 991.98px) {
-      .sede-hero { flex-direction: column; height: auto; }
-      .sede-hero__media { flex-basis: auto; height: 210px; }
-      .sede-hero__panel { padding: 1.4rem; }
-    }
-
-    /* =========================================================
-       CHIPS DE INFO RÁPIDA — fila horizontal
-    ========================================================= */
-    .info-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-    }
-    .info-chip {
-      background: #fff;
-      border: 1px solid rgba(0,96,128,0.12);
-      border-radius: 14px;
-      padding: 1.1rem 1.2rem;
-      display: flex; align-items: center; gap: 0.9rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .info-chip:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,96,128,0.1);
-    }
-    .info-chip__icon {
-      width: 40px; height: 40px; border-radius: 10px;
-      background: linear-gradient(135deg, #006080, #00b4d8);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; flex-shrink: 0;
-    }
-    .info-chip__label {
       font-size: 0.65rem; font-weight: 700;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      color: #006080; margin-bottom: 0.1rem;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 0.3rem 0.9rem; border-radius: 100px;
+      margin-bottom: 1rem; width: fit-content;
     }
-    .info-chip__value {
-      font-size: 0.85rem; font-weight: 600;
-      color: #0f141a; margin: 0; line-height: 1.3;
+
+    .upds-block__name {
+      font-size: 1.5rem; font-weight: 800;
+      color: #fff; margin-bottom: 0.25rem;
+    }
+
+    .upds-block__sub {
+      color: #00b4d8; font-size: 0.85rem;
+      font-weight: 500; margin-bottom: 1rem;
+    }
+
+    .upds-block__desc {
+      color: rgba(255,255,255,0.7); font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 767px) {
+      .upds-block { flex-direction: column; }
+      .upds-block__img { flex-basis: auto; height: 180px; }
     }
 
     /* =========================================================
-       BLOQUE CECYD — layout horizontal imagen + info
+       BLOQUE CECYD — fondo blanco
     ========================================================= */
     .cecyd-block {
       background: #fff;
@@ -175,22 +132,49 @@
     }
     .cecyd-block__desc {
       color: #374151; font-size: 0.9rem;
-      line-height: 1.7; margin-bottom: 1.2rem;
-    }
-
-    .cecyd-features {
-      display: flex; flex-wrap: wrap; gap: 0.5rem;
-    }
-    .cecyd-feature {
-      background: #f0f7f9;
-      border: 1px solid rgba(0,96,128,0.15);
-      color: #006080; font-size: 0.78rem;
-      padding: 0.3rem 0.8rem; border-radius: 100px;
+      line-height: 1.7;
     }
 
     @media (max-width: 767px) {
       .cecyd-block { flex-direction: column; }
       .cecyd-block__img { flex-basis: auto; height: 180px; }
+    }
+
+    /* =========================================================
+       CHIPS DE INFO RÁPIDA
+    ========================================================= */
+    .info-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+    .info-chip {
+      background: #fff;
+      border: 1px solid rgba(0,96,128,0.12);
+      border-radius: 14px;
+      padding: 1.1rem 1.2rem;
+      display: flex; align-items: center; gap: 0.9rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .info-chip:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,96,128,0.1);
+    }
+    .info-chip__icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: linear-gradient(135deg, #006080, #00b4d8);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .info-chip__label {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: #006080; margin-bottom: 0.1rem;
+    }
+    .info-chip__value {
+      font-size: 0.85rem; font-weight: 600;
+      color: #0f141a; margin: 0; line-height: 1.3;
     }
 
     /* =========================================================
@@ -203,16 +187,6 @@
       height: 360px; position: relative;
     }
     .map-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
-    .map-wrap__placeholder {
-      width: 100%; height: 100%;
-      background: linear-gradient(135deg, #e8f4f8, #f0f7f9);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 0.6rem;
-      color: #006080;
-    }
-    .map-wrap__placeholder span { font-size: 3rem; }
-    .map-wrap__placeholder p { font-size: 0.88rem; font-weight: 600; margin: 0; }
-    .map-wrap__placeholder small { font-size: 0.75rem; opacity: 0.5; }
 
     .map-btn {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -231,10 +205,10 @@
     }
     .section-heading {
       font-size: clamp(1.4rem, 2.5vw, 2rem);
-      font-weight: 800; color: #0f141a; margin-bottom: 0;
+      font-weight: 800; color: #006080; margin-bottom: 0;
     }
     .section-line {
-      width: 100%; height: 3px;
+      width: 65%; height: 3px;
       background: linear-gradient(90deg, #006080, #00b4d8);
       border-radius: 2px; margin-top: 0.7rem; margin-bottom: 2rem;
     }
@@ -250,18 +224,43 @@
 
     <main class="flex-shrink-0 content-padding page-content">
 
-      <!-- BANNER: imagen UPDS izquierda + texto derecha -->
-        <section class="sede-hero my-4">
-            <div class="sede-hero__media">
-                <img src="img/upds-exterior.png" alt="UPDS">
-            </div>
-            <div class="sede-hero__panel">
-                <h1 class="sede-hero__title">Lugar del <span>Congreso</span></h1>
-                <p class="sede-hero__sub">Universidad Privada Domingo Savio · Santa Cruz</p>
-            </div>
-        </section>
+      <!-- BANNER ESTÁNDAR -->
+      <section class="hero-strip my-4">
+        <div class="hero-strip__media">
+          <video autoplay muted loop playsinline>
+            <source src="img/ciudad.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="hero-strip__panel">
+          <h2 class="hero-strip__title">Sede del Congreso</h2>
+        </div>
+      </section>
 
       <div class="container my-5">
+
+        <!-- UPDS -->
+        <div class="mb-4">
+          <p class="section-eyebrow">Universidad</p>
+          <h2 class="section-heading">Universidad Privada Domingo Savio</h2>
+          <div class="section-line"></div>
+
+          <div class="upds-block">
+            <div class="upds-block__img">
+              <img src="img/upds-exterior.png" alt="UPDS">
+            </div>
+            <div class="upds-block__info">
+              <span class="cecyd-badge">✦ Sede del congreso</span>
+              <h3 class="upds-block__name">Casa de Estudios</h3>
+              <p class="upds-block__sub">Santa Cruz de la Sierra, Bolivia</p>
+              <p class="upds-block__desc">
+                La Universidad Privada Domingo Savio es una institución de educación superior 
+                boliviana reconocida por su compromiso con la formación académica de excelencia. 
+                Su campus en Santa Cruz de la Sierra alberga modernas instalaciones para 
+                el desarrollo de eventos académicos de alto nivel.
+              </p>
+            </div>
+          </div>
+        </div>
 
         <!-- DATOS RÁPIDOS -->
         <div class="info-row mb-5">
@@ -290,7 +289,7 @@
             <div class="info-chip__icon">📅</div>
             <div>
               <p class="info-chip__label">Fecha</p>
-              <p class="info-chip__value">2026 · 23-24-25 de abril</p>
+              <p class="info-chip__value">23 · 24 · 25 de abril 2026</p>
             </div>
           </div>
         </div>
@@ -303,18 +302,17 @@
 
           <div class="cecyd-block">
             <div class="cecyd-block__img">
-              <!-- Reemplazar con foto del CECYD: -->
               <img src="img/CECYD.jpg" alt="CECYD">
             </div>
             <div class="cecyd-block__info">
+              <span class="cecyd-badge">Lugar de encuentro</span>
               <h3 class="cecyd-block__name">Centro CECYD</h3>
               <p class="cecyd-block__univ">Universidad Privada Domingo Savio</p>
               <p class="cecyd-block__desc">
-                Es el Centro Cultural y Deportivo de la 
-                Universidad Privada Domingo Savio (UPDS), ubicado en Santa Cruz de la Sierra, 
-                Bolivia, en la avenida Beni, tercer anillo externo.  
-                Fue inaugurado el 17 de septiembre de 2017 y 
-                ha servido como sede para múltiples eventos académicos, culturales y sociales.
+                Es el Centro Cultural y Deportivo de la Universidad Privada Domingo Savio, 
+                ubicado en la avenida Beni, tercer anillo externo de Santa Cruz de la Sierra. 
+                Fue inaugurado el 17 de septiembre de 2017 y ha servido como sede para 
+                múltiples eventos académicos, culturales y sociales.
               </p>
             </div>
           </div>
@@ -327,12 +325,7 @@
           <div class="section-line"></div>
 
           <div class="map-wrap mb-3">
-            <!-- Reemplazar con iframe de Google Maps:
-            <iframe src="https://www.google.com/maps/embed?pb=..." allowfullscreen loading="lazy"></iframe>
-            -->
-            <div class="map-wrap__placeholder">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2098.572192478204!2d-63.17530746190698!3d-17.75823135218939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93f1e7c3e8d539cb%3A0x1ce9b8db4a387ab4!2sUniversidad%20Privada%20Domingo%20Savio%20Santa%20Cruz!5e0!3m2!1ses-419!2sbo!4v1773600694462!5m2!1ses-419!2sbo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2098.572192478204!2d-63.17530746190698!3d-17.75823135218939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93f1e7c3e8d539cb%3A0x1ce9b8db4a387ab4!2sUniversidad%20Privada%20Domingo%20Savio%20Santa%20Cruz!5e0!3m2!1ses-419!2sbo!4v1773600694462!5m2!1ses-419!2sbo" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
 
           <a href="https://maps.app.goo.gl/R8pcSSzVEF2eEQt48" target="_blank" class="map-btn">

@@ -9,54 +9,6 @@
   <link rel="icon" type="image/png" href="img/logo_32x32.png">
   <style>
 
-    .sponsor-hero {
-      background: linear-gradient(135deg, #000 0%, #003d52 55%, #006080 100%);
-      padding: 4rem 2rem 3rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .sponsor-hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: repeating-linear-gradient(
-        45deg, transparent, transparent 60px,
-        rgba(0,180,216,0.03) 60px, rgba(0,180,216,0.03) 120px
-      );
-    }
-
-    .sponsor-hero__tag {
-      display: inline-block;
-      border: 1px solid rgba(0,180,216,0.4);
-      background: rgba(0,180,216,0.1);
-      color: #00b4d8;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      padding: 0.35rem 1.1rem;
-      border-radius: 100px;
-      margin-bottom: 1.2rem;
-    }
-
-    .sponsor-hero__title {
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 0.8rem;
-    }
-
-    .sponsor-hero__title span { color: #00b4d8; }
-
-    .sponsor-hero__sub {
-      color: rgba(255,255,255,0.65);
-      font-size: 1rem;
-      max-width: 520px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-
     .hotel-card {
       background: #fff;
       border-radius: 20px;
@@ -115,18 +67,6 @@
       font-size: 0.88rem;
     }
 
-    .sponsor-badge {
-      background: linear-gradient(90deg, #006080, #00b4d8);
-      color: #fff;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 0.4rem 1rem;
-      border-radius: 100px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
 
     .hotel-divider {
       height: 3px;
@@ -199,14 +139,17 @@
 
     <main class="flex-shrink-0 content-padding page-content">
 
-      <section class="sponsor-hero my-4" style="border-radius: 0 0 28px 28px;">
-        <div style="position:relative; z-index:1;">
-          <div class="sponsor-hero__tag">✦ Patrocinador oficial 2026</div>
-          <h1 class="sponsor-hero__title">Nuestro <span>Patrocinador</span></h1>
-          <p class="sponsor-hero__sub">
-            En nombre de los organizadores del V Congreso Departamental de Ciencias Penales, 
-            agradecemos el apoyo brindado que hace posible este evento.
-          </p>
+      <section class="hero-strip my-4">
+        <div class="hero-strip__media">
+          <video autoplay muted loop playsinline>
+            <source src="img/ciudad.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="hero-strip__panel" style="display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-start; text-align:left;">
+          <div style="width: 100%;">
+            <span style="display:inline-block; border:1px solid rgba(0,180,216,0.4); background:rgba(0,180,216,0.1); color:#00b4d8; font-size:0.65rem; font-weight:600; letter-spacing:3px; text-transform:uppercase; padding:0.3rem 0.9rem; border-radius:100px; margin-bottom:0.8rem;">✦ Patrocinador oficial 2026</span>
+            <h2 class="hero-strip__title">Nuestro Patrocinador</h2>
+          </div>
         </div>
       </section>
 
@@ -227,7 +170,6 @@
                   <h2 class="hotel-card__name">Hotel Gran Santa Cruz</h2>
                   <p class="hotel-card__location">Santa Cruz de la Sierra, Bolivia</p>
                 </div>
-                <div class="sponsor-badge">★ Patrocinador oficial</div>
               </div>
 
               <div class="hotel-divider"></div>
