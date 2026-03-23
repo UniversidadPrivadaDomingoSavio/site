@@ -248,10 +248,20 @@ html, body {
   background-color: #f0f7f9;
 }
 
-/* Imagen principal */
+/*Imagen Principal del poniente*/
+
+/* ANTES
 .workshop-img {
     height: 220px;
     object-fit: cover;
+}
+*/
+
+/* DESPUÉS */
+.workshop-img {
+    height: 220px;
+    object-fit: cover;
+    object-position: top center; /* ← ancla la imagen desde arriba */
 }
 
 /* Foto del disertante que sobresale */
