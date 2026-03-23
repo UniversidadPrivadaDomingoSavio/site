@@ -3,161 +3,140 @@
 ========================================================= */
 html, body {
     height: 100%;
-    background-color: #f8f9fa; /* Color de fondo general */
-  }
-  
-  /* =========================================================
-     ESPACIADO: evita que el header fijo tape el contenido
-  ========================================================= */
-  .content-padding {
-    padding-top: 140px; 
-  }
-  
-  /* =========================================================
-     HEADER: barra superior fija
-  ========================================================= */
-  .top-bar {
-    background-color: #006080; /* Azul oscuro */
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 35px;
-    z-index: 1040;
-  }
-  
-  /* =========================================================
-     NAVBAR PRINCIPAL: flotante debajo de la top-bar
-  ========================================================= */
-  .custom-navbar {
-    background-color: black; /* Fondo casi negro */
-    top: 35px; /* Debajo de la top-bar */
-    padding-top: 10px;
-    padding-bottom: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-  }
-  
-  /* Separación entre items del nav */
-  .navbar-nav {
-    gap: 1.5rem;
-  }
-  
-  /* Logo en header */
-  .header-logo {
-    height: 70px;
-    width: 210px;
+    background-color: #f8f9fa;
+}
+
+/* =========================================================
+   ESPACIADO: evita que el header fijo tape el contenido
+========================================================= */
+.content-padding {
+  padding-top: 140px;
+}
+
+/* =========================================================
+   HEADER: barra superior fija
+========================================================= */
+.top-bar {
+  background-color: #006080;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 35px;
+  z-index: 1040;
+}
+
+/* =========================================================
+   NAVBAR PRINCIPAL: flotante debajo de la top-bar
+========================================================= */
+.custom-navbar {
+  background-color: black;
+  top: 35px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.navbar-nav {
+  gap: 1.5rem;
+}
+
+.header-logo {
+  height: 70px;
+  width: 210px;
+  display: block;
+}
+
+.btn-inscripcion {
+  background: linear-gradient(90deg, #00b4d8, #0077b6);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 180, 216, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-inscripcion:hover {
+  background: linear-gradient(90deg, #0096c7, #023e8a);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(0, 180, 216, 0.6);
+}
+
+.navbar-nav .dropdown-toggle::after {
+  vertical-align: middle;
+  margin-left: 0.4em;
+  font-size: 0.85em;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.custom-footer {
+  background-color: #0f141a;
+  border-top: 1px solid #1f2937;
+  z-index: 10;
+  position: relative;
+}
+
+.footer-logo-img {
+    height: auto;
+    max-height: 150px;
+    width: auto;
     display: block;
-  }
-  
-  /* Botón de inscripción */
-  .btn-inscripcion {
-    background: linear-gradient(90deg, #00b4d8, #0077b6);
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 0 12px rgba(0, 180, 216, 0.3);
-    transition: all 0.3s ease;
-  }
-  
-  .btn-inscripcion:hover {
-    background: linear-gradient(90deg, #0096c7, #023e8a);
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(0, 180, 216, 0.6);
-  }
-  
-  /* Dropdown arrow */
-  .navbar-nav .dropdown-toggle::after {
-    vertical-align: middle;
-    margin-left: 0.4em;
-    font-size: 0.85em;
-  }
-  
-  /* =========================================================
-     FOOTER
-  ========================================================= */
-  .custom-footer {
-    background-color: #0f141a;
-    border-top: 1px solid #1f2937;
-    z-index: 10; /* Superponer al fondo decorativo */
-    position: relative; /* Asegurar que el z-index se aplique */
-  }
+    transition: transform 0.3s ease;
+}
 
-    /* Estilos para los logos del footer */
-  .footer-logo-img {
-      height: auto;
-      max-height: 150px; /* Aumentado un poco para que se note el detalle */
-      width: auto;
-      display: block;
-      transition: transform 0.3s ease;
-  }
+.footer-logo-img:hover {
+    transform: scale(1.03);
+}
 
-  .footer-logo-img:hover {
-      transform: scale(1.03);
-  }
-
-  /* Ajuste opcional para móviles */
-  @media (max-width: 576px) {
-      .footer-logo-img {
-          max-height: 60px;
-      }
-  }
-  
-  /* =========================================================
-     ✅ FONDO DECORATIVO A LA DERECHA (LA TÉCNICA QUE QUIERES)
-     - page-wrap: contenedor relativo del "fondo"
-     - bg-right : capa de imagen a la derecha
-     - page-content: contenido por encima
-  ========================================================= */
-  
-  /* 1) Wrapper general para posicionar el fondo */
-  /* Wrapper general: ahora es flex column y ocupa mínimo toda la pantalla */
-    .page-wrap{
-        position: relative;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-    
-        overflow-x: hidden;  /* ✅ evita scroll lateral */
-        overflow-y: visible; /* ✅ permite scroll vertical */
+@media (max-width: 576px) {
+    .footer-logo-img {
+        max-height: 60px;
     }
-    
-    /* El main crece para empujar el footer */
-    main.page-content{
-        flex: 1 0 auto;
-    }
-    
-  /* 2) Capa de fondo derecho */
-  /* 👉 AQUÍ ES DONDE REFERENCIAS LA IMAGEN */
-  /* 2) Capa de fondo derecho */
-    .bg-right {
-      position: fixed;        /* ← CAMBIO: fixed en vez de absolute */
-      top: 0;
-      right: 0;
-      bottom: 0;              /* ← AÑADIR: se ancla al piso */
+}
 
-      height: 100vh;          /* ← CAMBIO: 100vh en vez de 100% */
-      width: min(42vw, 560px);
-
-      background-image: url("../img/fondo-congreso.png");
-      background-repeat: no-repeat;
-      background-position: right top;
-      background-size: cover;
-
-      opacity: 0.40;
-      z-index: 0;
-      pointer-events: none;
-    }
-  
-  /* 3) Todo el contenido debe estar por encima del fondo */
-  .page-content {
+/* =========================================================
+   FONDO DECORATIVO A LA DERECHA
+========================================================= */
+.page-wrap {
     position: relative;
-    z-index: 1;
-  }
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
 
-  /* =========================================================
-     Banner tipo "Workshops"
-  ========================================================= */
-.hero-strip{
+main.page-content {
+    flex: 1 0 auto;
+}
+
+.bg-right {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  width: min(42vw, 560px);
+  background-image: url("../img/fondo-congreso.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: cover;
+  opacity: 0.40;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.page-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================================
+   Banner tipo "Workshops"
+========================================================= */
+.hero-strip {
   left: 25px;
   right: 25px;
   display: flex;
@@ -167,34 +146,30 @@ html, body {
   border-bottom-right-radius: 28px;
   overflow: hidden;
   min-height: 190px;
-  height: 300px;  /*Cambiar ancho*/
-  background: #006080;       /* tu color base */
+  height: 300px;
+  background: #006080;
   position: relative;
-  z-index: 2;                /* por si tu bg-right está detrás */
+  z-index: 2;
 }
 
-/* Izquierda (GIF) */
-.hero-strip__media{
+.hero-strip__media {
   flex: 0 0 58%;
   min-height: 190px;
 }
 
 .hero-strip__media img,
-.hero-strip__media video{
+.hero-strip__media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-/* Derecha (panel degradado) */
-.hero-strip__panel{
+.hero-strip__panel {
   flex: 1;
   display: flex;
   align-items: flex-end;
   padding: 2.2rem 2.4rem;
-
-  /* degradado tipo tarjeta */
   background: linear-gradient(
     90deg,
     rgba(0,0,0,0.90) 0%,
@@ -203,7 +178,7 @@ html, body {
   );
 }
 
-.hero-strip__title{
+.hero-strip__title {
   margin: 0;
   color: #fff;
   font-weight: 800;
@@ -211,160 +186,196 @@ html, body {
   font-size: clamp(1.4rem, 2.8vw, 2.8rem);
 }
 
-/* Responsive: en móvil se apila */
-@media (max-width: 991.98px){
-  .hero-strip{
+@media (max-width: 991.98px) {
+  .hero-strip {
     flex-direction: column;
     min-height: 0;
   }
-
-  .hero-strip__media{
+  .hero-strip__media {
     flex-basis: auto;
     height: 210px;
   }
-
-  .hero-strip__panel{
+  .hero-strip__panel {
     align-items: center;
     padding: 1.4rem 1.4rem;
   }
-  
 }
 
-
-/* Contenedor de la tarjeta con efecto Hover */
-.workshop-card {
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    background-color: #ffffff;
-    cursor: pointer;
-}
+/* =========================================================
+   TARJETAS DE PONENCIAS
+   - Hover: fondo negro, letras blancas, botón cyan
+   - Botón fijo en esquina inferior derecha
+========================================================= */
 .row.g-4 {
   row-gap: 2.5rem !important;
 }
 
+/* --- Tarjeta base --- */
+.workshop-card {
+  display: flex !important;
+  flex-direction: column !important;
+  background-color: #ffffff;
+  cursor: pointer;
+  /* Transición suave en TODO: fondo, sombra, transformación */
+  transition:
+    transform      0.45s cubic-bezier(0.165, 0.84, 0.44, 1),
+    box-shadow     0.45s cubic-bezier(0.165, 0.84, 0.44, 1),
+    background-color 0.45s ease;
+}
+
+/* --- Cuerpo de la tarjeta: flex para empujar botón abajo --- */
+.workshop-card .card-body {
+  transition: background-color 0.45s ease;
+}
+
+/* --- Título y texto: transición de color suave --- */
+.workshop-card .card-title {
+  color: #1a1a1a;
+  transition: color 0.45s ease;
+}
+
+.workshop-card .card-text {
+  color: #6c757d;
+  transition: color 0.45s ease;
+}
+
+/* --- Botón: transición de colores suave --- */
+.workshop-card .btn-outline-dark {
+  transition:
+    color            0.45s ease,
+    border-color     0.45s ease,
+    background-color 0.45s ease,
+    box-shadow       0.45s ease;
+}
+
+.card.workshop-card .card-body {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+}
+
+.card.workshop-card .card-body .card-text {
+  flex-grow: 1 !important;
+  margin-bottom: 0 !important;
+}
+
+.card.workshop-card .card-body .d-flex.justify-content-end {
+  margin-top: auto !important;
+  padding-top: 1rem; /* ← ajustá este valor a gusto: 0.5rem, 1rem, 1.5rem */
+}
+
+/* =============================================
+   HOVER COMPLETO: toda la tarjeta se oscurece
+============================================= */
 .workshop-card:hover {
   transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15),
-              0 0 0 1px rgba(0, 96, 128, 0.12) !important;
-  background-color: #f0f7f9;
+  background-color: #111111 !important;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.06) !important;
 }
 
-/*Imagen Principal del poniente*/
+/* El card-body hereda el fondo negro */
+.workshop-card:hover .card-body {
+  background-color: #111111;
+}
 
-/* ANTES
+/* Título → blanco */
+.workshop-card:hover .card-title {
+  color: #ffffff;
+}
+
+/* Subtítulo (nombre del ponente) → gris claro */
+.workshop-card:hover .card-text {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Botón → borde y texto cyan */
+.workshop-card:hover .btn-outline-dark {
+  border-color: #00b4d8;
+  color: #00b4d8;
+  background-color: transparent;
+  box-shadow: 0 0 10px rgba(0, 180, 216, 0.25);
+}
+
+/* Botón dentro del hover: al pasar sobre el propio botón */
+.workshop-card:hover .btn-outline-dark:hover {
+  background-color: #00b4d8;
+  color: #000000;
+  border-color: #00b4d8;
+  box-shadow: 0 0 16px rgba(0, 180, 216, 0.5);
+}
+
+/* =============================================
+   IMAGEN PRINCIPAL DEL PONENTE
+============================================= */
 .workshop-img {
-    height: 220px;
-    object-fit: cover;
-}
-*/
-
-/* DESPUÉS */
-.workshop-img {
-    height: 220px;
-    object-fit: cover;
-    object-position: top center; /* ← ancla la imagen desde arriba */
+  height: 220px;
+  object-fit: cover;
+  object-position: top center;
 }
 
-/* Foto del disertante que sobresale */
+/* =============================================
+   BADGE DE BANDERA QUE SOBRESALE
+============================================= */
 .speaker-badge {
-    position: absolute;
-    bottom: -25px; /* Hace que sobresalga hacia abajo */
-    right: 20px;
-    z-index: 10;
+  position: absolute;
+  bottom: -25px;
+  right: 20px;
+  z-index: 10;
 }
 
 .speaker-badge img {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
 }
 
 .workshop-card:hover .speaker-badge img {
-    transform: rotate(5deg) scale(1.1);
+  transform: rotate(5deg) scale(1.1);
 }
 
-/* Ajuste de color del título al hacer hover */
-.workshop-card:hover .card-title {
-    color: #006080; /* Tu azul corporativo */
-}
-
-
-/*=========================================================================*/
-
-/* =============================================================
-   SECCIÓN INFORMATIVA: "¿Qué es el Congreso?"
-   Bloque de texto con títulos decorados y línea separadora.
-   Adaptado a la paleta de colores del sitio (#006080 / #00b4d8).
-   Agregar al final de styles.css (o en su propia sección).
-============================================================= */
-
-/* -------------------------------------------------------------
-   CONTENEDOR PRINCIPAL DEL BLOQUE INFORMATIVO
-   - Separa visualmente cada bloque (título + divider + texto).
-------------------------------------------------------------- */
+/* =========================================================
+   SECCIÓN INFORMATIVA
+========================================================= */
 .section-info__block {
-  /* Máximo ancho del texto para una lectura cómoda */
   max-width: 780px;
 }
 
-/* -------------------------------------------------------------
-   TÍTULO DEL BLOQUE
-   - Color principal del sitio (#006080) con peso fuerte.
-   - font-size fluido: se adapta entre móvil y escritorio.
-------------------------------------------------------------- */
 .section-info__heading {
-  color: #006080;                          /* Azul corporativo del sitio */
+  color: #006080;
   font-weight: 800;
-  font-size: clamp(1.3rem, 2.4vw, 1.9rem); /* Fluido: ~21px → ~30px */
+  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
   line-height: 1.25;
   margin-bottom: 0.6rem;
 }
 
-/* -------------------------------------------------------------
-   LÍNEA DECORATIVA (DIVIDER)
-   - Barra corta debajo del título, igual que en la referencia.
-   - Usa el color secundario (#00b4d8) para que contraste con #006080.
-------------------------------------------------------------- */
 .section-info__divider {
-  width: 300px;          /* Longitud de la línea */
-  height: 3px;          /* Grosor de la línea */
-  background-color: #00b4d8;  /* Azul claro del gradiente del botón */
+  width: 300px;
+  height: 3px;
+  background-color: #00b4d8;
   border-radius: 2px;
   margin-top: 0.4rem;
   margin-bottom: 0;
 }
 
-/* -------------------------------------------------------------
-   PÁRRAFO DE CUERPO
-   - Color neutro oscuro, interlineado holgado para facilitar
-     la lectura de textos jurídicos o descriptivos largos.
-------------------------------------------------------------- */
 .section-info__body {
-  color: #1f2937;        /* Gris oscuro: legible sobre fondo #f8f9fa */
+  color: #1f2937;
   font-size: 1rem;
-  line-height: 1.8;      /* Interlineado amplio para textos densos */
+  line-height: 1.8;
   max-width: 720px;
 }
 
-/* -------------------------------------------------------------
-   RESPONSIVE: ajuste en pantallas pequeñas
-   - El título reduce un poco más su tamaño mínimo.
-   - La línea decorativa se acorta levemente.
-------------------------------------------------------------- */
 @media (max-width: 576px) {
   .section-info__heading {
     font-size: 1.2rem;
   }
-
   .section-info__divider {
     width: 55px;
   }
 }
-/* =============================================================
-   FIN SECCIÓN INFORMATIVA
-============================================================= */
-
 
 /* =========================================================
    HERO PRINCIPAL (index)
@@ -380,10 +391,9 @@ html, body {
   background: #000;
   position: relative;
   z-index: 2;
-  margin-right: 40px; /* Para evitar que el fondo derecho tape el contenido */
+  margin-right: 40px;
 }
 
-/* Izquierda: video/imagen */
 .hero-main__media {
   flex: 0 0 55%;
   position: relative;
@@ -398,7 +408,6 @@ html, body {
   opacity: 0.85;
 }
 
-/* Derecha: branding */
 .hero-main__brand {
   flex: 1;
   display: flex;
@@ -496,7 +505,6 @@ html, body {
   margin: 0;
 }
 
-/* Responsive */
 @media (max-width: 991.98px) {
   .hero-main {
     flex-direction: column;
@@ -512,7 +520,7 @@ html, body {
   .quick-access {
     flex-direction: column;
     margin: 0 25px;
-    margin-bottom: 1.5rem; /* ← esto */
+    margin-bottom: 1.5rem;
   }
   .quick-card {
     border-right: none;
@@ -521,17 +529,13 @@ html, body {
   .quick-card:last-child {
     border-bottom: none;
   }
-
-  /* ← AGREGADO: reduce imagen en móvil para que no tape el texto */
   .quick-card__img {
-    flex: 0 0 120px;  /* ← era 200px */
-    height: 80px;     /* ← era 100px */
+    flex: 0 0 120px;
+    height: 80px;
   }
-
   .quick-card__title {
-    font-size: 1.1rem; /* ← era 1.5rem, evita que se corte */
+    font-size: 1.1rem;
   }
-
   .quick-card__sub {
     font-size: 0.85rem;
   }

@@ -17,298 +17,269 @@
 
   <!-- =========================================================
        WRAPPER GENERAL DE PÁGINA
-       - Aquí metemos la capa del fondo derecho y el contenido.
-       - El wrapper se hace "relative" en CSS para que el fondo
-         absoluto se posicione dentro de toda la página.
   ========================================================== -->
   <div class="page-wrap d-flex flex-column min-vh-100">
 
-    <!-- =========================================================
-         FONDO DERECHO (DECORATIVO)
-         - Es una capa detrás del contenido (z-index bajo).
-         - Solo se muestra desde pantallas grandes (d-lg-block),
-           para que en móviles no estorbe (d-none).
-    ========================================================== -->
+    <!-- FONDO DERECHO (DECORATIVO) -->
     <div class="bg-right d-none d-lg-block"></div>
 
     <!-- Header cargado por JS -->
     <div id="header-placeholder"></div>
 
-    <!-- =========================================================
-         CONTENIDO PRINCIPAL
-         - page-content sube el contenido por encima del fondo
-           usando z-index en CSS.
-         - content-padding evita que el header fijo tape el inicio.
-    ========================================================== -->
+    <!-- CONTENIDO PRINCIPAL -->
     <main class="flex-shrink-0 content-padding page-content">
 
-          <!-- BANNER TIPO "WORKSHOPS" -->
-          <section class="hero-strip my-4">
-            <!-- Lado izquierdo: GIF -->
-            <div class="hero-strip__media">
-              <video autoplay muted loop playsinline>
-                <source src="img/ciudad.mp4" type="video/mp4">
-              </video>
-              <!-- Si quieres usar un GIF en lugar de video, 
-               
-              <img src="img/ciudad.gif" alt="Vista panorámica de la ciudad" loading="lazy">
-              descomenta esta línea y comenta el bloque de video -->
+      <!-- BANNER TIPO "WORKSHOPS" -->
+      <section class="hero-strip my-4">
+        <!-- Lado izquierdo: video -->
+        <div class="hero-strip__media">
+          <video autoplay muted loop playsinline>
+            <source src="img/ciudad.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!-- Lado derecho: degradado + título -->
+        <div class="hero-strip__panel">
+          <h2 class="hero-strip__title">Ponencias</h2>
+        </div>
+      </section>
+
+      <div class="container my-5">
+
+        <!-- CAJA DE CARTAS -->
+        <div class="row g-4">
+
+          <!-- CARTA 01 -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card workshop-card h-100 border-0 shadow-sm">
+              <div class="position-relative">
+                <img src="img/ponencias/Jefferson Gerardo Moreno Nieves_ Perú.jpg" class="card-img-top workshop-img" alt="Exposición">
+                <div class="speaker-badge">
+                  <img src="img/banderas/peru.png" alt="Perú" class="rounded-circle border border-3 border-white">
+                </div>
+              </div>
+              <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold">Derecho penal y medios de comunicación</h5>
+                <p class="card-text small flex-grow-1 mb-0">Jefferson Gerardo <br> Moreno Nieves</p>
+                <div class="d-flex justify-content-end mt-3">
+                  <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
+                </div>
+              </div>
             </div>
-    
-            <!-- Lado derecho: degradado + título -->
-            <div class="hero-strip__panel">
-              <h2 class="hero-strip__title">Ponencias</h2>
+          </div>
+
+          <!-- CARTA 02 -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card workshop-card h-100 border-0 shadow-sm">
+              <div class="position-relative">
+                <img src="img/ponencias/Javier Garcia Valencia_bolivia.jpeg" class="card-img-top workshop-img" alt="Exposición">
+                <div class="speaker-badge">
+                  <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
+                </div>
+              </div>
+              <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold">Sana crítica o discrecionalidad judicial: la crisis de la motivación probatoria en América Latina</h5>
+                <p class="card-text small flex-grow-1 mb-0">Javier García Valencia</p>
+                <div class="d-flex justify-content-end mt-3">
+                  <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
+                </div>
+              </div>
             </div>
-          </section>
+          </div>
 
-          <div class="container my-5">
-            <!-- <h2 class="text-center mb-5 fw-bold" style="color: #006080;">Talleres y Expositores</h2>   -->
-            <!-- ====================================CAJA DE CARTAS========================= -->
-            <div class="row g-4">
-                
-              <!-- ====================================CARTA01========================= -->
-              <div class="col-12 col-md-6 col-lg-3">
-                    <div class="card workshop-card h-100 border-0 shadow-sm">
-                        <div class="position-relative">
-                            <img src="img/ponencias/Jefferson Gerardo Moreno Nieves_ Perú.jpg" class="card-img-top workshop-img" alt="Exposición">
-                            
-                            <div class="speaker-badge">
-                                <img src="img/banderas/peru.png" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
-                            </div>
-                        </div>
-        
-                        <div class="card-body p-4">
-                            <!-- <p class="text-uppercase small fw-bold text-muted mb-2">Ponencia 1</p>-->
-                            <h5 class="card-title fw-bold">Derecho penal y medios de comunicación</h5>
-                            <p class="card-text small mb-4">Jefferson Gerardo <br> Moreno Nieves</p>
-                            <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                        </div>
-                    </div>
-              </div>
-              <!-- ====================================CARTA02========================= -->
-              <div class="col-12 col-md-6 col-lg-3">
-                <div class="card workshop-card h-100 border-0 shadow-sm">
-                    <div class="position-relative">
-                        <img src="img/ponencias/Javier Garcia Valencia_bolivia.jpeg" class="card-img-top workshop-img" alt="Exposición">
-                        
-                        <div class="speaker-badge">
-                            <img src="img/banderas/bolivia.png" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
-                        </div>
-                    </div>
-    
-                    <div class="card-body p-4">
-                        <!-- <p class="text-uppercase small fw-bold text-muted mb-2">Ponencia 1</p>-->
-                        <h5 class="card-title fw-bold">Sana crítica o discrecionalidad judicial: la crisis de la motivación probatoria en América Latina</h5>
-                        <p class="card-text small mb-4">Javier García Valencia</p>
-                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                    </div>
+          <!-- CARTA 03 -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card workshop-card h-100 border-0 shadow-sm">
+              <div class="position-relative">
+                <img src="img/ponencias/Maria Elena Attard- Mauricio Manzoni ballon_bolivia.png" class="card-img-top workshop-img" alt="Exposición">
+                <div class="speaker-badge">
+                  <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
                 </div>
               </div>
-              <!-- ====================================CARTA03========================= -->
-              <div class="col-12 col-md-6 col-lg-3">
-                <div class="card workshop-card h-100 border-0 shadow-sm">
-                    <div class="position-relative">
-                        <img src="img/ponencias/Maria Elena Attard- Mauricio Manzoni ballon_bolivia.png" class="card-img-top workshop-img" alt="Exposición">
-                        
-                        <div class="speaker-badge">
-                            <img src="img/banderas/bolivia.png" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
-                        </div>
-                    </div>
-    
-                    <div class="card-body p-4">
-                        <!-- <p class="text-uppercase small fw-bold text-muted mb-2">Ponencia 1</p>-->
-                        <h5 class="card-title fw-bold">El certificado de defunción de la acción de libertad: Análisis de la unificación jurisprudencial del Tribunal Constitucional Plurinacional</h5>
-                        <p class="card-text small mb-4">María Elena Attard Bellido</p>
-                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                    </div>
+              <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold">El certificado de defunción de la acción de libertad: Análisis de la unificación jurisprudencial del Tribunal Constitucional Plurinacional</h5>
+                <p class="card-text small flex-grow-1 mb-0">María Elena Attard Bellido</p>
+                <div class="d-flex justify-content-end mt-3">
+                  <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
                 </div>
               </div>
-              <!-- ====================================CARTA04========================= -->
-              <div class="col-12 col-md-6 col-lg-3">
-                <div class="card workshop-card h-100 border-0 shadow-sm">
-                    <div class="position-relative">
-                        <img src="img/ponencias/Dr. Leandro Dato_Argentina.jpg" class="card-img-top workshop-img" alt="Exposición">
-                        
-                        <div class="speaker-badge">
-                            <img src="img/banderas/Argentina.png" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
-                        </div>
-                    </div>
-    
-                    <div class="card-body p-4">
-                        <!-- <p class="text-uppercase small fw-bold text-muted mb-2">Ponencia 1</p>-->
-                        <h5 class="card-title fw-bold">La tentativa en casos de violencia de género</h5>
-                        <p class="card-text small mb-4">Leandro Dato</p>
-                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                    </div>
-                </div>
-              </div>
-              <!-- ====================================CARTA05========================= -->
-              <div class="col-12 col-md-6 col-lg-3">
-                <div class="card workshop-card h-100 border-0 shadow-sm">
-                    <div class="position-relative">
-                        <img src="img/ponencias/JORGE VALDA_Bolivia.png" class="card-img-top workshop-img" alt="Exposición">
-                        
-                        <div class="speaker-badge">
-                            <img src="img/banderas/bolivia.png" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
-                        </div>
-                    </div>
-    
-                    <div class="card-body p-4">
-                        <!-- <p class="text-uppercase small fw-bold text-muted mb-2">Ponencia 1</p>-->
-                        <h5 class="card-title fw-bold">La Mente del Litigante: Estrategias Psicológicas para Dominar el Juicio Oral.</h5>
-                        <p class="card-text small mb-4">Jorge Jose Valda Daza</p>
-                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                    </div>
-                </div>
-              </div>
-              <!-- ====================================CARTA06========================= -->
-              <div class="col-12 col-md-6 col-lg-3">
-                <div class="card workshop-card h-100 border-0 shadow-sm">
-                    <div class="position-relative">
-                        <img src="img/ponencias/Dra Francia Drouet C._ecuador.jpeg" class="card-img-top workshop-img" alt="Exposición">
-                        
-                        <div class="speaker-badge">
-                            <img src="img/banderas/Ecuador.png" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
-                        </div>
-                    </div>
-    
-                    <div class="card-body p-4">
-                        <!-- <p class="text-uppercase small fw-bold text-muted mb-2">Ponencia 1</p>-->
-                        <h5 class="card-title fw-bold">Litigación estratégica</h5>
-                        <p class="card-text small mb-4">Francia MaríaSoledad Drouet Contreras</p>
-                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                    </div>
-                </div>
-              </div>
-              <!-- ====================================CARTA07========================= -->
-              <div class="col-12 col-md-6 col-lg-3">
-                <div class="card workshop-card h-100 border-0 shadow-sm">
-                    <div class="position-relative">
-                        <img src="img/ponencias/Yimy Montaño Villagomez_bolivia.png" class="card-img-top workshop-img" alt="Exposición">
-                        
-                        <div class="speaker-badge">
-                            <img src="img/banderas/bolivia.png" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
-                        </div>
-                    </div>
-    
-                    <div class="card-body p-4">
-                        <!-- <p class="text-uppercase small fw-bold text-muted mb-2">Ponencia 1</p>-->
-                        <h5 class="card-title fw-bold">La prueba Pericial en investigaciones de delitos Financieros</h5>
-                        <p class="card-text small mb-4">Yimy Montaño Villagomez</p>
-                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                    </div>
-                </div>
-              </div>
-
-              <!-- ====================================CARTA08========================= -->
-              <div class="col-12 col-md-6 col-lg-3">
-                <div class="card workshop-card h-100 border-0 shadow-sm">
-                    <div class="position-relative">
-                        <img src="img/ponencias/Juan Sebastian Fajardo Vanega_colombia.jpg" class="card-img-top workshop-img" alt="Exposición">
-                        
-                        <div class="speaker-badge">
-                            <img src="img/banderas/Colombia.png" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
-                        </div>
-                    </div>
-    
-                    <div class="card-body p-4">
-                        <!-- <p class="text-uppercase small fw-bold text-muted mb-2">Ponencia 1</p>-->
-                        <h5 class="card-title fw-bold">Fiabilidad de la evaluación de la pericia de daño psicológico</h5>
-                        <p class="card-text small mb-4">Juan Sebastián Fajardo Vanegas</p>
-                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                    </div>
-                </div>
-              </div>
-
-
-              <!-- ====================================CARTA09========================= -->
-              <div class="col-12 col-md-6 col-lg-3">
-                <div class="card workshop-card h-100 border-0 shadow-sm">
-                    <div class="position-relative">
-                        <img src="img/ponencias/Viruez Soto Maria Cristina_bolivia.jpg" class="card-img-top workshop-img" alt="Exposición">
-                        
-                        <div class="speaker-badge">
-                            <img src="img/banderas/bolivia.png" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
-                        </div>
-                    </div>
-    
-                    <div class="card-body p-4">
-                        <!-- <p class="text-uppercase small fw-bold text-muted mb-2">Ponencia 1</p>-->
-                        <h5 class="card-title fw-bold">Valoración del examen médico legal en delitos sexuales: alcances y límites probatorios</h5>
-                        <p class="card-text small mb-4">María Cristina Viruez Soto</p>
-                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                    </div>
-                </div>
-              </div>
-
-
-              <!-- ====================================CARTA10========================= -->
-              <div class="col-12 col-md-6 col-lg-3">
-                <div class="card workshop-card h-100 border-0 shadow-sm">
-                    <div class="position-relative">
-                        <img src="img/ponencias/Ruddy Sanchez Coronado_bolivia.png" class="card-img-top workshop-img" alt="Exposición">
-                        
-                        <div class="speaker-badge">
-                            <img src="img/banderas/bolivia.png" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
-                        </div>
-                    </div>
-    
-                    <div class="card-body p-4">
-                        <!-- <p class="text-uppercase small fw-bold text-muted mb-2">Ponencia 1</p>-->
-                        <h5 class="card-title fw-bold">Ruta De Atención De Delitos En Razón De Genero Con Enfoque En La Ley No. 1636</h5>
-                        <p class="card-text small mb-4">German Ruddy Sanchez Coronado </p>
-                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                    </div>
-                </div>
-              </div>
-
-
-              <!-- ====================================CARTA11========================= -->
-              <div class="col-12 col-md-6 col-lg-3">
-                <div class="card workshop-card h-100 border-0 shadow-sm">
-                    <div class="position-relative">
-                        <img src="img/ponencias/Paola Jimena Noya Cabrera_bolivia.png" class="card-img-top workshop-img" alt="Exposición">
-                        
-                        <div class="speaker-badge">
-                            <img src="img/banderas/bolivia.png" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
-                        </div>
-                    </div>
-    
-                    <div class="card-body p-4">
-                        <!-- <p class="text-uppercase small fw-bold text-muted mb-2">Ponencia 1</p>-->
-                        <h5 class="card-title fw-bold">Metapericia: El escudo del debido proceso ante los desafíos de la Deep Tech en Bolivia.</h5>
-                        <p class="card-text small mb-4">Paola Jimena Noya Cabrera</p>
-                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                    </div>
-                </div>
-              </div>
-
-
-              <!-- ====================================CARTA12========================= -->
-              <div class="col-12 col-md-6 col-lg-3">
-                <div class="card workshop-card h-100 border-0 shadow-sm">
-                    <div class="position-relative">
-                        <img src="img/ponencias/Walter Julio Suarez Chavez_bolivia.JPG" class="card-img-top workshop-img" alt="Exposición">
-                        
-                        <div class="speaker-badge">
-                            <img src="img/banderas/bolivia.png" alt="Nombre Disertante" class="rounded-circle border border-3 border-white">
-                        </div>
-                    </div>
-    
-                    <div class="card-body p-4">
-                        <!-- <p class="text-uppercase small fw-bold text-muted mb-2">Ponencia 1</p>-->
-                        <h5 class="card-title fw-bold">La prisión preventiva como herramienta de litigación estratégica: entre la necesidad procesal y el abuso estructural</h5>
-                        <p class="card-text small mb-4">Walter Julio Suárez Chávez</p>
-                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                    </div>
-                </div>
-              </div>
-
             </div>
-            <!-- ======================================================================================= -->
-            
+          </div>
+
+          <!-- CARTA 04 -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card workshop-card h-100 border-0 shadow-sm">
+              <div class="position-relative">
+                <img src="img/ponencias/Dr. Leandro Dato_Argentina.jpg" class="card-img-top workshop-img" alt="Exposición">
+                <div class="speaker-badge">
+                  <img src="img/banderas/Argentina.png" alt="Argentina" class="rounded-circle border border-3 border-white">
+                </div>
+              </div>
+              <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold">La tentativa en casos de violencia de género</h5>
+                <p class="card-text small flex-grow-1 mb-0">Leandro Dato</p>
+                <div class="d-flex justify-content-end mt-3">
+                  <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARTA 05 -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card workshop-card h-100 border-0 shadow-sm">
+              <div class="position-relative">
+                <img src="img/ponencias/JORGE VALDA_Bolivia.png" class="card-img-top workshop-img" alt="Exposición">
+                <div class="speaker-badge">
+                  <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
+                </div>
+              </div>
+              <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold">La Mente del Litigante: Estrategias Psicológicas para Dominar el Juicio Oral.</h5>
+                <p class="card-text small flex-grow-1 mb-0">Jorge Jose Valda Daza</p>
+                <div class="d-flex justify-content-end mt-3">
+                  <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARTA 06 -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card workshop-card h-100 border-0 shadow-sm">
+              <div class="position-relative">
+                <img src="img/ponencias/Dra Francia Drouet C._ecuador.jpeg" class="card-img-top workshop-img" alt="Exposición">
+                <div class="speaker-badge">
+                  <img src="img/banderas/Ecuador.png" alt="Ecuador" class="rounded-circle border border-3 border-white">
+                </div>
+              </div>
+              <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold">Litigación estratégica</h5>
+                <p class="card-text small flex-grow-1 mb-0">Francia MaríaSoledad Drouet Contreras</p>
+                <div class="d-flex justify-content-end mt-3">
+                  <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARTA 07 -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card workshop-card h-100 border-0 shadow-sm">
+              <div class="position-relative">
+                <img src="img/ponencias/Yimy Montaño Villagomez_bolivia.png" class="card-img-top workshop-img" alt="Exposición">
+                <div class="speaker-badge">
+                  <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
+                </div>
+              </div>
+              <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold">La prueba Pericial en investigaciones de delitos Financieros</h5>
+                <p class="card-text small flex-grow-1 mb-0">Yimy Montaño Villagomez</p>
+                <div class="d-flex justify-content-end mt-3">
+                  <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARTA 08 -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card workshop-card h-100 border-0 shadow-sm">
+              <div class="position-relative">
+                <img src="img/ponencias/Juan Sebastian Fajardo Vanega_colombia.jpg" class="card-img-top workshop-img" alt="Exposición">
+                <div class="speaker-badge">
+                  <img src="img/banderas/Colombia.png" alt="Colombia" class="rounded-circle border border-3 border-white">
+                </div>
+              </div>
+              <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold">Fiabilidad de la evaluación de la pericia de daño psicológico</h5>
+                <p class="card-text small flex-grow-1 mb-0">Juan Sebastián Fajardo Vanegas</p>
+                <div class="d-flex justify-content-end mt-3">
+                  <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARTA 09 -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card workshop-card h-100 border-0 shadow-sm">
+              <div class="position-relative">
+                <img src="img/ponencias/Viruez Soto Maria Cristina_bolivia.jpg" class="card-img-top workshop-img" alt="Exposición">
+                <div class="speaker-badge">
+                  <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
+                </div>
+              </div>
+              <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold">Valoración del examen médico legal en delitos sexuales: alcances y límites probatorios</h5>
+                <p class="card-text small flex-grow-1 mb-0">María Cristina Viruez Soto</p>
+                <div class="d-flex justify-content-end mt-3">
+                  <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARTA 10 -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card workshop-card h-100 border-0 shadow-sm">
+              <div class="position-relative">
+                <img src="img/ponencias/Ruddy Sanchez Coronado_bolivia.png" class="card-img-top workshop-img" alt="Exposición">
+                <div class="speaker-badge">
+                  <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
+                </div>
+              </div>
+              <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold">Ruta De Atención De Delitos En Razón De Genero Con Enfoque En La Ley No. 1636</h5>
+                <p class="card-text small flex-grow-1 mb-0">German Ruddy Sanchez Coronado</p>
+                <div class="d-flex justify-content-end mt-3">
+                  <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARTA 11 -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card workshop-card h-100 border-0 shadow-sm">
+              <div class="position-relative">
+                <img src="img/ponencias/Paola Jimena Noya Cabrera_bolivia.png" class="card-img-top workshop-img" alt="Exposición">
+                <div class="speaker-badge">
+                  <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
+                </div>
+              </div>
+              <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold">Metapericia: El escudo del debido proceso ante los desafíos de la Deep Tech en Bolivia.</h5>
+                <p class="card-text small flex-grow-1 mb-0">Paola Jimena Noya Cabrera</p>
+                <div class="d-flex justify-content-end mt-3">
+                  <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARTA 12 -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card workshop-card h-100 border-0 shadow-sm">
+              <div class="position-relative">
+                <img src="img/ponencias/Walter Julio Suarez Chavez_bolivia.JPG" class="card-img-top workshop-img" alt="Exposición">
+                <div class="speaker-badge">
+                  <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
+                </div>
+              </div>
+              <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold">La prisión preventiva como herramienta de litigación estratégica: entre la necesidad procesal y el abuso estructural</h5>
+                <p class="card-text small flex-grow-1 mb-0">Walter Julio Suárez Chávez</p>
+                <div class="d-flex justify-content-end mt-3">
+                  <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
+        <!-- FIN CAJA DE CARTAS -->
+
+      </div>
     </main>
 
     <!-- Footer cargado por JS -->
@@ -316,11 +287,6 @@
 
   </div>
 
-  <!-- =========================================================
-       SCRIPTS
-       - Usa el Bootstrap local para mantener todo consistente.
-       - layout.js es tu script para insertar header/footer.
-  ========================================================== -->
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/layout.js"></script>
 </body>
