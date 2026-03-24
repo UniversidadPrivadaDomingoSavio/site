@@ -135,9 +135,100 @@
       line-height: 1.7;
     }
 
+    /* Tags de actividades dentro del bloque */
+    .activity-tags {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .activity-tag {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      background: rgba(0,96,128,0.08);
+      border: 1px solid rgba(0,96,128,0.18);
+      color: #006080;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 0.3rem 0.8rem; border-radius: 100px;
+    }
+
     @media (max-width: 767px) {
       .cecyd-block { flex-direction: column; }
       .cecyd-block__img { flex-basis: auto; height: 180px; }
+    }
+
+    /* =========================================================
+       BLOQUE AUDITORIO — fondo oscuro variante azul-medianoche
+    ========================================================= */
+    .auditorio-block {
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      min-height: 280px;
+      background: linear-gradient(135deg, #0d1f2d, #004a66);
+      border: 1px solid rgba(0,180,216,0.18);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+    }
+
+    .auditorio-block__img {
+      flex: 0 0 42%;
+      position: relative;
+      overflow: hidden;
+      background: #004a66;
+    }
+    .auditorio-block__img img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      opacity: 0.85;
+    }
+    .auditorio-block__img-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 0.5rem;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+    }
+    .auditorio-block__img-placeholder span { font-size: 3rem; }
+
+    .auditorio-block__info {
+      flex: 1;
+      padding: 2rem 2.2rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+
+    .auditorio-badge {
+      display: inline-block;
+      border: 1px solid rgba(0,180,216,0.5);
+      background: rgba(0,180,216,0.12);
+      color: #00b4d8;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 0.3rem 0.9rem; border-radius: 100px;
+      margin-bottom: 1rem; width: fit-content;
+    }
+
+    .auditorio-block__name {
+      font-size: 1.5rem; font-weight: 800;
+      color: #fff; margin-bottom: 0.25rem;
+    }
+
+    .auditorio-block__sub {
+      color: #00b4d8; font-size: 0.85rem;
+      font-weight: 500; margin-bottom: 1rem;
+    }
+
+    .auditorio-block__desc {
+      color: rgba(255,255,255,0.7); font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* Tags en fondo oscuro */
+    .activity-tag--dark {
+      background: rgba(0,180,216,0.1);
+      border: 1px solid rgba(0,180,216,0.3);
+      color: #00b4d8;
+    }
+
+    @media (max-width: 767px) {
+      .auditorio-block { flex-direction: column; }
+      .auditorio-block__img { flex-basis: auto; height: 180px; }
     }
 
     /* =========================================================
@@ -255,28 +346,30 @@
               <p class="upds-block__desc">
                 La Universidad Privada Domingo Savio es una institución de educación superior 
                 boliviana reconocida por su compromiso con la formación académica de excelencia.
-                ubicada en la avenida Beni, tercer anillo externo de Santa Cruz de la Sierra,
-                su campus en Santa Cruz de la Sierra alberga modernas instalaciones, donde se han 
-                llevado a cabo eventos académicos nacionales e internacionales.
+                Ubicada en la avenida Beni, tercer anillo externo de Santa Cruz de la Sierra,
+                su campus alberga modernas instalaciones donde se han llevado a cabo eventos 
+                académicos nacionales e internacionales.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- DATOS RÁPIDOS -->
+        <!-- =====================================================
+             DATOS RÁPIDOS — ahora incluye Auditorio
+        ===================================================== -->
         <div class="info-row mb-5">
-          <div class="info-chip">
-            <div class="info-chip__icon">🏛️</div>
-            <div>
-              <p class="info-chip__label">Universidad</p>
-              <p class="info-chip__value">Universidad Privada Domingo Savio</p>
-            </div>
-          </div>
           <div class="info-chip">
             <div class="info-chip__icon">🎓</div>
             <div>
               <p class="info-chip__label">Recinto</p>
               <p class="info-chip__value">CECYD</p>
+            </div>
+          </div>
+          <div class="info-chip">
+            <div class="info-chip__icon">🎤</div>
+            <div>
+              <p class="info-chip__label">Salas de debates</p>
+              <p class="info-chip__value">Auditorio</p>
             </div>
           </div>
           <div class="info-chip">
@@ -290,12 +383,14 @@
             <div class="info-chip__icon">📅</div>
             <div>
               <p class="info-chip__label">Fecha</p>
-              <p class="info-chip__value">23 · 24 · 25 de abril 2026</p>
+              <p class="info-chip__value">23 · 24 · 25 - abril - 2026</p>
             </div>
           </div>
         </div>
 
-        <!-- CECYD -->
+        <!-- =====================================================
+             CECYD — actualizado con actividades
+        ===================================================== -->
         <div class="mb-5">
           <p class="section-eyebrow">Recinto</p>
           <h2 class="section-heading">CECYD</h2>
@@ -311,8 +406,34 @@
               <p class="cecyd-block__univ">Universidad Privada Domingo Savio</p>
               <p class="cecyd-block__desc">
                 Es el Centro Cultural y Deportivo de la Universidad Privada Domingo Savio,
-                ha servido como sede para 
-                múltiples eventos académicos, culturales y sociales.
+                ha servido como sede para múltiples eventos académicos, culturales y sociales.
+                En esta edición del congreso, el CECYD albergará las ponencias magistrales
+                y las mesas de debate, siendo el corazón académico del encuentro.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- =====================================================
+             AUDITORIO UPDS — nuevo bloque
+        ===================================================== -->
+        <div class="mb-5">
+          <p class="section-eyebrow">Mesa de debates</p>
+          <h2 class="section-heading">Auditorio UPDS</h2>
+          <div class="section-line"></div>
+
+          <div class="auditorio-block">
+            <div class="auditorio-block__img">
+              <img src="img/Auditorio.png" alt="CECYD">
+            </div>
+            <div class="auditorio-block__info">
+              <span class="auditorio-badge">Mesa de debates</span>
+              <h3 class="auditorio-block__name">Auditorio UPDS</h3>
+              <p class="auditorio-block__sub">Universidad Privada Domingo Savio</p>
+              <p class="auditorio-block__desc">
+                Es un espacio destinado a actividades académicas, eventos institucionales e internacionales.
+                Dispone de escenario, sistema de sonido y proyección audiovisual.
+                Su distribución tipo teatro permite una adecuada visibilidad. Se utiliza para conferencias, seminarios, actos de graduación y otras presentaciones.
               </p>
             </div>
           </div>
