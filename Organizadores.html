@@ -3,15 +3,12 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Organizadores · V Congreso Departamental 2026</title>
+  <title>Inscripción · V Congreso Departamental 2026</title>
   <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/png" href="img/logo_32x32.png">
   <style>
 
-    /* =========================================================
-       GRID
-    ========================================================= */
     .org-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -20,9 +17,6 @@
       margin: 0 auto;
     }
 
-    /* =========================================================
-       TARJETA
-    ========================================================= */
     .org-card {
       background: #fff;
       border-radius: 24px;
@@ -36,7 +30,6 @@
       box-shadow: 0 20px 60px rgba(0,96,128,0.15);
     }
 
-    /* Cabecera degradada */
     .org-card__top {
       position: relative;
       background: linear-gradient(135deg, #003d52 0%, #006080 60%, #00819e 100%);
@@ -44,7 +37,6 @@
       text-align: center;
     }
 
-    /* Línea decorativa superior */
     .org-card__top::before {
       content: '';
       position: absolute;
@@ -67,7 +59,6 @@
       margin-bottom: 1.5rem;
     }
 
-    /* Logo sobresaliente */
     .org-card__logo-wrap {
       position: absolute;
       bottom: -44px;
@@ -91,12 +82,7 @@
     .org-card__logo img {
       width: 100%; height: 100%; object-fit: contain;
     }
-    .org-card__logo-placeholder {
-      font-size: 2.8rem;
-      line-height: 1;
-    }
 
-    /* Cuerpo */
     .org-card__body {
       padding: 3.8rem 2rem 2.2rem;
       text-align: center;
@@ -106,28 +92,31 @@
       font-size: 1.2rem;
       font-weight: 800;
       color: #0f141a;
-      margin-bottom: 0.2rem;
-    }
-
-    .org-card__role {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #006080;
       margin-bottom: 1.8rem;
     }
 
-    /* Línea decorativa */
     .org-card__line {
-      width: 40px;
+      width: 150px;
       height: 3px;
       background: linear-gradient(90deg, #006080, #00b4d8);
       border-radius: 2px;
       margin: 0 auto 1.8rem;
     }
 
-    /* Botón WhatsApp */
+    /* Etiqueta de contacto externa */
+    .contact-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #006080;
+      margin-bottom: 0.45rem;
+      margin-top: 1rem;
+    }
+    .contact-label:first-of-type {
+      margin-top: 0;
+    }
+
     .btn-whatsapp {
       display: inline-flex;
       align-items: center;
@@ -154,9 +143,6 @@
       width: 18px; height: 18px; fill: #fff; flex-shrink: 0;
     }
 
-    /* =========================================================
-       INTRO TEXT
-    ========================================================= */
     .org-intro {
       text-align: center;
       max-width: 520px;
@@ -202,7 +188,7 @@
           </video>
         </div>
         <div class="hero-strip__panel">
-          <h2 class="hero-strip__title">Organizadores</h2>
+          <h2 class="hero-strip__title">Inscripción</h2>
         </div>
       </section>
 
@@ -211,8 +197,8 @@
         <!-- INTRO -->
         <div class="org-intro">
           <p class="org-intro__eyebrow">V Congreso Departamental 2026</p>
-          <h2 class="org-intro__title">¿Tenés alguna consulta?</h2>
-          <p class="org-intro__sub">Contactá directamente a las organizaciones responsables del congreso a través de WhatsApp.</p>
+          <h2 class="org-intro__title">¡Inscribite al congreso!</h2>
+          <p class="org-intro__sub">Realizá tu inscripción directamente por WhatsApp con alguno de los contactos habilitados según tu organización.</p>
         </div>
 
         <!-- TARJETAS -->
@@ -224,19 +210,26 @@
               <div class="org-card__badge">Organizador oficial</div>
               <div class="org-card__logo-wrap">
                 <div class="org-card__logo">
-                  <!-- <img src="img/organizadores.png" alt="Abogado Joven"> -->
                   <img src="img/AbogadoJoven.png" alt="Abogado Joven">
                 </div>
               </div>
             </div>
             <div class="org-card__body">
               <h3 class="org-card__name">Abogado Joven</h3>
-              <p class="org-card__role">Organización</p>
               <div class="org-card__line"></div>
-              <a href="https://wa.me/591XXXXXXXX" target="_blank" class="btn-whatsapp">
+
+              <p class="contact-label">Contacto 1 · 77616922</p>
+              <a href="https://wa.me/59177616922" target="_blank" class="btn-whatsapp">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 Contactar por WhatsApp
               </a>
+
+              <p class="contact-label">Contacto 2 · 78197884</p>
+              <a href="https://wa.me/59178197884" target="_blank" class="btn-whatsapp">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Contactar por WhatsApp
+              </a>
+
             </div>
           </div>
 
@@ -246,19 +239,20 @@
               <div class="org-card__badge">Organizador oficial</div>
               <div class="org-card__logo-wrap">
                 <div class="org-card__logo">
-                  <!-- <img src="img/logo-upds.png" alt="UPDS"> -->
                   <img src="img/UniversidadDomingoSavio.png" alt="UPDS">
                 </div>
               </div>
             </div>
             <div class="org-card__body">
-              <h3 class="org-card__name">Univ. Privada Domingo Savio</h3>
-              <p class="org-card__role">Casa de estudios</p>
+              <h3 class="org-card__name">Universidad Privada Domingo Savio</h3>
               <div class="org-card__line"></div>
-              <a href="https://wa.me/591XXXXXXXX" target="_blank" class="btn-whatsapp">
+
+              <p class="contact-label">Contacto 1 · 75310972</p>
+              <a href="https://wa.me/59175310972" target="_blank" class="btn-whatsapp">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 Contactar por WhatsApp
               </a>
+
             </div>
           </div>
 
