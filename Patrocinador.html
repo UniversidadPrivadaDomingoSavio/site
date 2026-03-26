@@ -24,10 +24,6 @@
     .hotel-card__img {
       width: 100%;
       height: 280px;
-      background: linear-gradient(135deg, #003d52, #006080);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       position: relative;
       overflow: hidden;
     }
@@ -35,6 +31,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       display: block;
     }
     .hotel-card__img-placeholder {
@@ -67,7 +64,6 @@
       font-size: 0.88rem;
     }
 
-
     .hotel-divider {
       height: 3px;
       background: linear-gradient(90deg, #006080, #00b4d8, transparent);
@@ -86,7 +82,6 @@
       margin-bottom: 1.8rem;
     }
 
-    /* Botón negro */
     .btn-dark-custom {
       background: #0f141a;
       color: #fff;
@@ -161,13 +156,13 @@
 
               <div class="hotel-card__img">
                 <div class="hotel-card__img-placeholder">
-                  <span>🏨</span>
+                  <img src="img/santacruz-ciudad.jpg" alt="Hotel Toborochi">
                 </div>
               </div>
 
               <div class="hotel-card__header">
                 <div>
-                  <h2 class="hotel-card__name">Hotel Gran Santa Cruz</h2>
+                  <h2 class="hotel-card__name">Hotel Toborochi</h2>
                   <p class="hotel-card__location">Santa Cruz de la Sierra, Bolivia</p>
                 </div>
               </div>
@@ -176,10 +171,11 @@
 
               <div class="hotel-card__body">
                 <p class="hotel-card__desc">
-                  El Hotel Gran Santa Cruz es el patrocinador oficial del 
-                  V Congreso Departamental de Derecho 2026. Su generoso apoyo 
-                  contribuye al desarrollo de este importante evento académico 
-                  para la comunidad jurídica de Santa Cruz de la Sierra.
+                  El Hotel Toborochi es el patrocinador oficial del 
+                  V Congreso Departamental de Derecho 2026. Su apoyo 
+                  es parte fundamental para la realización de este 
+                  evento académico en beneficio de la comunidad jurídica 
+                  de Santa Cruz de la Sierra.
                 </p>
 
                 <a href="#" class="btn btn-dark-custom">Ver sitio web</a>
@@ -191,9 +187,9 @@
               <span class="thanks-box__icon">🤝</span>
               <h3 class="thanks-box__title">Gracias por su apoyo</h3>
               <p class="thanks-box__text">
-                El Comité Organizador agradece profundamente la contribución 
-                de nuestro patrocinador, cuyo compromiso con el desarrollo 
-                jurídico hace posible este congreso.
+                El Comité Organizador agradece la contribución 
+                de nuestro patrocinador, cuyo respaldo hace posible 
+                el desarrollo de este congreso.
               </p>
             </div>
 
