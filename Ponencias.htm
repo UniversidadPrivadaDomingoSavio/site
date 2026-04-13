@@ -3,12 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>V Congreso de derecho departamental 2026</title>
+  <title>V Congreso Departamental de Ciencias Penales 2026 - Ponencias</title>
 
-  <!-- Bootstrap 5 (LOCAL, desde tu carpeta vendor) -->
   <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-
-  <!-- Tus estilos personalizados -->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/png" href="img/logo_32x32.png">
 
@@ -28,34 +25,11 @@
       margin-bottom: 1.5rem;
     }
 
-    .section-chip{
-      display:inline-flex;
-      align-items:center;
-      gap:.5rem;
-      padding:.45rem 1rem;
-      background: var(--accent-soft);
-      color: var(--accent);
-      border-radius: 999px;
-      font-size:.78rem;
-      font-weight:700;
-      letter-spacing:.05em;
-      text-transform:uppercase;
-      margin-bottom:.9rem;
-    }
-
     .section-title{
       font-size: clamp(1.8rem, 2.8vw, 2.6rem);
       font-weight:800;
       color: var(--text-main);
       margin-bottom:.5rem;
-    }
-
-    .section-subtitle{
-      max-width: 760px;
-      color: var(--text-muted);
-      font-size: 1rem;
-      line-height: 1.7;
-      margin-bottom: 0;
     }
 
     .special-speakers-block{
@@ -77,6 +51,7 @@
       background: #fff;
       transition: transform .28s ease, box-shadow .28s ease;
       box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+      height: 100%;
     }
 
     .workshop-card:hover{
@@ -89,6 +64,7 @@
       height: 290px;
       object-fit: cover;
       display: block;
+      background: #edf2f7;
     }
 
     .speaker-badge{
@@ -119,6 +95,7 @@
       color: var(--text-main);
       line-height:1.35;
       min-height: 70px;
+      font-size: 1rem;
     }
 
     .workshop-card .card-text{
@@ -136,7 +113,6 @@
       transform: translateY(-1px);
     }
 
-    /* DESTACADO INVITADOS ESPECIALES */
     .workshop-card--featured{
       position: relative;
       border: 1px solid rgba(22, 58, 99, 0.12);
@@ -211,9 +187,178 @@
       margin-bottom:.35rem;
     }
 
-    .regular-section-title p{
+    .hero-strip {
+      display: flex;
+      border-bottom-left-radius: 28px;
+      border-bottom-right-radius: 28px;
+      overflow: hidden;
+      min-height: 190px;
+      height: 300px;
+      background: #006080;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-strip__media { 
+      flex: 0 0 58%; 
+      min-height: 190px; 
+    }
+
+    .hero-strip__media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-strip__panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2.2rem 2.4rem;
+      background: linear-gradient(
+        90deg,
+        rgba(0,0,0,0.90) 0%,
+        rgba(0,96,128,0.92) 55%,
+        rgba(0,96,128,0.92) 100%
+      );
+    }
+
+    .hero-strip__title {
+      margin: 0;
+      color: #fff;
+      font-weight: 800;
+      font-size: clamp(1.4rem, 2.8vw, 2.8rem);
+    }
+
+    /* TABS */
+    .date-tabs {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .date-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.9rem 2rem;
+      border-radius: 14px;
+      border: 2px solid rgba(0,96,128,0.2);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      color: #374151;
+      min-width: 130px;
+    }
+
+    .date-tab:hover {
+      border-color: #006080;
+      color: #006080;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,96,128,0.12);
+    }
+
+    .date-tab.active {
+      background: linear-gradient(135deg, #006080, #00b4d8);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 6px 24px rgba(0,96,128,0.3);
+      transform: translateY(-3px);
+    }
+
+    .date-tab__day {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .date-tab__month {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-top: 0.2rem;
+      text-align: center;
+    }
+
+    .date-tab--all .date-tab__day {
+      font-size: 1.2rem;
+      margin-bottom: .2rem;
+    }
+
+    /* MODAL */
+    .speaker-modal__img {
+      width: 100%;
+      max-height: 360px;
+      object-fit: cover;
+      border-radius: 18px;
+      background: #edf2f7;
+    }
+
+    .speaker-modal__name {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: .35rem;
+    }
+
+    .speaker-modal__title {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: .8rem;
+    }
+
+    .speaker-modal__meta {
       color: var(--text-muted);
-      margin-bottom:0;
+      margin-bottom: 1rem;
+    }
+
+    .speaker-schedule-card {
+      border: 1px solid rgba(22,58,99,.08);
+      border-radius: 16px;
+      padding: 1rem;
+      background: #f8fbff;
+      margin-bottom: .9rem;
+    }
+
+    .speaker-schedule-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .speaker-schedule-card__day {
+      display: inline-block;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: #e9f3ff;
+      border-radius: 999px;
+      padding: .35rem .7rem;
+      margin-bottom: .65rem;
+    }
+
+    .speaker-schedule-card__time {
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: .3rem;
+    }
+
+    .speaker-schedule-card__topic {
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 0;
+    }
+
+    .hidden-by-filter {
+      display: none !important;
     }
 
     @media (max-width: 991.98px){
@@ -224,6 +369,78 @@
       .workshop-img{
         height: 280px;
       }
+
+      .hero-strip {
+        flex-direction: column;
+        min-height: 0;
+      }
+
+      .hero-strip__media {
+        flex-basis: auto;
+        height: 210px;
+      }
+
+      .hero-strip__panel {
+        padding: 1.4rem;
+      }
+
+      .date-tab {
+        min-width: 110px;
+        padding: 0.8rem 1.4rem;
+      }
+    }
+
+    .modal-close-x{
+      border: 0;
+      background: transparent;
+      color: #172033;
+      font-size: 2rem;
+      line-height: 1;
+      font-weight: 400;
+      cursor: pointer;
+      padding: 0;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s ease, transform .2s ease, opacity .2s ease;
+    }
+
+    .modal-close-x:hover{
+      background: rgba(22, 58, 99, 0.08);
+      transform: scale(1.05);
+    }
+
+    .modal-close-x:focus{
+      outline: none;
+      box-shadow: 0 0 0 0.2rem rgba(0, 96, 128, 0.18);
+    }
+
+    .hero-strip__panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      text-align: left;
+      padding: 2.2rem 2.4rem;
+      background: linear-gradient(
+        90deg,
+        rgba(0,0,0,0.90) 0%,
+        rgba(0,96,128,0.92) 55%,
+        rgba(0,96,128,0.92) 100%
+      );
+    }
+
+    .hero-strip__title {
+      margin: 0;
+      color: #fff;
+      font-weight: 800;
+      font-size: clamp(1.4rem, 2.8vw, 2.8rem);
+      text-align: left;
+      width: 100%;
     }
 
     @media (max-width: 575.98px){
@@ -245,30 +462,19 @@
 </head>
 
 <body class="d-flex flex-column h-100">
-
-  <!-- =========================================================
-       WRAPPER GENERAL DE PÁGINA
-  ========================================================== -->
   <div class="page-wrap d-flex flex-column min-vh-100">
 
-    <!-- FONDO DERECHO (DECORATIVO) -->
     <div class="bg-right d-none d-lg-block"></div>
-
-    <!-- Header cargado por JS -->
     <div id="header-placeholder"></div>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <main class="flex-shrink-0 content-padding page-content">
 
-      <!-- BANNER TIPO "WORKSHOPS" -->
       <section class="hero-strip my-4">
-        <!-- Lado izquierdo: video -->
         <div class="hero-strip__media">
           <video autoplay muted loop playsinline>
             <source src="img/ciudad.mp4" type="video/mp4">
           </video>
         </div>
-        <!-- Lado derecho: degradado + título -->
         <div class="hero-strip__panel">
           <h2 class="hero-strip__title">Ponencias</h2>
         </div>
@@ -276,677 +482,656 @@
 
       <div class="container my-5">
 
-        <!-- =========================
-             INVITADOS ESPECIALES
-        ========================== -->
-        <section class="special-speakers-block">
+        <!-- FILTROS -->
+        <div class="date-tabs ponencias-tabs mb-5">
+          <button class="date-tab date-tab--all active" onclick="filterPonencias('all', this)">
+            <span class="date-tab__day">Todos</span>
+            <span class="date-tab__month">Ponentes</span>
+          </button>
+
+          <button class="date-tab" onclick="filterPonencias('23', this)">
+            <span class="date-tab__day">23</span>
+            <span class="date-tab__month">Abril 2026</span>
+          </button>
+
+          <button class="date-tab" onclick="filterPonencias('24', this)">
+            <span class="date-tab__day">24</span>
+            <span class="date-tab__month">Abril 2026</span>
+          </button>
+
+          <button class="date-tab" onclick="filterPonencias('25', this)">
+            <span class="date-tab__day">25</span>
+            <span class="date-tab__month">Abril 2026</span>
+          </button>
+        </div>
+
+        <!-- INVITADOS ESPECIALES -->
+        <section class="special-speakers-block" id="special-speakers-section">
           <div class="section-intro">
             <h4 class="section-title">Invitados especiales</h4>
           </div>
 
           <div class="special-speakers-frame">
-            <div class="row g-4">
-
-              <!-- CARTA 01 Invitado especial -->
-              <div class="col-12 col-md-6 col-lg-4">
-                <div class="card workshop-card workshop-card--featured h-100 border-0">
-                  <div class="position-relative">
-                    <span class="featured-ribbon">Invitado especial</span>
-                    <img src="img/ponencias/Boris_Arias_Bolivia.jpg" class="card-img-top workshop-img" alt="Dr. Boris Arias">
-                    <div class="speaker-badge">
-                      <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
-                    </div>
-                  </div>
-                  <div class="card-body p-4 d-flex flex-column">
-                    <h5 class="card-title fw-bold">Sentencias estructurantes del TCP Boliviano</h5>
-                    <p class="card-text flex-grow-1 mb-0">Dr. Boris Arias</p>
-                    <div class="d-flex justify-content-end mt-3">
-                      <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- CARTA 02 Invitado especial -->
-              <div class="col-12 col-md-6 col-lg-4">
-                <div class="card workshop-card workshop-card--featured h-100 border-0">
-                  <div class="position-relative">
-                    <span class="featured-ribbon">Invitado especial</span>
-                    <img src="img/ponencias/Romer Saucedo_Bolivia.jpg" class="card-img-top workshop-img" alt="Dr. Rommer Saucedo">
-                    <div class="speaker-badge">
-                      <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
-                    </div>
-                  </div>
-                  <div class="card-body p-4 d-flex flex-column">
-                    <h5 class="card-title fw-bold">&nbsp;</h5>
-                    <p class="card-text flex-grow-1 mb-0">Dr. Romer Saucedo</p>
-                    <div class="d-flex justify-content-end mt-3">
-                      <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- CARTA 03 Invitado especial -->
-              <div class="col-12 col-md-6 col-lg-4">
-                <div class="card workshop-card workshop-card--featured h-100 border-0">
-                  <div class="position-relative">
-                    <span class="featured-ribbon">Invitado especial</span>
-                    <img src="img/ponencias/Aldo Quezada Cerruti_Bolivia.png" class="card-img-top workshop-img" alt="Dr. Aldo Quesada">
-                    <div class="speaker-badge">
-                      <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
-                    </div>
-                  </div>
-                  <div class="card-body p-4 d-flex flex-column">
-                    <h5 class="card-title fw-bold">&nbsp;</h5>
-                    <p class="card-text flex-grow-1 mb-0">Dr. Aldo Quezada</p>
-                    <div class="d-flex justify-content-end mt-3">
-                      <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+            <div class="row g-4" id="featured-speakers-grid"></div>
           </div>
         </section>
 
-        <!-- =========================
-             RESTO DE PONENCIAS
-        ========================== -->
-        <section>
+        <!-- RESTO DE PONENCIAS -->
+        <section id="regular-speakers-section">
           <div class="regular-section-title">
             <h3>Ponencias</h3>
           </div>
 
-          <div class="row g-4">
-
-            <!-- CARTA 04 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Jefferson Gerardo Moreno Nieves_ Perú.jpg" class="card-img-top workshop-img" alt="Jefferson Gerardo Moreno Nieves">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/peru.png" alt="Perú" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">Derecho penal y medios de comunicación</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Jefferson Gerardo <br> Moreno Nieves</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 05 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Javier Garcia Valencia_bolivia.jpeg" class="card-img-top workshop-img" alt="Javier García Valencia">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">Sana crítica o discrecionalidad judicial: la crisis de la motivación probatoria en América Latina</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Javier García Valencia</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 05 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Carolina Moreno Borda_Colombia.jpg" class="card-img-top workshop-img" alt="Javier García Valencia">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/Colombia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">Mesa de debate: ¿La IA puede ayudar de alguna manera en la prevension de delitos?</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dra. Carolina Moreno Borda</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 06 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Maria Elena Attard- Mauricio Manzoni ballon_bolivia.png" class="card-img-top workshop-img" alt="María Elena Attard Bellido">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">El certificado de defunción de la acción de libertad: Análisis de la unificación jurisprudencial del Tribunal Constitucional Plurinacional</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dra. María Elena Attard Bellido</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 07 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Dr. Leandro Dato_Argentina.jpg" class="card-img-top workshop-img" alt="Leandro Dato">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/Argentina.png" alt="Argentina" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">La tentativa en casos de violencia de género</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Leandro Dato</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 07 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Hayrton Arizaga Hidalgo_peru.jpeg" class="card-img-top workshop-img" alt="Leandro Dato">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/peru.png" alt="Argentina" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">Mesa de debate: CASO Lizeth Marzano</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Hayrton Arrizaga</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 08 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/JORGE VALDA_Bolivia.png" class="card-img-top workshop-img" alt="Jorge Jose Valda Daza">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">La mente del litigante: Estrategias psicológicas para dominar el juicio oral.</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Jorge Jose Valda Daza</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 09 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Dra Francia Drouet C._ecuador.jpeg" class="card-img-top workshop-img" alt="Francia María Soledad Drouet Contreras">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/Ecuador.png" alt="Ecuador" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">Litigación estratégica</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dra. Francia MaríaSoledad Drouet Contreras</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 09 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Ivan Cancino_Colombia.jpg" class="card-img-top workshop-img" alt="Francia María Soledad Drouet Contreras">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/Colombia.png" alt="Ecuador" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold"></h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Ivan Cancino</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 10 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Yimy Montaño Villagomez_bolivia.png" class="card-img-top workshop-img" alt="Yimy Montaño Villagomez">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">La prueba Pericial en investigaciones de delitos Financieros</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Yimy Montaño Villagomez</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 11 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Juan Sebastian Fajardo Vanega_colombia.jpg" class="card-img-top workshop-img" alt="Juan Sebastián Fajardo Vanegas">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/Colombia.png" alt="Colombia" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">Fiabilidad de la evaluación de la pericia de daño psicológico</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Juan Sebastián Fajardo Vanegas</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 12 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Viruez Soto Maria Cristina_bolivia.jpg" class="card-img-top workshop-img" alt="María Cristina Viruez Soto">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">Valoración del examen médico legal en delitos sexuales: alcances y límites probatorios</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dra. María Cristina Viruez Soto</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 13 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Ruddy Sanchez Coronado_bolivia.png" class="card-img-top workshop-img" alt="German Ruddy Sanchez Coronado">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">Ruta de atención de delitos en razón de genero con enfoque en la ley No. 1636</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. German Ruddy Sanchez Coronado</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 14 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Germán Ramiro Alatrista Muñiz_peru.jpg" class="card-img-top workshop-img" alt="Germán Ramiro Alatrista Muñiz">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/peru.png" alt="Perú" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">Contra interrogatorio en latinoamerica</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Germán Ramiro Alatrista Muñiz</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 15 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Paola Jimena Noya Cabrera_bolivia.png" class="card-img-top workshop-img" alt="Paola Jimena Noya Cabrera">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">Metapericia: El escudo del debido proceso ante los desafíos de la Deep Tech en Bolivia.</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dra. Paola Jimena Noya Cabrera</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 16 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Maria Celeste Jimenez Riveros_chile.jpg" class="card-img-top workshop-img" alt="Maria Celeste Jimenez Riveros">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/chile.png" alt="Chile" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">Litigación estratégica y reglas de evidencia. ganar desde el origen.</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dra. Maria Celeste Jimenez Riveros</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 17 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Walter Julio Suarez Chavez_bolivia.JPG" class="card-img-top workshop-img" alt="Walter Julio Suárez Chávez">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">La prisión preventiva como herramienta de litigación estratégica: entre la necesidad procesal y el abuso estructural</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Walter Julio Suárez Chávez</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 18 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Juan Carlos Camacho_bolivia.jpg" class="card-img-top workshop-img" alt="Juan Carlos Camacho">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">Sistema acusatorio en discurso, sistema inquisitivo en la práctica: anatomía de un modelo híbrido fallido</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Juan Carlos Camacho</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 19 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Omar Antonio Zapata López_bolivia.jpg" class="card-img-top workshop-img" alt="Omar Antonio Zapata López">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/peru.png" alt="Perú" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">La prueba en el sistema penal: especial referencia en la prueba pericial</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Omar Antonio Zapata López</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 20 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Carlos Eduardo Ortega Sivila_bolivia.jpg" class="card-img-top workshop-img" alt="Carlos Eduardo Ortega Sivila">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">Principios y normas jurídicas en la nueva jurisprudencia de la sala penal del Tribunal Supremo de Justicia</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Carlos Eduardo Ortega Sivila</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 21 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/fabrizio ortiz dorado_bolivia.jpg" class="card-img-top workshop-img" alt="Fabrizio Ortiz Dorado">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">El garantísmo mediático</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. fabrizio ortiz dorado</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 22 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Katharine Borrero Soto_peru.jpg" class="card-img-top workshop-img" alt="Katharine Borrero Soto">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/peru.png" alt="Perú" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">Análisis Jurisprudencial de la prueba en los delitos de violencia de género en el Perú y Bolivia</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dra. Katharine Borrero Soto</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 23 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Juan Jose Quiroz Crespo_bolivia.jpg" class="card-img-top workshop-img" alt="Juan Jose Quiroz Crespo">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">La valoración de los elementos de convicción en la audiencia de medidas cautelares en el proceso penal boliviano: estándares constitucionales y jurisprudenciales</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Juan Jose Quiroz Crespo</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 24 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Diego Valdir Roca Saucedo_bolivia.jpg" class="card-img-top workshop-img" alt="Diego Valdir Roca Saucedo">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">La prueba testifical y sus componentes valorativos. Una mirada teórica-práctica desde la doctrina y jurisprudencia.</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Diego Valdir Roca Saucedo</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 25 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Carlos Martín Camacho Chávez_bolivia.jpg" class="card-img-top workshop-img" alt="Carlos Martín Camacho Chávez">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/bolivia.png" alt="Bolivia" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">La construcción estratégica de la defensa en materia de medidas cautelares</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Carlos Martín Camacho Chávez</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CARTA 26 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Moises Neil Paz Panduro_peru.jpg" class="card-img-top workshop-img" alt="Moises Neil Paz Panduro">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/peru.png" alt="Perú" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">Problemática de la Prisión Preventiva en casos mediáticos de Corrupción de Funcionarios</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Moises Neil Paz Panduro</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            <!-- CARTA 26 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Carla Lorena Añez Mendez_Bolivia.jpeg" class="card-img-top workshop-img" alt="Moises Neil Paz Panduro">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/bolivia.png" alt="Perú" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">Mesa de debate: ¿Cómo se vincula la debida diligencia del juez al valorar la prueba pericial en audiencias preliminares? </h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dra. Carla Lorena Añez Mendez</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            <!-- CARTA 26 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Christian Sanchez_Bolivia.jpeg" class="card-img-top workshop-img" alt="Moises Neil Paz Panduro">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/bolivia.png" alt="Perú" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">Mesa de debate: Caso Captura Marset en Bolivia</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Christian Sanchez</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            <!-- CARTA 26 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Henry Herrera_Bolivia.jpg" class="card-img-top workshop-img" alt="Moises Neil Paz Panduro">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/bolivia.png" alt="Perú" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold"></h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dr. Henry Herrera H. </p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            <!-- CARTA 26 -->
-            <div class="col-12 col-md-6 col-lg-3">
-              <div class="card workshop-card h-100 border-0 shadow-sm">
-                <div class="position-relative">
-                  <img src="img/ponencias/Katherine Carballo_Bolivia.jpg" class="card-img-top workshop-img" alt="Moises Neil Paz Panduro">
-                  <div class="speaker-badge">
-                    <img src="img/banderas/bolivia.png" alt="Perú" class="rounded-circle border border-3 border-white">
-                  </div>
-                </div>
-                <div class="card-body p-4 d-flex flex-column">
-                  <h5 class="card-title fw-bold">Mesa de debate: Caso Manada (España)</h5>
-                  <p class="card-text small flex-grow-1 mb-0">Dra. Katherine Carballo</p>
-                  <div class="d-flex justify-content-end mt-3">
-                    <a href="#" class="btn btn-outline-dark btn-sm rounded-pill px-4">Leer más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
+          <div class="row g-4" id="regular-speakers-grid"></div>
         </section>
 
       </div>
     </main>
 
-    <!-- Footer cargado por JS -->
     <div id="footer-placeholder" class="mt-auto"></div>
+  </div>
 
+  <!-- MODAL LEER MÁS -->
+  <div class="modal fade" id="speakerModal" tabindex="-1" aria-labelledby="speakerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content border-0" style="border-radius: 24px; overflow: hidden;">
+        
+        <div class="modal-header border-0 pb-0 px-4 pt-4 d-flex justify-content-between align-items-start">
+          <h5 class="modal-title fw-bold" id="speakerModalLabel">Detalle del ponente</h5>
+          <button type="button" class="modal-close-x" data-bs-dismiss="modal" aria-label="Cerrar">×</button>
+        </div>
+
+        <div class="modal-body px-4 pb-4">
+          <div class="row g-4 align-items-start">
+            <div class="col-12 col-lg-5">
+              <img id="modalSpeakerImage" class="speaker-modal__img" src="img/logo_32x32.png" alt="Ponente">
+            </div>
+
+            <div class="col-12 col-lg-7">
+              <div class="speaker-modal__name" id="modalSpeakerName">Nombre del ponente</div>
+              <div class="speaker-modal__title" id="modalSpeakerTitle">Título principal</div>
+              <div class="speaker-modal__meta" id="modalSpeakerMeta">Información general</div>
+
+              <div id="modalSpeakerSchedule"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/layout.js"></script>
+
+  <script>
+    const fallbackImg = 'img/LogoUpds.jpg';
+    const fallbackFlag = 'img/banderas/bolivia.png';
+    let currentFilter = 'all';
+    let speakerModal = null;
+
+    const speakers = [
+      {
+        name: 'Dr. Boris Arias',
+        featured: true,
+        country: 'Bolivia',
+        image: 'img/ponencias/Boris_Arias_Bolivia.jpg',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'Sentencias estructurantes del TCP Boliviano',
+        schedules: [
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '15:30 - 16:00', title: 'Sentencias estructurantes del TCP Boliviano' }
+        ]
+      },
+      {
+        name: 'Dr. Romer Saucedo',
+        featured: true,
+        country: 'Bolivia',
+        image: 'img/ponencias/Romer Saucedo_Bolivia.jpg',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'Tema por confirmar',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '09:00 - 09:30', title: 'Tema por confirmar' }
+        ]
+      },
+      {
+        name: 'Dr. Aldo Quezada',
+        featured: true,
+        country: 'Bolivia',
+        image: 'img/ponencias/Aldo Quezada Cerruti_Bolivia.png',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'Tema por confirmar',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '21:00 - 21:30', title: 'Tema por confirmar' }
+        ]
+      },
+
+      {
+        name: 'Dra. Katharine Borrero Soto',
+        featured: false,
+        country: 'Perú',
+        image: 'img/ponencias/Katharine Borrero Soto_peru.jpg',
+        flag: 'img/banderas/peru.png',
+        mainTitle: 'Análisis jurisprudencial de la prueba en los delitos de violencia de género en Perú y Bolivia',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '09:30 - 10:00', title: 'Análisis jurisprudencial de la prueba en los delitos de violencia de género en Perú y Bolivia' },
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '15:00 - 16:00', title: 'Mesa debate 1: ¿La IA puede ayudar de alguna manera en la prevención de delitos?' }
+        ]
+      },
+      {
+        name: 'Dra. Francia María Soledad Drouet Contreras',
+        featured: false,
+        country: 'Ecuador',
+        image: 'img/ponencias/Dra Francia Drouet C._ecuador.jpeg',
+        flag: 'img/banderas/Ecuador.png',
+        mainTitle: 'Litigación estratégica',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '10:00 - 10:30', title: 'Caso: Dani Alves España' },
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '15:00 - 16:00', title: 'Mesa debate 2: ¿Cómo se vincula la debida diligencia del juez al valorar la prueba pericial en audiencias preliminares?' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '20:00 - 20:30', title: 'Litigación estratégica' }
+        ]
+      },
+      {
+        name: 'Dr. Moisés Neil Paz Panduro',
+        featured: false,
+        country: 'Perú',
+        image: 'img/ponencias/Moises Neil Paz Panduro_peru.jpg',
+        flag: 'img/banderas/peru.png',
+        mainTitle: 'Problemática de la prisión preventiva en casos mediáticos de corrupción de funcionarios',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '10:00 - 10:30', title: 'Caso: Dani Alves España' },
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '19:30 - 20:00', title: 'Problemática de la prisión preventiva en casos mediáticos de corrupción de funcionarios' }
+        ]
+      },
+      {
+        name: 'Dra. Paola Jimena Noya Cabrera',
+        featured: false,
+        country: 'Bolivia',
+        image: 'img/ponencias/Paola Jimena Noya Cabrera_bolivia.png',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'Metapericia: el escudo del debido proceso ante los desafíos de la Deep Tech en Bolivia',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '10:00 - 10:30', title: 'Caso: Dani Alves España' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '11:30 - 12:00', title: 'Metapericia: el escudo del debido proceso ante los desafíos de la Deep Tech en Bolivia' }
+        ]
+      },
+      {
+        name: 'Dra. María Cristina Viruez Soto',
+        featured: false,
+        country: 'Bolivia',
+        image: 'img/ponencias/Viruez Soto Maria Cristina_bolivia.jpg',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'Valoración del examen médico legal en delitos sexuales: alcances y límites probatorios',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '10:30 - 11:00', title: 'Valoración del examen médico legal en delitos sexuales: alcances y límites probatorios' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '10:00 - 10:30', title: 'Caso: Rugbies Argentina' }
+        ]
+      },
+      {
+        name: 'Dr. Jorge José Valda Daza',
+        featured: false,
+        country: 'Bolivia',
+        image: 'img/ponencias/JORGE VALDA_Bolivia.png',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'La mente del litigante: estrategias psicológicas para dominar el juicio oral',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '11:00 - 11:30', title: 'La mente del litigante: estrategias psicológicas para dominar el juicio oral' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '11:00 - 12:00', title: 'Mesa debate 2: ¿Deberían los dictámenes de peritos utilizar ayuda de la I.A.?' }
+        ]
+      },
+      {
+        name: 'Dr. German Ruddy Sanchez Coronado',
+        featured: false,
+        country: 'Bolivia',
+        image: 'img/ponencias/Ruddy Sanchez Coronado_bolivia.png',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'Ruta de atención de delitos en razón de género con enfoque en la Ley Nº 1636',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '11:30 - 12:00', title: 'Ruta de atención de delitos en razón de género con enfoque en la Ley Nº 1636' },
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '15:00 - 16:00', title: 'Mesa debate 1: ¿La IA puede ayudar de alguna manera en la prevención de delitos?' }
+        ]
+      },
+      {
+        name: 'Dra. Carolina Moreno Borda',
+        featured: false,
+        country: 'Colombia',
+        image: 'img/ponencias/Carolina Moreno Borda_Colombia.jpg',
+        flag: 'img/banderas/Colombia.png',
+        mainTitle: 'Mesa de debate: ¿La IA puede ayudar de alguna manera en la prevención de delitos?',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '15:00 - 16:00', title: 'Mesa debate 1: ¿La IA puede ayudar de alguna manera en la prevención de delitos?' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '09:30 - 10:00', title: 'Tema por confirmar' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '17:00 - 17:30', title: 'Caso: Lizeth Marzano' }
+        ]
+      },
+      {
+        name: 'Dr. Diego Valdir Roca Saucedo',
+        featured: false,
+        country: 'Bolivia',
+        image: 'img/ponencias/Diego Valdir Roca Saucedo_bolivia.jpg',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'La prueba testifical y sus componentes valorativos: una mirada teórica-práctica desde la doctrina y jurisprudencia',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '15:00 - 16:00', title: 'Mesa debate 2: ¿Cómo se vincula la debida diligencia del juez al valorar la prueba pericial en audiencias preliminares?' },
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '16:00 - 16:30', title: 'La prueba testifical y sus componentes valorativos: una mirada teórica-práctica desde la doctrina y jurisprudencia' }
+        ]
+      },
+      {
+        name: 'Dra. Carla Lorena Añez Méndez',
+        featured: false,
+        country: 'Bolivia',
+        image: 'img/ponencias/Carla Lorena Añez Mendez_Bolivia.jpeg',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'Mesa de debate: ¿Cómo se vincula la debida diligencia del juez al valorar la prueba pericial en audiencias preliminares?',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '15:00 - 16:00', title: 'Mesa debate 2: ¿Cómo se vincula la debida diligencia del juez al valorar la prueba pericial en audiencias preliminares?' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '16:00 - 16:30', title: 'Mesa debate 1: ¿En qué medida el derecho preferente a la protección de la víctima puede vulnerar derechos y garantías del imputado?' }
+        ]
+      },
+      {
+        name: 'Dr. Jefferson Gerardo Moreno Nieves',
+        featured: false,
+        country: 'Perú',
+        image: 'img/ponencias/Jefferson Gerardo Moreno Nieves_ Perú.jpg',
+        flag: 'img/banderas/peru.png',
+        mainTitle: 'Derecho penal y medios de comunicación',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '16:30 - 17:00', title: 'Derecho penal y medios de comunicación' }
+        ]
+      },
+      {
+        name: 'Dr. Juan Carlos Camacho',
+        featured: false,
+        country: 'Bolivia',
+        image: 'img/ponencias/Juan Carlos Camacho_bolivia.jpg',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'Sistema acusatorio en discurso, sistema inquisitivo en la práctica: anatomía de un modelo híbrido fallido',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '17:00 - 17:30', title: 'Caso: Captura Marset en Bolivia' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '16:00 - 16:30', title: 'Mesa debate 1: ¿En qué medida el derecho preferente a la protección de la víctima puede vulnerar derechos y garantías del imputado?' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '16:30 - 17:00', title: 'Sistema acusatorio en discurso, sistema inquisitivo en la práctica: anatomía de un modelo híbrido fallido' }
+        ]
+      },
+      {
+        name: 'Dr. Juan José Roldán',
+        featured: false,
+        country: 'Ponente',
+        image: fallbackImg,
+        flag: fallbackFlag,
+        mainTitle: 'Tema por confirmar',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '17:00 - 17:30', title: 'Caso: Captura Marset en Bolivia' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '10:30 - 11:00', title: 'Tema por confirmar' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '11:00 - 12:00', title: 'Mesa debate 2: ¿Deberían los dictámenes de peritos utilizar ayuda de la I.A.?' }
+        ]
+      },
+      {
+        name: 'Dr. Christian Sánchez',
+        featured: false,
+        country: 'Bolivia',
+        image: 'img/ponencias/Christian Sanchez_Bolivia.jpeg',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'Mesa de debate: Caso Captura Marset en Bolivia',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '17:00 - 17:30', title: 'Caso: Captura Marset en Bolivia' }
+        ]
+      },
+      {
+        name: 'Dr. Juan José Quiroz Crespo',
+        featured: false,
+        country: 'Bolivia',
+        image: 'img/ponencias/Juan Jose Quiroz Crespo_bolivia.jpg',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'La valoración de los elementos de convicción en la audiencia de medidas cautelares en el proceso penal boliviano: estándares constitucionales y jurisprudenciales',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '17:30 - 18:00', title: 'La valoración de los elementos de convicción en la audiencia de medidas cautelares en el proceso penal boliviano: estándares constitucionales y jurisprudenciales' }
+        ]
+      },
+      {
+        name: 'Dr. Walter Julio Suárez Chávez',
+        featured: false,
+        country: 'Bolivia',
+        image: 'img/ponencias/Walter Julio Suarez Chavez_bolivia.JPG',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'La prisión preventiva como herramienta de litigación estratégica: entre la necesidad procesal y el abuso estructural',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '19:00 - 19:30', title: 'La prisión preventiva como herramienta de litigación estratégica: entre la necesidad procesal y el abuso estructural' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '17:00 - 17:30', title: 'Caso: Lizeth Marzano' }
+        ]
+      },
+      {
+        name: 'Dr. Carlos Martín Camacho Chávez',
+        featured: false,
+        country: 'Bolivia',
+        image: 'img/ponencias/Carlos Martín Camacho Chávez_bolivia.jpg',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'La construcción estratégica de la defensa en materia de medidas cautelares',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '20:00 - 20:30', title: 'La construcción estratégica de la defensa en materia de medidas cautelares' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '11:00 - 12:00', title: 'Mesa debate 1: ¿Puede la inteligencia artificial mejorar o distorsionar la objetividad de la prueba en casos de violencia de género?' }
+        ]
+      },
+      {
+        name: 'Dr. Henry Herrera H.',
+        featured: false,
+        country: 'Bolivia',
+        image: 'img/ponencias/Henry Herrera_Bolivia.jpg',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'Tema por confirmar',
+        schedules: [
+          { day: '23', dayLabel: 'Jueves 23 de abril de 2026', time: '20:30 - 21:00', title: 'Tema por confirmar' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '11:00 - 12:00', title: 'Mesa debate 1: ¿Puede la inteligencia artificial mejorar o distorsionar la objetividad de la prueba en casos de violencia de género?' }
+        ]
+      },
+      {
+        name: 'Dr. Omar Antonio Zapata López',
+        featured: false,
+        country: 'Perú',
+        image: 'img/ponencias/Omar Antonio Zapata López_bolivia.jpg',
+        flag: 'img/banderas/peru.png',
+        mainTitle: 'La prueba en el sistema penal: especial referencia en la prueba pericial',
+        schedules: [
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '08:30 - 09:00', title: 'La prueba en el sistema penal: especial referencia en la prueba pericial' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '16:00 - 16:30', title: 'Mesa debate 2: ¿Cómo se equilibra el razonamiento probatorio en juicio oral para garantizar una defensa eficaz del imputado?' }
+        ]
+      },
+      {
+        name: 'Dr. Leandro Dato',
+        featured: false,
+        country: 'Argentina',
+        image: 'img/ponencias/Dr. Leandro Dato_Argentina.jpg',
+        flag: 'img/banderas/Argentina.png',
+        mainTitle: 'La tentativa en casos de violencia de género',
+        schedules: [
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '09:00 - 09:30', title: 'La tentativa en casos de violencia de género' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '16:00 - 16:30', title: 'Mesa debate 2: ¿Cómo se equilibra el razonamiento probatorio en juicio oral para garantizar una defensa eficaz del imputado?' }
+        ]
+      },
+      {
+        name: 'Dr. José Luis Paredes',
+        featured: false,
+        country: 'Ponente',
+        image: fallbackImg,
+        flag: fallbackFlag,
+        mainTitle: 'Tema por confirmar',
+        schedules: [
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '10:00 - 10:30', title: 'Caso: Rugbies Argentina' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '16:00 - 16:30', title: 'Mesa debate 1: ¿En qué medida el derecho preferente a la protección de la víctima puede vulnerar derechos y garantías del imputado?' }
+        ]
+      },
+      {
+        name: 'Dr. Germán Ramiro Alatrista Muñiz',
+        featured: false,
+        country: 'Perú',
+        image: 'img/ponencias/Germán Ramiro Alatrista Muñiz_peru.jpg',
+        flag: 'img/banderas/peru.png',
+        mainTitle: 'Contra interrogatorio en Latinoamérica',
+        schedules: [
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '10:00 - 10:30', title: 'Caso: Rugbies Argentina' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '11:00 - 12:00', title: 'Mesa debate 1: ¿Puede la inteligencia artificial mejorar o distorsionar la objetividad de la prueba en casos de violencia de género?' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '16:00 - 16:30', title: 'Contra interrogatorio en Latinoamérica' }
+        ]
+      },
+      {
+        name: 'Dr. Fabrizio Ortiz Dorado',
+        featured: false,
+        country: 'Bolivia',
+        image: 'img/ponencias/fabrizio ortiz dorado_bolivia.jpg',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'El garantismo mediático',
+        schedules: [
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '16:00 - 16:30', title: 'Mesa debate 2: ¿Cómo se equilibra el razonamiento probatorio en juicio oral para garantizar una defensa eficaz del imputado?' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '19:30 - 20:00', title: 'El garantismo mediático' }
+        ]
+      },
+      {
+        name: 'Dr. Hayrton Arizaga',
+        featured: false,
+        country: 'Perú',
+        image: 'img/ponencias/Hayrton Arizaga Hidalgo_peru.jpeg',
+        flag: 'img/banderas/peru.png',
+        mainTitle: 'Mesa de debate: Caso Lizeth Marzano',
+        schedules: [
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '17:00 - 17:30', title: 'Caso: Lizeth Marzano' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '19:00 - 19:30', title: 'Tema por confirmar' }
+        ]
+      },
+      {
+        name: 'Dr. Javier García Valencia',
+        featured: false,
+        country: 'Bolivia',
+        image: 'img/ponencias/Javier Garcia Valencia_bolivia.jpeg',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'Sana crítica o discrecionalidad judicial: la crisis de la motivación probatoria en América Latina',
+        schedules: [
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '11:00 - 12:00', title: 'Mesa debate 2: ¿Deberían los dictámenes de peritos utilizar ayuda de la I.A.?' },
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '17:30 - 18:00', title: 'Sana crítica o discrecionalidad judicial: la crisis de la motivación probatoria en América Latina' },
+          { day: '25', dayLabel: 'Sábado 25 de abril de 2026', time: '10:00 - 10:30', title: 'Caso: Manada (España)' }
+        ]
+      },
+      {
+        name: 'Dr. Carlos Eduardo Ortega Sivila',
+        featured: false,
+        country: 'Bolivia',
+        image: 'img/ponencias/Carlos Eduardo Ortega Sivila_bolivia.jpg',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'Principios y normas jurídicas en la nueva jurisprudencia de la Sala Penal del Tribunal Supremo de Justicia',
+        schedules: [
+          { day: '24', dayLabel: 'Viernes 24 de abril de 2026', time: '20:30 - 21:00', title: 'Principios y normas jurídicas en la nueva jurisprudencia de la Sala Penal del Tribunal Supremo de Justicia' }
+        ]
+      },
+      {
+        name: 'Dra. María Elena Attard Bellido',
+        featured: false,
+        country: 'Bolivia',
+        image: 'img/ponencias/Maria Elena Attard- Mauricio Manzoni ballon_bolivia.png',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'El certificado de defunción de la acción de libertad: análisis de la unificación jurisprudencial del Tribunal Constitucional Plurinacional',
+        schedules: [
+          { day: '25', dayLabel: 'Sábado 25 de abril de 2026', time: '08:30 - 09:00', title: 'El certificado de defunción de la acción de libertad: análisis de la unificación jurisprudencial del Tribunal Constitucional Plurinacional' }
+        ]
+      },
+      {
+        name: 'Dr. Yimmi Montaño',
+        featured: false,
+        country: 'Bolivia',
+        image: 'img/ponencias/Yimy Montaño Villagomez_bolivia.png',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'La prueba pericial en investigaciones de delitos financieros',
+        schedules: [
+          { day: '25', dayLabel: 'Sábado 25 de abril de 2026', time: '09:00 - 09:30', title: 'La prueba pericial en investigaciones de delitos financieros' }
+        ]
+      },
+      {
+        name: 'Dra. María Celeste Jiménez Riveros',
+        featured: false,
+        country: 'Chile',
+        image: 'img/ponencias/Maria Celeste Jimenez Riveros_chile.jpg',
+        flag: 'img/banderas/chile.png',
+        mainTitle: 'Litigación estratégica y reglas de evidencia: ganar desde el origen',
+        schedules: [
+          { day: '25', dayLabel: 'Sábado 25 de abril de 2026', time: '09:30 - 10:00', title: 'Litigación estratégica y reglas de evidencia: ganar desde el origen' },
+          { day: '25', dayLabel: 'Sábado 25 de abril de 2026', time: '10:00 - 10:30', title: 'Caso: Manada (España)' }
+        ]
+      },
+      {
+        name: 'Dra. Katherine Carballo',
+        featured: false,
+        country: 'Bolivia',
+        image: 'img/ponencias/Katherine Carballo_Bolivia.jpg',
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'Mesa de debate: Caso Manada (España)',
+        schedules: [
+          { day: '25', dayLabel: 'Sábado 25 de abril de 2026', time: '10:00 - 10:30', title: 'Caso: Manada (España)' }
+        ]
+      },
+      {
+        name: 'Dra. Laura Kamila Toro',
+        featured: false,
+        country: 'Ponente',
+        image: fallbackImg,
+        flag: 'img/banderas/bolivia.png',
+        mainTitle: 'Tema por confirmar',
+        schedules: [
+          { day: '25', dayLabel: 'Sábado 25 de abril de 2026', time: '10:30 - 11:00', title: 'Tema por confirmar' }
+        ]
+      },
+      {
+        name: 'Dr. Ivan Cancino',
+        featured: false,
+        country: 'Colombia',
+        image: 'img/ponencias/Ivan Cancino_Colombia.jpg',
+        flag: 'img/banderas/Colombia.png',
+        mainTitle: 'Tema por confirmar',
+        schedules: [
+          { day: '25', dayLabel: 'Sábado 25 de abril de 2026', time: '11:00 - 11:30', title: 'Tema por confirmar' }
+        ]
+      }
+    ];
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function getSchedulesForFilter(speaker) {
+      if (currentFilter === 'all') return speaker.schedules;
+      return speaker.schedules.filter(item => item.day === currentFilter);
+    }
+
+    function speakerMatchesFilter(speaker) {
+      if (currentFilter === 'all') return true;
+      return speaker.schedules.some(item => item.day === currentFilter);
+    }
+
+    function getCardTitle(speaker) {
+    return speaker.mainTitle || 'Tema por confirmar';
+  }
+
+  function getCardSubtitle(speaker) {
+    return speaker.name;
+  }
+
+    function createFeaturedCard(speaker, index) {
+      return `
+        <div class="col-12 col-md-6 col-lg-4 speaker-item">
+          <div class="card workshop-card workshop-card--featured h-100 border-0">
+            <div class="position-relative">
+              <span class="featured-ribbon">Invitado especial</span>
+              <img src="${escapeHtml(speaker.image || fallbackImg)}" class="card-img-top workshop-img" alt="${escapeHtml(speaker.name)}" onerror="this.src='${fallbackImg}'">
+              <div class="speaker-badge">
+                <img src="${escapeHtml(speaker.flag || fallbackFlag)}" alt="${escapeHtml(speaker.country || 'País')}" class="rounded-circle border border-3 border-white" onerror="this.src='${fallbackFlag}'">
+              </div>
+            </div>
+            <div class="card-body p-4 d-flex flex-column">
+              <h5 class="card-title fw-bold">${escapeHtml(getCardTitle(speaker))}</h5>
+              <p class="card-text flex-grow-1 mb-0">${getCardSubtitle(speaker)}</p>
+              <div class="d-flex justify-content-end mt-3">
+                <button type="button" class="btn btn-outline-dark btn-sm rounded-pill px-4" onclick="openSpeakerModal(${index})">Leer más</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function createRegularCard(speaker, index) {
+      return `
+        <div class="col-12 col-md-6 col-lg-3 speaker-item">
+          <div class="card workshop-card h-100 border-0 shadow-sm">
+            <div class="position-relative">
+              <img src="${escapeHtml(speaker.image || fallbackImg)}" class="card-img-top workshop-img" alt="${escapeHtml(speaker.name)}" onerror="this.src='${fallbackImg}'">
+              <div class="speaker-badge">
+                <img src="${escapeHtml(speaker.flag || fallbackFlag)}" alt="${escapeHtml(speaker.country || 'País')}" class="rounded-circle border border-3 border-white" onerror="this.src='${fallbackFlag}'">
+              </div>
+            </div>
+            <div class="card-body p-4 d-flex flex-column">
+              <h5 class="card-title fw-bold">${escapeHtml(getCardTitle(speaker))}</h5>
+              <p class="card-text small flex-grow-1 mb-0">${getCardSubtitle(speaker)}</p>
+              <div class="d-flex justify-content-end mt-3">
+                <button type="button" class="btn btn-outline-dark btn-sm rounded-pill px-4" onclick="openSpeakerModal(${index})">Leer más</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderSpeakers() {
+      const featuredGrid = document.getElementById('featured-speakers-grid');
+      const regularGrid = document.getElementById('regular-speakers-grid');
+
+      const visibleFeatured = speakers.filter(s => s.featured && speakerMatchesFilter(s));
+      const visibleRegular = speakers.filter(s => !s.featured && speakerMatchesFilter(s));
+
+      featuredGrid.innerHTML = visibleFeatured.map((speaker, index) => {
+        const realIndex = speakers.findIndex(item => item.name === speaker.name);
+        return createFeaturedCard(speaker, realIndex);
+      }).join('');
+
+      regularGrid.innerHTML = visibleRegular.map((speaker) => {
+        const realIndex = speakers.findIndex(item => item.name === speaker.name);
+        return createRegularCard(speaker, realIndex);
+      }).join('');
+
+      document.getElementById('special-speakers-section').style.display = visibleFeatured.length ? '' : 'none';
+    }
+
+    function filterPonencias(day, btn) {
+      currentFilter = day;
+
+      document.querySelectorAll('.ponencias-tabs .date-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+
+      btn.classList.add('active');
+      renderSpeakers();
+    }
+
+    function buildScheduleHtml(speaker) {
+      const schedules = getSchedulesForFilter(speaker);
+
+      return schedules.map(item => `
+        <div class="speaker-schedule-card">
+          <div class="speaker-schedule-card__day">${escapeHtml(item.dayLabel)}</div>
+          <div class="speaker-schedule-card__time">Horario: ${escapeHtml(item.time)}</div>
+          <p class="speaker-schedule-card__topic"><strong>Título:</strong> ${escapeHtml(item.title)}</p>
+        </div>
+      `).join('');
+    }
+
+    function openSpeakerModal(index) {
+      const speaker = speakers[index];
+      if (!speaker) return;
+
+      const schedules = getSchedulesForFilter(speaker);
+      const titleForModal = currentFilter !== 'all' && schedules.length === 1
+        ? schedules[0].title
+        : (speaker.mainTitle || 'Participaciones programadas');
+
+      document.getElementById('modalSpeakerImage').src = speaker.image || fallbackImg;
+      document.getElementById('modalSpeakerImage').onerror = function () {
+        this.src = fallbackImg;
+      };
+
+      document.getElementById('modalSpeakerName').textContent = speaker.name;
+      document.getElementById('modalSpeakerTitle').textContent = titleForModal;
+      document.getElementById('modalSpeakerMeta').innerHTML = `
+        <strong>País:</strong> ${escapeHtml(speaker.country || 'No especificado')}
+      `;
+      document.getElementById('modalSpeakerSchedule').innerHTML = buildScheduleHtml(speaker);
+
+      speakerModal.show();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      speakerModal = new bootstrap.Modal(document.getElementById('speakerModal'));
+      renderSpeakers();
+    });
+  </script>
 </body>
 </html>
