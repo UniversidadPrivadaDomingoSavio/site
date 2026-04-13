@@ -18,12 +18,14 @@
       text-align: center;
       margin-bottom: 2.5rem;
     }
+
     .page-hero__title {
       font-size: 1.85rem;
       font-weight: 700;
       margin-bottom: 0.35rem;
       letter-spacing: -0.01em;
     }
+
     .page-hero__sub {
       font-size: 0.95rem;
       opacity: 0.78;
@@ -37,7 +39,7 @@
       padding: 0 1.25rem 4rem;
     }
 
-    /* ── Barra superior (meta + botón) ── */
+    /* ── Barra superior ── */
     .cronograma-toolbar {
       display: flex;
       align-items: center;
@@ -83,6 +85,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      flex-wrap: wrap;
     }
 
     .badge-pdf {
@@ -115,62 +118,64 @@
       white-space: nowrap;
       flex-shrink: 0;
     }
+
     .btn-dl:hover {
       background: #24508f;
       transform: translateY(-1px);
     }
+
     .btn-dl:active {
       transform: scale(0.97);
     }
 
-    /* ── Marco del visor ── */
+    /* ── Contenedor visor ── */
     .pdf-viewer-frame {
       border: 1px solid #dde4ef;
       border-radius: 0 0 12px 12px;
       overflow: hidden;
       background: #f5f6f8;
+      min-height: 700px;
     }
 
-    .pdf-viewer-frame iframe {
+    .pdf-render-area {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      min-height: 700px;
+    }
+
+    .pdf-page {
+      background: #fff;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 100%;
+    }
+
+    .pdf-page canvas {
       display: block;
       width: 100%;
-      height: 700px;
-      border: none;
+      height: auto;
     }
 
-    /* ── Fallback móvil ── */
-    .pdf-mobile-fallback {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 3rem 1.5rem;
-      text-align: center;
-      gap: 1rem;
-    }
-
-    .pdf-mobile-fallback__icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #eef3fa;
+    .pdf-loading,
+    .pdf-error {
+      min-height: 500px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto;
-    }
-
-    .pdf-mobile-fallback p {
-      font-size: 0.88rem;
+      text-align: center;
+      padding: 2rem;
       color: #6c757d;
-      margin: 0;
-      max-width: 260px;
+      font-size: 0.95rem;
     }
 
-    @media (max-width: 767px) {
-      .pdf-viewer-frame iframe   { display: none; }
-      .pdf-mobile-fallback       { display: flex; }
-      .btn-dl                    { width: 100%; justify-content: center; }
+    .pdf-error {
+      color: #8b2c2c;
+      flex-direction: column;
+      gap: 1rem;
     }
 
     /* ── Nota inferior ── */
@@ -184,21 +189,49 @@
       justify-content: center;
       gap: 6px;
     }
+
+    @media (max-width: 767px) {
+      .cronograma-wrap {
+        padding: 0 0.85rem 3rem;
+      }
+
+      .cronograma-toolbar {
+        padding: 1rem;
+        border-radius: 12px 12px 0 0;
+      }
+
+      .btn-dl {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .pdf-viewer-frame {
+        min-height: 420px;
+      }
+
+      .pdf-render-area {
+        padding: 0.65rem;
+        min-height: 420px;
+        gap: 0.75rem;
+      }
+
+      .pdf-page {
+        width: 100%;
+        border-radius: 6px;
+      }
+    }
   </style>
 </head>
 
 <body class="d-flex flex-column h-100">
 
   <div class="page-wrap d-flex flex-column min-vh-100">
-
     <div class="bg-right d-none d-lg-block"></div>
 
     <!-- Header cargado por JS -->
     <div id="header-placeholder"></div>
 
     <main class="flex-shrink-0 content-padding page-content">
-
-      <!-- Bloque visor -->
       <div class="cronograma-wrap">
 
         <!-- Barra superior -->
@@ -222,6 +255,8 @@
           </div>
 
           <a href="archivos/Cronograma Congreso.pdf"
+             target="_blank"
+             rel="noopener"
              download="Cronograma-Congreso-2026.pdf"
              class="btn-dl">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
@@ -235,24 +270,15 @@
 
         <!-- Visor PDF -->
         <div class="pdf-viewer-frame">
+          <div id="pdf-loading" class="pdf-loading">
+            Cargando vista previa del documento...
+          </div>
 
-          <!-- Desktop: iframe nativo -->
-          <iframe
-            src="archivos/Cronograma Congreso.pdf"
-            title="Cronograma IV Congreso 2026">
-          </iframe>
-
-          <!-- Móvil: fallback con botón (iOS bloquea PDF en iframe) -->
-          <div class="pdf-mobile-fallback">
-            <div class="pdf-mobile-fallback__icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                <path d="M7 21H17C18.1 21 19 20.1 19 19V8L14 3H7C5.9 3 5 3.9 5 5V19C5 20.1 5.9 21 7 21Z"
-                      stroke="#1a3a6b" stroke-width="1.7"/>
-                <path d="M13 3V9H19" stroke="#1a3a6b" stroke-width="1.7" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <p>La vista previa no está disponible en móviles. Descarga el archivo para verlo.</p>
+          <div id="pdf-error" class="pdf-error" style="display: none;">
+            <div>No se pudo cargar la vista previa del PDF.</div>
             <a href="archivos/Cronograma Congreso.pdf"
+               target="_blank"
+               rel="noopener"
                download="Cronograma-Congreso-2026.pdf"
                class="btn-dl">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
@@ -260,10 +286,11 @@
                       stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M4 18h16" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
               </svg>
-              Descargar Cronograma
+              Abrir / Descargar PDF
             </a>
           </div>
 
+          <div id="pdf-render-area" class="pdf-render-area" style="display: none;"></div>
         </div>
 
         <!-- Nota al pie -->
@@ -272,19 +299,86 @@
             <circle cx="12" cy="12" r="9" stroke="#9aa3b0" stroke-width="1.5"/>
             <path d="M12 8v4m0 4h.01" stroke="#9aa3b0" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
-          Si el documento no carga, usa el botón para descargarlo directamente.
+          Si el documento no carga, usa el botón para abrirlo o descargarlo directamente.
         </p>
 
       </div>
-
     </main>
 
     <!-- Footer cargado por JS -->
     <div id="footer-placeholder" class="mt-auto"></div>
-
   </div>
 
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/layout.js"></script>
+
+  <!-- PDF.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+    const pdfUrl = "archivos/Cronograma Congreso.pdf";
+    const loadingEl = document.getElementById("pdf-loading");
+    const errorEl = document.getElementById("pdf-error");
+    const renderAreaEl = document.getElementById("pdf-render-area");
+
+    async function renderPDF() {
+      try {
+        const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+
+        loadingEl.style.display = "none";
+        renderAreaEl.style.display = "flex";
+
+        const containerWidth = renderAreaEl.clientWidth || 800;
+        const isMobile = window.innerWidth <= 767;
+
+        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+          const page = await pdf.getPage(pageNum);
+
+          const unscaledViewport = page.getViewport({ scale: 1 });
+          const horizontalPadding = isMobile ? 24 : 40;
+          const targetWidth = Math.max(280, containerWidth - horizontalPadding);
+          const scale = targetWidth / unscaledViewport.width;
+
+          const viewport = page.getViewport({ scale });
+
+          const pageWrapper = document.createElement("div");
+          pageWrapper.className = "pdf-page";
+
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+
+          const outputScale = window.devicePixelRatio || 1;
+
+          canvas.width = Math.floor(viewport.width * outputScale);
+          canvas.height = Math.floor(viewport.height * outputScale);
+          canvas.style.width = Math.floor(viewport.width) + "px";
+          canvas.style.height = Math.floor(viewport.height) + "px";
+
+          const transform = outputScale !== 1
+            ? [outputScale, 0, 0, outputScale, 0, 0]
+            : null;
+
+          pageWrapper.appendChild(canvas);
+          renderAreaEl.appendChild(pageWrapper);
+
+          await page.render({
+            canvasContext: context,
+            viewport: viewport,
+            transform: transform
+          }).promise;
+        }
+      } catch (error) {
+        console.error("Error cargando PDF:", error);
+        loadingEl.style.display = "none";
+        renderAreaEl.style.display = "none";
+        errorEl.style.display = "flex";
+      }
+    }
+
+    renderPDF();
+  </script>
 </body>
 </html>
