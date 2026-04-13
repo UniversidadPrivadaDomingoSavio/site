@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cronograma · IV Congreso 2026</title>
+
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="img/logo_32x32.png">
+
+  <style>
+    /* ── Hero de sección ── */
+    .page-hero {
+      background: linear-gradient(135deg, #1a3a6b 0%, #24508f 100%);
+      color: #fff;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .page-hero__title {
+      font-size: 1.85rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      letter-spacing: -0.01em;
+    }
+    .page-hero__sub {
+      font-size: 0.95rem;
+      opacity: 0.78;
+      margin: 0;
+    }
+
+    /* ── Contenedor principal ── */
+    .cronograma-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.25rem 4rem;
+    }
+
+    /* ── Barra superior (meta + botón) ── */
+    .cronograma-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: #fff;
+      border: 1px solid #dde4ef;
+      border-radius: 12px 12px 0 0;
+      padding: 1rem 1.4rem;
+      border-bottom: none;
+    }
+
+    .cronograma-toolbar__info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cronograma-toolbar__icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: #eef3fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .cronograma-toolbar__title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin: 0 0 2px;
+      line-height: 1.2;
+    }
+
+    .cronograma-toolbar__meta {
+      font-size: 0.78rem;
+      color: #6c757d;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge-pdf {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #f5eaea;
+      color: #8b2c2c;
+      font-size: 0.68rem;
+      font-weight: 700;
+      border-radius: 5px;
+      padding: 2px 7px;
+      letter-spacing: 0.06em;
+    }
+
+    .btn-dl {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1a3a6b;
+      color: #fff !important;
+      border: none;
+      border-radius: 50px;
+      padding: 10px 22px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none !important;
+      transition: background 0.18s, transform 0.12s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-dl:hover {
+      background: #24508f;
+      transform: translateY(-1px);
+    }
+    .btn-dl:active {
+      transform: scale(0.97);
+    }
+
+    /* ── Marco del visor ── */
+    .pdf-viewer-frame {
+      border: 1px solid #dde4ef;
+      border-radius: 0 0 12px 12px;
+      overflow: hidden;
+      background: #f5f6f8;
+    }
+
+    .pdf-viewer-frame iframe {
+      display: block;
+      width: 100%;
+      height: 700px;
+      border: none;
+    }
+
+    /* ── Fallback móvil ── */
+    .pdf-mobile-fallback {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .pdf-mobile-fallback__icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #eef3fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .pdf-mobile-fallback p {
+      font-size: 0.88rem;
+      color: #6c757d;
+      margin: 0;
+      max-width: 260px;
+    }
+
+    @media (max-width: 767px) {
+      .pdf-viewer-frame iframe   { display: none; }
+      .pdf-mobile-fallback       { display: flex; }
+      .btn-dl                    { width: 100%; justify-content: center; }
+    }
+
+    /* ── Nota inferior ── */
+    .cronograma-note {
+      font-size: 0.78rem;
+      color: #9aa3b0;
+      text-align: center;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+  </style>
+</head>
+
+<body class="d-flex flex-column h-100">
+
+  <div class="page-wrap d-flex flex-column min-vh-100">
+
+    <div class="bg-right d-none d-lg-block"></div>
+
+    <!-- Header cargado por JS -->
+    <div id="header-placeholder"></div>
+
+    <main class="flex-shrink-0 content-padding page-content">
+
+      <!-- Bloque visor -->
+      <div class="cronograma-wrap">
+
+        <!-- Barra superior -->
+        <div class="cronograma-toolbar">
+          <div class="cronograma-toolbar__info">
+            <div class="cronograma-toolbar__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M7 21H17C18.1 21 19 20.1 19 19V8L14 3H7C5.9 3 5 3.9 5 5V19C5 20.1 5.9 21 7 21Z"
+                      stroke="#1a3a6b" stroke-width="1.7" fill="#d8e6f7"/>
+                <path d="M13 3V9H19" stroke="#1a3a6b" stroke-width="1.7" stroke-linejoin="round"/>
+                <path d="M9 13h6M9 17h4" stroke="#1a3a6b" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="cronograma-toolbar__title">Cronograma Oficial</p>
+              <p class="cronograma-toolbar__meta">
+                <span class="badge-pdf">PDF</span>
+                3 MB &nbsp;·&nbsp; Santa Cruz de la Sierra, Bolivia
+              </p>
+            </div>
+          </div>
+
+          <a href="archivos/Cronograma Congreso.pdf"
+             download="Cronograma-Congreso-2026.pdf"
+             class="btn-dl">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+              <path d="M12 4v12m0 0l-3.5-3.5M12 16l3.5-3.5"
+                    stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4 18h16" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+            Descargar PDF
+          </a>
+        </div>
+
+        <!-- Visor PDF -->
+        <div class="pdf-viewer-frame">
+
+          <!-- Desktop: iframe nativo -->
+          <iframe
+            src="archivos/Cronograma Congreso.pdf"
+            title="Cronograma IV Congreso 2026">
+          </iframe>
+
+          <!-- Móvil: fallback con botón (iOS bloquea PDF en iframe) -->
+          <div class="pdf-mobile-fallback">
+            <div class="pdf-mobile-fallback__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M7 21H17C18.1 21 19 20.1 19 19V8L14 3H7C5.9 3 5 3.9 5 5V19C5 20.1 5.9 21 7 21Z"
+                      stroke="#1a3a6b" stroke-width="1.7"/>
+                <path d="M13 3V9H19" stroke="#1a3a6b" stroke-width="1.7" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <p>La vista previa no está disponible en móviles. Descarga el archivo para verlo.</p>
+            <a href="archivos/Cronograma Congreso.pdf"
+               download="Cronograma-Congreso-2026.pdf"
+               class="btn-dl">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+                <path d="M12 4v12m0 0l-3.5-3.5M12 16l3.5-3.5"
+                      stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 18h16" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+              </svg>
+              Descargar Cronograma
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Nota al pie -->
+        <p class="cronograma-note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="#9aa3b0" stroke-width="1.5"/>
+            <path d="M12 8v4m0 4h.01" stroke="#9aa3b0" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Si el documento no carga, usa el botón para descargarlo directamente.
+        </p>
+
+      </div>
+
+    </main>
+
+    <!-- Footer cargado por JS -->
+    <div id="footer-placeholder" class="mt-auto"></div>
+
+  </div>
+
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/layout.js"></script>
+</body>
+</html>
