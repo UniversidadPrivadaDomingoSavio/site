@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inscritos</title>
+
+  <!-- Bootstrap 5 (LOCAL, desde tu carpeta vendor) -->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+
+  <!-- Tus estilos personalizados -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="img/logo_32x32.png">
+
+  <!-- ⭐ LIBRERÍA SHEETJS PARA LEER EXCEL (UNA SOLA LÍNEA) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+  <style>
+    .inscritos-card {
+      background: #ffffff;
+      border: 1px solid #e9edf5;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      padding: 28px;
+      margin-top: 40px;
+    }
+
+    .inscritos-card__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .inscritos-card__eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #0d6efd;
+      margin-bottom: 8px;
+    }
+
+    .inscritos-card__title {
+      margin: 0;
+      font-size: 30px;
+      font-weight: 800;
+      color: #1f2937;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .inscritos-card__text {
+      margin: 12px 0 0;
+      color: #6b7280;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .inscritos-card__badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 42px;
+      height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #0d6efd 0%, #3b82f6 100%);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .inscritos-card__actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-certificados {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: #0d6efd;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 18px rgba(13, 110, 253, 0.18);
+      white-space: nowrap;
+    }
+
+    .btn-certificados:hover {
+      background: #0b5ed7;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .inscritos-card__toolbar {
+      margin-bottom: 18px;
+    }
+
+    .buscador-inscritos {
+      max-width: 360px;
+      border-radius: 12px;
+      border: 1px solid #dbe3ef;
+      padding: 12px 14px;
+      box-shadow: none;
+    }
+
+    .buscador-inscritos:focus {
+      border-color: #86b7fe;
+      box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.12);
+    }
+
+    .tabla-contenedor {
+      border: 1px solid #e9edf5;
+      border-radius: 16px;
+      overflow: auto;
+      max-height: 520px; /* aquí está el scroll interno */
+      background: #fff;
+    }
+
+    .tabla-contenedor table {
+      margin-bottom: 0;
+      font-size: 14px;
+      min-width: 100%;
+    }
+
+    .tabla-contenedor thead th {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: #0f172a;
+      color: #fff;
+      font-weight: 700;
+      border: none;
+      padding: 14px 16px;
+      white-space: nowrap;
+    }
+
+    .tabla-contenedor td {
+      padding: 13px 16px;
+      border-bottom: 1px solid #eef2f7;
+      color: #334155;
+      vertical-align: middle;
+      background: #fff;
+    }
+
+    .tabla-contenedor tbody tr:nth-child(even) td {
+      background: #fafcff;
+    }
+
+    .tabla-contenedor tbody tr:hover td {
+      background: #f1f6ff;
+    }
+
+    .col-numero {
+      width: 70px;
+      text-align: center;
+      font-weight: 700;
+      color: #0d6efd;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #0d6efd;
+      font-size: 16px;
+    }
+
+    .spinner {
+      border: 4px solid #eef2f7;
+      border-top: 4px solid #0d6efd;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 16px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .error-mensaje {
+      background: #fff5f5;
+      color: #c53030;
+      padding: 18px;
+      border-radius: 12px;
+      border: 1px solid #fed7d7;
+    }
+
+    .sin-datos {
+      text-align: center;
+      padding: 32px;
+      color: #64748b;
+      background: #f8fafc;
+      border-radius: 12px;
+      border: 1px dashed #dbe3ef;
+    }
+
+    @media (max-width: 768px) {
+      .inscritos-card {
+        padding: 20px;
+      }
+
+      .inscritos-card__title {
+        font-size: 24px;
+      }
+
+      .tabla-contenedor {
+        max-height: 420px;
+      }
+
+      .tabla-contenedor th,
+      .tabla-contenedor td {
+        padding: 10px 12px;
+        font-size: 13px;
+      }
+
+      .buscador-inscritos {
+        max-width: 100%;
+      }
+    }
+</style>
+</head>
+
+<body class="d-flex flex-column h-100">
+
+  <!-- =========================================================
+       WRAPPER GENERAL DE PÁGINA
+       - Aquí metemos la capa del fondo derecho y el contenido.
+       - El wrapper se hace "relative" en CSS para que el fondo
+         absoluto se posicione dentro de toda la página.
+  ========================================================== -->
+  <div class="page-wrap d-flex flex-column min-vh-100">
+
+    <!-- =========================================================
+         FONDO DERECHO (DECORATIVO)
+         - Es una capa detrás del contenido (z-index bajo).
+         - Solo se muestra desde pantallas grandes (d-lg-block),
+           para que en móviles no estorbe (d-none).
+    ========================================================== -->
+    <div class="bg-right d-none d-lg-block"></div>
+
+    <!-- Header cargado por JS -->
+    <div id="header-placeholder"></div>
+
+    <!-- =========================================================
+         CONTENIDO PRINCIPAL
+         - page-content sube el contenido por encima del fondo
+           usando z-index en CSS.
+         - content-padding evita que el header fijo tape el inicio.
+    ========================================================== -->
+    <main class="flex-shrink-0 content-padding page-content">
+
+        <!-- BANNER TIPO "WORKSHOPS" -->
+        <section class="hero-strip my-4">
+            <!-- Lado izquierdo: GIF -->
+            <div class="hero-strip__media">
+              <video autoplay muted loop playsinline>
+                <source src="img/ciudad.mp4" type="video/mp4">
+              </video>
+              <!-- Si quieres usar un GIF en lugar de video, 
+               
+              <img src="img/ciudad.gif" alt="Vista panorámica de la ciudad" loading="lazy">
+              descomenta esta línea y comenta el bloque de video -->
+            </div>
+    
+            <!-- Lado derecho: degradado + título -->
+            <div class="hero-strip__panel">
+              <h2 class="hero-strip__title">Participantes</h2>
+            </div>
+          </section>
+          <section class="section-info container my-5">
+            <div class="inscritos-card">
+              <div class="inscritos-card__top">
+                <div>
+                  <span class="inscritos-card__eyebrow">Consulta de registro</span>
+                  <h2 class="inscritos-card__title">
+                    Participantes registrados
+                    <span class="inscritos-card__badge" id="contador-inscritos">0</span>
+                  </h2>
+                  <p class="inscritos-card__text">
+                    Agradecemos su destacada asistencia y participación en el V Congreso Departamental de Ciencias Penales, realizado en la Universidad Privada Domingo Savio. 
+                    Revise la lista de inscritos y acceda a la carpeta de certificados mediante el botón ubicado debajo.
+                  </p>
+                </div>
+
+                <div class="inscritos-card__actions">
+                  <a
+                    href="AQUI_VA_TU_LINK_DE_DRIVE"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-certificados"
+                  >
+                    Descargar certificados
+                  </a>
+                </div>
+              </div>
+
+              <div class="inscritos-card__toolbar">
+                <input
+                  type="text"
+                  id="buscador-inscritos"
+                  class="form-control buscador-inscritos"
+                  placeholder="Buscar participante..."
+                />
+              </div>
+
+              <div id="tabla-inscritos-contenedor"></div>
+            </div>
+          </section>
+    </main>
+
+    <!-- Footer cargado por JS -->
+    <div id="footer-placeholder" class="mt-auto"></div>
+
+  </div>
+
+  <!-- =========================================================
+       SCRIPTS
+       - Usa el Bootstrap local para mantener todo consistente.
+       - layout.js es tu script para insertar header/footer.
+       - excel-loader.js es tu script para cargar el Excel
+  ========================================================== -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/excel-loader.js"></script>
+</body>
+</html>
