@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casos - V Congreso de Derecho Departamental</title>
+
+  <!-- Bootstrap 5 (LOCAL, desde tu carpeta vendor) -->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+
+  <!-- Tus estilos personalizados -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="img/logo_32x32.png">
+
+  <style>
+    /* Estilos adicionales para la sección de casos */
+    .casos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .caso-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .caso-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .caso-video-container {
+      width: 100%;
+      min-height: 340px; /* más alto */
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .caso-video-container iframe {
+      width: 100%;
+      height: 340px; /* más alto */
+      border: none;
+    }
+
+    .caso-placeholder {
+      width: 100%;
+      min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+      color: #999;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .caso-content {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .caso-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .caso-description {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    .caso-btn {
+      display: inline-block;
+      background: #007bff;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.65rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      align-self: flex-start;
+      margin-top: auto;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .caso-btn:hover {
+      background: #0056b3;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .caso-badge.pending {
+      display: inline-block;
+      background: #ffc107;
+      color: #333;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      align-self: flex-start;
+      margin-top: auto;
+    }
+
+    @media (max-width: 768px) {
+      .casos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .caso-video-container,
+      .caso-video-container iframe,
+      .caso-placeholder {
+        min-height: 250px;
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+
+<body class="d-flex flex-column h-100">
+
+  <!-- =========================================================
+       WRAPPER GENERAL DE PÁGINA
+  ========================================================== -->
+  <div class="page-wrap d-flex flex-column min-vh-100">
+
+    <!-- =========================================================
+         FONDO DERECHO (DECORATIVO)
+    ========================================================== -->
+    <div class="bg-right d-none d-lg-block"></div>
+
+    <!-- Header cargado por JS -->
+    <div id="header-placeholder"></div>
+
+    <!-- =========================================================
+         CONTENIDO PRINCIPAL
+    ========================================================== -->
+    <main class="flex-shrink-0 content-padding page-content">
+
+        <!-- BANNER TIPO "WORKSHOPS" -->
+        <section class="hero-strip my-4">
+            <!-- Lado izquierdo: GIF/VIDEO -->
+            <div class="hero-strip__media">
+                <video autoplay muted loop playsinline>
+                    <source src="img/ciudad.mp4" type="video/mp4">
+                  </video>
+              <!-- Fallback a imagen si no hay video -->
+              <!-- <img src="img/congreso.jpg" alt="V Congreso de Derecho Departamental" loading="lazy"> -->
+            </div>
+    
+            <!-- Lado derecho: degradado + título -->
+            <div class="hero-strip__panel">
+              <h2 class="hero-strip__title">Casos</h2>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+             SECCIÓN: CASOS DE ESTUDIO
+        ========================================================== -->
+        <section class="section-info container my-5">
+
+            <!-- BLOQUE INTRODUCTORIO -->
+            <div class="section-info__block mb-5">
+        
+                <!-- Título principal del bloque -->
+                <h2 class="section-info__heading">
+                    Casos de Análisis Jurídico
+                </h2>
+        
+                <!-- Línea decorativa debajo del título -->
+                <div class="section-info__divider"></div>
+        
+                <!-- Texto descriptivo -->
+                <p class="section-info__body mt-4">
+                    A continuación presentamos casos emblemáticos que serán analizados durante el V Congreso de Derecho Departamental. 
+                    Estos casos representan situaciones jurídicas de relevancia nacional e internacional que permiten estudiar la aplicación 
+                    del derecho en contextos complejos y desafiantes.
+                </p>
+            </div>
+
+            <!-- GRID DE CASOS -->
+            <div class="casos-grid">
+
+                <!-- CASO 1: Lizeth Marzano -->
+                <div class="caso-card">
+                    <div class="caso-video-container">
+                        <iframe 
+                            src="https://drive.google.com/file/d/1asQ27E-xw0LXdaV12AX0hZO94XCWpTkk/preview"
+                            allow="autoplay"
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="caso-content">
+                        <h3 class="caso-title">El Caso Lizeth Marzano</h3>
+                        <p class="caso-description">
+                            Análisis de un caso que aborda cuestiones fundamentales de derechos humanos, justicia y procedimientos legales. 
+                            Este caso ha generado debate significativo en la comunidad jurídica internacional.
+                        </p>
+                        <a href="https://drive.google.com/file/d/1asQ27E-xw0LXdaV12AX0hZO94XCWpTkk/view"
+                           target="_blank"
+                           class="caso-btn">
+                           Ver video
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CASO 2: Dani Alves -->
+                <div class="caso-card">
+                    <div class="caso-video-container">
+                        <iframe 
+                            src="https://drive.google.com/file/d/1T6OLJImHyhV0Zv9jfSfB7RXbTg99gM92/preview"
+                            allow="autoplay"
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="caso-content">
+                        <h3 class="caso-title">Caso Dani Alves en España</h3>
+                        <p class="caso-description">
+                            Análisis de un caso de relevancia internacional que generó repercusiones mediáticas significativas. 
+                            Estudio de los procedimientos legales en jurisdicciones europeas y las implicaciones de la sentencia.
+                        </p>
+                        <a href="https://drive.google.com/file/d/1T6OLJImHyhV0Zv9jfSfB7RXbTg99gM92/view"
+                           target="_blank"
+                           class="caso-btn">
+                           Ver video
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CASO 3: La Manada -->
+                <div class="caso-card">
+                    <div class="caso-video-container">
+                        <iframe 
+                            src="https://drive.google.com/file/d/1Seigs6Gt3-uuTFiIRGFKiMJYiVC9fSaV/preview"
+                            allow="autoplay"
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="caso-content">
+                        <h3 class="caso-title">Caso "La Manada" en España</h3>
+                        <p class="caso-description">
+                            Caso emblemático que generó amplio debate sobre la tipificación de delitos, las pruebas testimoniales 
+                            y la aplicación del derecho penal en España. Impacto en la jurisprudencia contemporánea.
+                        </p>
+                        <a href="https://drive.google.com/file/d/1Seigs6Gt3-uuTFiIRGFKiMJYiVC9fSaV/view"
+                           target="_blank"
+                           class="caso-btn">
+                           Ver video
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CASO 4: Captura Marset (SIN VIDEO) -->
+                <div class="caso-card">
+                    <div class="caso-video-container">
+                        <div class="caso-placeholder">
+                            <div>
+                                <p style="margin: 0;">📹</p>
+                                <p style="margin: 0.5rem 0 0 0;">Video en proceso</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="caso-content">
+                        <h3 class="caso-title">Captura Marset en Bolivia</h3>
+                        <p class="caso-description">
+                            Análisis de un caso de cooperación internacional en materia de extradición y cumplimiento de órdenes de captura. 
+                            Implicaciones en la soberanía y los tratados de cooperación judicial.
+                        </p>
+                        <span class="caso-badge pending">Próximamente</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+        <!-- /FIN SECCIÓN-->
+
+    </main>
+
+    <!-- Footer cargado por JS -->
+    <div id="footer-placeholder" class="mt-auto"></div>
+
+  </div>
+
+  <!-- =========================================================
+       SCRIPTS
+  ========================================================== -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/layout.js"></script>
+</body>
+</html>
